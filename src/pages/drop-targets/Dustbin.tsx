@@ -23,6 +23,7 @@ function getStyle(backgroundColor: string): CSSProperties {
 export interface DustbinProps {
   greedy?: boolean;
   children?: ReactNode;
+  txt?: string;
 }
 
 export interface DustbinState {
@@ -30,7 +31,7 @@ export interface DustbinState {
   hasDroppedOnChild: boolean;
 }
 
-export const Dustbin: FC<DustbinProps> = ({ greedy, children }) => {
+export const Dustbin: FC<DustbinProps> = ({ greedy, children, txt }) => {
   const [hasDropped, setHasDropped] = useState(false);
   const [hasDroppedOnChild, setHasDroppedOnChild] = useState(false);
 
@@ -39,9 +40,6 @@ export const Dustbin: FC<DustbinProps> = ({ greedy, children }) => {
       accept: ItemTypes.BOX,
       drop(_item: unknown, monitor) {
         const didDrop = monitor.didDrop();
-        const dropResult = monitor.getDropResult();
-        console.log("didDrop", didDrop);
-        console.log("dropResult", dropResult);
         if (didDrop && !greedy) {
           return;
         }

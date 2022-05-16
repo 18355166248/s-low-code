@@ -6,28 +6,36 @@ import NotFound from "./pages/NotFound";
 import Expenses from "./pages/Expenses";
 import Invoices from "./pages/Invoices";
 import Invoice from "./pages/Invoices/invoice";
+import { Provider } from "mobx-react";
+import { AppStore } from "@/stores/AppStore";
+import Editor from "./pages/Editor";
+
+const app = AppStore.create({ userInfo: { name: "" } });
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Drop />}>
-          <Route path="expenses" element={<Expenses />} />
-          <Route path="invoices" element={<Invoices />}>
-            <Route
-              index
-              element={
-                <main style={{ padding: "1rem" }}>
-                  <p>Select an invoice</p>
-                </main>
-              }
-            />
-            <Route path=":invoiceId" element={<Invoice />} />
+    <Provider app={app}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Drop />}>
+            <Route path="expenses" element={<Expenses />} />
+            <Route path="invoices" element={<Invoices />}>
+              <Route
+                index
+                element={
+                  <main style={{ padding: "1rem" }}>
+                    <p>Select an invoice</p>
+                  </main>
+                }
+              />
+              <Route path=":invoiceId" element={<Invoice />} />
+            </Route>
           </Route>
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+          <Route path="/editor" element={<Editor />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

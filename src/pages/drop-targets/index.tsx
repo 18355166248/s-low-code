@@ -11,9 +11,9 @@ const Drop: FC = () => (
     <div>
       {/* <Outlet /> */}
       <div style={{ overflow: "hidden", clear: "both", margin: "-1rem" }}>
-        <Dustbin greedy={true}>
-          <Dustbin greedy={true}>
-            <Dustbin greedy={true} />
+        <Dustbin greedy={true} txt="1">
+          <Dustbin greedy={true} txt="2">
+            <Dustbin greedy={true} txt="3" />
           </Dustbin>
         </Dustbin>
 
