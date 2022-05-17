@@ -32,7 +32,7 @@ function CenterCanvas(props: any) {
       item: monitor.getItem(),
     }),
   }));
-  console.log("edit.codeTree.children", edit.codeTree.children);
+
   return (
     <div className="flex-1 p-4 overflow-y-scroll bg-indigo-50">
       <div
@@ -47,6 +47,7 @@ function CenterCanvas(props: any) {
             data={code}
             parentId={edit.codeTree.id}
             index={index}
+            edit={edit}
           />
         ))}
         {edit.codeTree.children.length === 0 && (
