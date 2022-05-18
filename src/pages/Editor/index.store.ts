@@ -36,7 +36,10 @@ export const EditStore = types
       return self.codeTree.children;
     },
   }))
-  .actions((self: Self) => ({
+  .actions((self: any) => ({
+    setSelectId(id: string) {
+      self.selectId = id;
+    },
     // 根级新增
     append(data: FieldNode) {
       const id = uuid();
@@ -55,14 +58,13 @@ export const EditStore = types
     },
     /**
      * 新增到组件内部
-     * @param param0 item新增组件  data鼠标放入的组件数据   parentId鼠标放入的组件父级id hoverIndex鼠标放入的组件所在索引
      */
     appendCom({
-      item,
-      data,
-      parentId,
-      hoverIndex,
-      positionDown,
+      item, // 拖拽的数据
+      data, // hover的数据
+      parentId, // hover父级id
+      hoverIndex, // hover索引
+      positionDown, // 鼠标在hover组件上半部还是下半部
     }: {
       item: FieldNode;
       data: FieldNodeSchema;
@@ -70,7 +72,6 @@ export const EditStore = types
       hoverIndex: number;
       positionDown: boolean;
     }) {
-      console.log(item, data, parentId, hoverIndex);
       const id = uuid();
 
       dfs(self.codeTree, (curField: FieldNodeSchema) => {
@@ -78,16 +79,17 @@ export const EditStore = types
         if (!canNesting(data.type) && curField.id === parentId) {
           // 通过positionDown判断是放在data上还是下
           if (positionDown) {
+            // !!!这里要注意 children不能覆盖item的, id必须要覆盖item的
             curField.children.splice(hoverIndex + 1, 0, {
+              children: [],
               ...item,
               id,
-              children: [],
             });
           } else {
             curField.children.splice(hoverIndex, 0, {
+              children: [],
               ...item,
               id,
-              children: [],
             });
           }
 
@@ -97,15 +99,71 @@ export const EditStore = types
         // 是嵌套组件 将新组件放入data中
         if (canNesting(data.type) && curField.id === data.id) {
           curField.children.push({
-            ...data,
-            id,
             children: [],
+            ...item,
+            id,
           });
 
           return false;
         }
 
         return true;
+      });
+
+      self.selectId = id;
+    },
+    // 移动组件
+    moveCom({
+      dragParentId, // 拖拽组件的父级id
+      item: dragData, // 拖拽组件
+      data: hoverData, // hover组件
+      parentId, // hover组件父级id
+      hoverIndex, // hover组件索引
+      dragIndex, // 拖拽组件索引
+      positionDown, // 鼠标在hover组件上半部还是下半部
+    }: {
+      dragParentId: string;
+      item: FieldNodeSchema;
+      data: FieldNodeSchema;
+      parentId: string;
+      hoverIndex: number;
+      dragIndex: number;
+      positionDown: boolean;
+    }) {
+      console.log("dragData", dragData, hoverData);
+      if (hoverData.id === dragData.id) return; // 自己套自己 不动
+
+      let hoverInDragChild = false;
+
+      // 判断拖拽组件是不是拖拽进自己内部, 如果是不处理
+      dfs(dragData, (curField: FieldNodeSchema) => {
+        if (curField.id === hoverData.id) {
+          hoverInDragChild = true;
+          return false;
+        }
+
+        return true;
+      });
+
+      if (hoverInDragChild) return;
+
+      // 删除拖拽组件原位置
+      dfs(self.codeTree, (curField: FieldNodeSchema) => {
+        if (curField.id === dragParentId) {
+          curField.children.splice(dragIndex, 1);
+          return false;
+        }
+
+        return true;
+      });
+
+      // 新增组件到拖拽后的位置
+      self.appendCom({
+        item: dragData,
+        data: hoverData,
+        parentId,
+        hoverIndex,
+        positionDown,
       });
     },
     moveRowRoot(dragIndex: number, dropIndex: number) {

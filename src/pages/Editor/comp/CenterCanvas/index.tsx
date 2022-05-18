@@ -12,15 +12,23 @@ function CenterCanvas(props: any) {
 
   const [{ isOver, canDrop, item }, drop] = useDrop(() => ({
     accept: CARD,
-    drop: (item: { data: FieldNodeSchema }, monitor) => {
+    drop: (
+      item: { data: FieldNodeSchema; index?: number; parentId?: string },
+      monitor
+    ) => {
       const didDrop = monitor.didDrop(); // returns false for direct drop target
       if (didDrop) return;
 
       if (!item.data.id) {
         edit.append(item.data);
+      } else {
+        edit.moveCom({
+          dragParentId: item.parentId,
+          dragIndex: item.index,
+          item: item.data,
+          data: edit.codeTree,
+        });
       }
-
-      console.log("move", item.data);
 
       return {};
     },
@@ -48,6 +56,7 @@ function CenterCanvas(props: any) {
             parentId={edit.codeTree.id}
             index={index}
             edit={edit}
+            selectId={edit.selectId}
           />
         ))}
         {edit.codeTree.children.length === 0 && (

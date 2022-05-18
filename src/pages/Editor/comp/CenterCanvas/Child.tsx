@@ -4,7 +4,6 @@ import { useDrop, useDrag } from "react-dnd";
 import { CARD } from "../../ItemTypes";
 import previewData from "../../schema/preview";
 import cl from "classnames";
-import { inject, observer } from "mobx-react";
 import { getEmptyImage } from "react-dnd-html5-backend";
 import { canNesting } from "../../schema/utils";
 
@@ -12,11 +11,12 @@ interface Props {
   parentId: string;
   data: FieldNodeSchema;
   index: number;
+  selectId: string;
   edit?: any;
 }
 
 function Child(props: Props) {
-  const { parentId, data, index, edit } = props;
+  const { parentId, data, index, selectId, edit } = props;
 
   const [hasDropped, setHasDropped] = useState(false);
   const [hasDroppedOnChild, setHasDroppedOnChild] = useState(false);
@@ -45,8 +45,16 @@ function Child(props: Props) {
             hoverIndex: index,
             positionDown,
           });
-        } else if (_item.parentId === parentId) {
-          edit.moveRowRoot(_item.index, index);
+        } else {
+          edit.moveCom({
+            dragParentId: _item.parentId,
+            item: _item.data,
+            data,
+            parentId,
+            hoverIndex: index,
+            dragIndex: _item.index,
+            positionDown,
+          });
         }
       },
       collect: (monitor) => ({
@@ -92,9 +100,8 @@ function Child(props: Props) {
     };
   }, [index, parentId, data]);
 
-  const classNames = cl("min-h-field relative p-2 border border-dashed", {
-    "outline outline-1 outline-cyan-500 border-opacity-0":
-      data.id === edit.selectId,
+  const classNames = cl("min-h-field relative p-3 border border-dashed", {
+    "outline outline-1 outline-cyan-500 border-opacity-0": data.id === selectId,
     "border-purple-700": isOverCurrent,
   });
 
@@ -104,8 +111,13 @@ function Child(props: Props) {
     preview(getEmptyImage(), { captureDraggingState: true });
   }, []);
 
+  function setSelectId(e: any) {
+    e.stopPropagation();
+    edit.setSelectId(data.id);
+  }
+
   return (
-    <div ref={ref} className={classNames}>
+    <div ref={ref} className={classNames} onClick={setSelectId}>
       <CurrentNode {...data.props}>
         {!canNesting(data.type)
           ? data.props.children
@@ -113,9 +125,10 @@ function Child(props: Props) {
               <Child
                 key={curField.id}
                 data={curField}
-                parentId={parentId}
+                parentId={data.id}
                 index={_i}
                 edit={edit}
+                selectId={selectId}
               />
             ))}
       </CurrentNode>
