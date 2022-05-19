@@ -7,9 +7,9 @@ import { inject, observer } from "mobx-react";
 import { FieldNodeSchema } from "../../index.store";
 import Child from "./Child";
 
-function CenterCanvas(props: any) {
-  const { edit } = props;
-
+function CenterCanvas({ edit }: any) {
+  // !!!不能删除 用于刷新组件
+  const { refreshId } = edit;
   const [{ isOver, canDrop, item }, drop] = useDrop(() => ({
     accept: CARD,
     drop: (

@@ -6,6 +6,8 @@ import previewData from "../../schema/preview";
 import cl from "classnames";
 import { getEmptyImage } from "react-dnd-html5-backend";
 import { canNesting } from "../../schema/utils";
+import { DeleteOutlined } from "@ant-design/icons";
+import styles from "./child.module.scss";
 
 interface Props {
   parentId: string;
@@ -100,10 +102,7 @@ function Child(props: Props) {
     };
   }, [index, parentId, data]);
 
-  const classNames = cl("min-h-field relative p-3 border border-dashed", {
-    "outline outline-1 outline-cyan-500 border-opacity-0": data.id === selectId,
-    "border-purple-700": isOverCurrent,
-  });
+  const selected = data.id === selectId;
 
   drop(drag(ref));
 
@@ -116,8 +115,32 @@ function Child(props: Props) {
     edit.setSelectId(data.id);
   }
 
+  function onRemove() {
+    edit.removeCom(parentId, index);
+  }
+
   return (
-    <div ref={ref} className={classNames} onClick={setSelectId}>
+    <div
+      ref={ref}
+      className={cl(
+        "min-h-field relative p-3 border border-dashed",
+        styles.child,
+        {
+          "outline outline-1 outline-cyan-500 border-opacity-0": selected,
+          "border-purple-700": isOverCurrent,
+        }
+      )}
+      onClick={setSelectId}
+    >
+      {selected && (
+        <DeleteOutlined
+          onClick={onRemove}
+          className={cl(
+            "cursor-pointer absolute top-0 right-0",
+            styles.deleteChildIcon
+          )}
+        />
+      )}
       <CurrentNode {...data.props}>
         {!canNesting(data.type)
           ? data.props.children

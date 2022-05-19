@@ -1,0 +1,11 @@
+.child {
+  .deleteChildIcon {
+    display: none;
+    color: var(--color);
+  }
+  &:hover {
+    .deleteChildIcon {
+      display: block;
+    }
+  }
+}

@@ -4,8 +4,7 @@ const data: FieldNode[] = [
   {
     type: "div",
     props: {
-      classsName: "",
-      style: {},
+      className: "",
     },
   },
 ];
