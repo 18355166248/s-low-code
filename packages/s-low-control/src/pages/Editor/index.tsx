@@ -6,10 +6,10 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 
 import Left from "./comp/Left";
-import CenterCanvas from "./comp/CenterCanvas";
 import Right from "./comp/Right";
 import ShowCode from "./comp/ShowCode";
-import PreviewHtml from './comp/PreviewHtml';
+import PreviewHtml from "./comp/PreviewHtml";
+import CenterCanvasIframe from "./comp/CenterCanvasIframe";
 
 const editStore = EditStore.create();
 
@@ -30,7 +30,7 @@ function Editor() {
 
           <main className="flex-1 overflow-hidden flex">
             <Left />
-            <CenterCanvas />
+            <CenterCanvasIframe />
             <Right />
           </main>
         </div>

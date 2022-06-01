@@ -1,0 +1,33 @@
+.ctn {
+  position: relative;
+  width: 375px; /*no*/
+  margin: 70px auto 200px auto; /*no*/
+  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.1);
+
+  .ctnHead {
+    widows: 100%; /*no*/
+    height: 64px; /*no*/
+    background-image: url("./phone-head.png");
+    background-size: cover;
+  }
+
+  .ctnBody {
+    min-height: 603px; /*no*/
+    background: #fff;
+  }
+
+  .ctnHeightTag {
+    position: absolute;
+    top: 650px; /*no*/
+    left: -130px; /*no*/
+    height: 17px; /*no*/
+    width: 130px; /*no*/
+    border-bottom: 1px solid #dedede;
+    color: #a2a2a2;
+    text-align: left;
+
+    span {
+      font-size: 12px; /*no*/
+    }
+  }
+}
