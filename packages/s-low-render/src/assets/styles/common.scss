@@ -1,0 +1,11 @@
+:root {
+  --color: #ef4444;
+}
+
+.color {
+  color: var(--color);
+}
+
+.bg_color {
+  background-color: var(--color);
+}
