@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "ls": "lerna ls"
+    "ls": "lerna ls",
+    "start": "lerna run start"
   },
   "repository": {
     "type": "git",

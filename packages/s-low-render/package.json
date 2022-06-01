@@ -167,7 +167,7 @@
   "license": "MIT",
   "description": "> TODO: description",
   "author": "江浪 <643546122@qq.com>",
-  "homepage": "https://github.com/18355166248/s-low-code/tree/main/packages/s-low-render#readme",
+  "homepage": "/",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
