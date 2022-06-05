@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { FieldNode } from "../../schema/types";
-import { DragPreviewImage, useDrag } from "react-dnd";
+import { useDrag } from "react-dnd";
 import { CARD } from "../../ItemTypes";
 import cl from "classnames";
 import { getEmptyImage } from "react-dnd-html5-backend";

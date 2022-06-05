@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Tabs } from "antd";
 import { Html5Outlined, AntDesignOutlined } from "@ant-design/icons";
 import menus from "../../schema/fields";
-import DragItem from "./DragItem";
 
 interface IconProps {
   active: boolean;

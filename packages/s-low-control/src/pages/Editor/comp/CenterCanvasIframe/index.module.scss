@@ -1,0 +1,17 @@
+.phoneBody {
+  position: relative;
+}
+.iframe {
+  min-height: 667px;
+  position: relative;
+  width: 100%;
+  z-index: 10;
+}
+.pageLayer {
+  min-height: 667px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+}
