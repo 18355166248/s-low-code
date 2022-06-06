@@ -1,12 +1,14 @@
 import PhoneContainer from "@/components/PhoneContainer";
-import React from "react";
+import React, { useRef } from "react";
 import { useDrop } from "react-dnd";
 import { FieldNodeSchema } from "../../index.store";
 import { CARD } from "../../ItemTypes";
-import CustomDragLayer from '../CenterCanvas/CustomDragLayer';
+import CustomDragLayer from "../CenterCanvas/CustomDragLayer";
 import styles from "./index.module.scss";
 
 function CenterCanvasIframe() {
+  const iframeRef = useRef(null);
+
   const [{ isOver, canDrop, item }, drop] = useDrop(() => ({
     accept: CARD,
     drop: (
@@ -15,6 +17,14 @@ function CenterCanvasIframe() {
     ) => {
       const didDrop = monitor.didDrop(); // returns false for direct drop target
       if (didDrop) return;
+
+      (iframeRef.current as any).contentWindow.postMessage(
+        {
+          even: "move",
+          params: item,
+        },
+        "*"
+      );
 
       return {};
     },
@@ -31,7 +41,11 @@ function CenterCanvasIframe() {
     <div className="flex-1 p-4 overflow-y-scroll bg-indigo-50">
       <PhoneContainer>
         <div className={styles.phoneBody}>
-          <iframe src="http://localhost:3900/" className={styles.iframe} />
+          <iframe
+            ref={iframeRef}
+            src="http://localhost:3900/"
+            className={styles.iframe}
+          />
           {/* 拖拽和iframe交互蒙层 */}
           <div ref={drop} className={styles.pageLayer}>
             <CustomDragLayer />
