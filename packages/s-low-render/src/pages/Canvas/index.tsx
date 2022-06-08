@@ -1,27 +1,20 @@
 import React, { useEffect } from "react";
+import CenterCanvas from "./CenterCanvas";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { DndProvider } from "react-dnd";
+import { EditStore } from "./index.store";
+import { Provider } from "mobx-react";
+
+const editStore = EditStore.create();
 
 function Canvas() {
-  useEffect(() => {
-    getMessage();
-  }, []);
-
-  // 统一接收平台信息，调用对应方法处理
-  function getMessage() {
-    window.addEventListener("message", function (e) {
-      if (e.source !== window.parent) return;
-
-      if (e.data) {
-        let { even, params } = e.data;
-
-        if (even === "move") moveWaiting(params);
-      }
-    });
-  }
-
-  function moveWaiting(params: any) {
-    console.log(22, params);
-  }
-  return <div>Canvas</div>;
+  return (
+    <DndProvider backend={HTML5Backend}>
+      <Provider edit={editStore}>
+        <CenterCanvas />
+      </Provider>
+    </DndProvider>
+  );
 }
 
 export default Canvas;

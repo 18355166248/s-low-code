@@ -1,8 +1,8 @@
 import { types } from "mobx-state-tree";
-import { FieldNode } from "./schema/types";
+import { FieldNode } from "./types";
 import { v4 as uuid } from "uuid";
 import { dfs } from "@/utils";
-import { canNesting } from "./schema/utils";
+import { canNesting } from "./utils";
 import { cloneDeep } from "lodash-es";
 
 export interface FieldNodeSchema extends FieldNode {
@@ -53,15 +53,18 @@ export const EditStore = types
     // 根级新增
     append(data: FieldNode) {
       const id = uuid();
-      console.log(data);
-      self.codeTree.children = [
-        ...self.codeTree.children,
-        {
-          ...cloneDeep(data),
-          id,
-          children: [],
-        },
-      ];
+      console.log(333, data);
+      self.codeTree = {
+        ...self.codeTree,
+        children: [
+          ...self.codeTree.children,
+          {
+            ...cloneDeep(data),
+            id,
+            children: [],
+          },
+        ],
+      };
 
       if (self.codeTree.children.length === 1) {
         self.selectId = self.codeTree.children[0].id;
