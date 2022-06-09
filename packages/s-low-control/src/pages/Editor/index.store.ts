@@ -34,6 +34,7 @@ export const EditStore = types
   .volatile(() => ({
     codeTree: initialValue,
     selectId: "",
+    isDragging: false,
   }))
   .views((self: any) => ({
     get rootCode() {
@@ -41,6 +42,9 @@ export const EditStore = types
     },
   }))
   .actions((self: any) => ({
+    setIsDragging(bool: boolean) {
+      self.isDragging = bool;
+    },
     refresh() {
       self.refreshId += 1;
     },

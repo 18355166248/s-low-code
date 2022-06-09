@@ -4,23 +4,32 @@ import { useDrag } from "react-dnd";
 import { CARD } from "../../ItemTypes";
 import cl from "classnames";
 import { getEmptyImage } from "react-dnd-html5-backend";
+import { inject, observer } from "mobx-react";
 
 interface Props {
   data: FieldNode;
+  edit?: any;
 }
 
 function DragItem(props: Props) {
-  const { data } = props;
+  const { data, edit } = props;
+  const { setIsDragging } = edit;
 
   const [{ isDragging }, dragRef, preview] = useDrag(() => {
     return {
       type: CARD,
       item: { data },
-      collect: (monitor) => ({
-        isDragging: monitor.isDragging(),
-      }),
+      collect: (monitor) => {
+        return {
+          isDragging: monitor.isDragging(),
+        };
+      },
+      end() {
+        console.log("end");
+      },
     };
   });
+  setIsDragging(isDragging);
 
   useEffect(() => {
     preview(getEmptyImage(), { captureDraggingState: true });
@@ -43,4 +52,4 @@ function DragItem(props: Props) {
   );
 }
 
-export default DragItem;
+export default inject("edit")(observer(DragItem));

@@ -64,37 +64,49 @@ function CenterCanvas({ edit }: any) {
       item: monitor.getItem(),
     }),
   }));
-  console.log(edit);
-  return (
-    <div className="flex-1 p-4 overflow-y-scroll bg-indigo-50">
-      <div
-        ref={drop}
-        className={cl(
-          "space-y-1 bg-white border-gray-200 border m-auto min-h-full transition-all duration-300 relative"
-        )}
-      >
-        {edit.codeTree.children.map((code: any, index: number) => (
-          <Child
-            key={code.id}
-            data={code}
-            parentId={edit.codeTree.id}
-            index={index}
-            edit={edit}
-            selectId={edit.selectId}
-          />
-        ))}
-        {edit.codeTree.children.length === 0 && (
-          <div className="flex items-center justify-center text-gray-200 text-3xl absolute inset-0">
-            拖动组件到这里
-          </div>
-        )}
 
-        {isOver && canDrop && !item.data.id ? (
-          <div className="border-indigo-500 border my-1" />
-        ) : null}
-        <CustomDragLayer />
-      </div>
-    </div>
+  return (
+    <>
+      {edit.codeTree.children.map((code: any, index: number) => (
+        <Child
+          key={code.id}
+          data={code}
+          parentId={edit.codeTree.id}
+          index={index}
+          edit={edit}
+          selectId={edit.selectId}
+        />
+      ))}
+    </>
+    // <div className="flex-1 p-4 overflow-y-scroll bg-indigo-50">
+    //   <div
+    //     ref={drop}
+    //     className={cl(
+    //       "space-y-1 bg-white border-gray-200 border m-auto min-h-full transition-all duration-300 relative"
+    //     )}
+    //   >
+    //     {edit.codeTree.children.map((code: any, index: number) => (
+    //       <Child
+    //         key={code.id}
+    //         data={code}
+    //         parentId={edit.codeTree.id}
+    //         index={index}
+    //         edit={edit}
+    //         selectId={edit.selectId}
+    //       />
+    //     ))}
+    //     {edit.codeTree.children.length === 0 && (
+    //       <div className="flex items-center justify-center text-gray-200 text-3xl absolute inset-0">
+    //         拖动组件到这里
+    //       </div>
+    //     )}
+
+    //     {isOver && canDrop && !item.data.id ? (
+    //       <div className="border-indigo-500 border my-1" />
+    //     ) : null}
+    //     <CustomDragLayer />
+    //   </div>
+    // </div>
   );
 }
 

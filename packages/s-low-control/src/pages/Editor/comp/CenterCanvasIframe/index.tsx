@@ -1,4 +1,5 @@
 import PhoneContainer from "@/components/PhoneContainer";
+import { inject, observer } from "mobx-react";
 import React, { useRef } from "react";
 import { useDrop } from "react-dnd";
 import { FieldNodeSchema } from "../../index.store";
@@ -6,7 +7,10 @@ import { CARD } from "../../ItemTypes";
 import CustomDragLayer from "../CenterCanvas/CustomDragLayer";
 import styles from "./index.module.scss";
 
-function CenterCanvasIframe() {
+function CenterCanvasIframe(props: any) {
+  const { edit } = props;
+  const { isDragging } = edit;
+
   const iframeRef = useRef(null);
 
   const [{ isOver, canDrop, item }, drop] = useDrop(() => ({
@@ -47,7 +51,11 @@ function CenterCanvasIframe() {
             className={styles.iframe}
           />
           {/* 拖拽和iframe交互蒙层 */}
-          <div ref={drop} className={styles.pageLayer}>
+          <div
+            ref={drop}
+            className={styles.pageLayer}
+            style={{ zIndex: isDragging ? 20 : 1 }}
+          >
             <CustomDragLayer />
           </div>
         </div>
@@ -56,4 +64,4 @@ function CenterCanvasIframe() {
   );
 }
 
-export default CenterCanvasIframe;
+export default inject("edit")(observer(CenterCanvasIframe));
