@@ -35,6 +35,8 @@ export const EditStore = types
     codeTree: initialValue,
     selectId: "",
     isDragging: false,
+    iframeRef: { current: null },
+    selectedComp: null,
   }))
   .views((self: any) => ({
     get rootCode() {
@@ -53,6 +55,12 @@ export const EditStore = types
     },
     setSelectId(id: string) {
       self.selectId = id;
+    },
+    setSelectedComp(comp: any) {
+      self.selectedComp = comp;
+    },
+    setIframeRef(ref: { current: any }) {
+      self.iframeRef = ref;
     },
     // 根级新增
     append(data: FieldNode) {

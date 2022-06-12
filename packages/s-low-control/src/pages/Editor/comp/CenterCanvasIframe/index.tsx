@@ -1,6 +1,6 @@
 import PhoneContainer from "@/components/PhoneContainer";
 import { inject, observer } from "mobx-react";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDrop } from "react-dnd";
 import { FieldNodeSchema } from "../../index.store";
 import { CARD } from "../../ItemTypes";
@@ -9,9 +9,13 @@ import styles from "./index.module.scss";
 
 function CenterCanvasIframe(props: any) {
   const { edit } = props;
-  const { isDragging } = edit;
+  const { isDragging, setIframeRef } = edit;
 
   const iframeRef = useRef(null);
+
+  useEffect(() => {
+    setIframeRef(iframeRef);
+  }, []);
 
   const [{ isOver, canDrop, item }, drop] = useDrop(() => ({
     accept: CARD,

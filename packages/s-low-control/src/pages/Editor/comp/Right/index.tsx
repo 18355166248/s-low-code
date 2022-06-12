@@ -1,22 +1,19 @@
-import { dfs } from "@/utils";
 import { inject, observer } from "mobx-react";
-import React from "react";
-import { FieldNodeSchema } from "../../index.store";
+import React, { useEffect } from "react";
 import { Field } from "../../schema/types";
 import { Fields } from "./fields";
 import editFields from "../../schema/edit";
 
 function Right({ edit }: any) {
-  const { selectId, codeTree, updateSelected, refreshId } = edit;
-  let selectedComp: FieldNodeSchema | undefined;
+  const { selectedComp, updateSelected, setSelectedComp } = edit;
 
-  dfs(codeTree, (curField: FieldNodeSchema) => {
-    if (curField.id === selectId) {
-      selectedComp = curField;
-      return false;
-    }
-    return true;
-  });
+  useEffect(() => {
+    window.addEventListener("message", setSelected);
+
+    return () => {
+      window.removeEventListener("message", setSelected);
+    };
+  }, []);
 
   const renderField = (item: Field) => {
     const { key, name, type, ...other } = item;
@@ -29,6 +26,15 @@ function Right({ edit }: any) {
       />
     );
   };
+
+  function setSelected(e: any) {
+    const { data = {} } = e;
+    const { type, params } = data;
+    if (type === "selectedComp" && params) {
+      // setSelectId(params);
+      setSelectedComp(params);
+    }
+  }
 
   function handlerChange(key: string, value: string) {
     updateSelected({

@@ -34,6 +34,7 @@ export const EditStore = types
   .volatile(() => ({
     codeTree: initialValue,
     selectId: "",
+    selectedComp: null,
   }))
   .views((self: any) => ({
     get rootCode() {
@@ -49,11 +50,20 @@ export const EditStore = types
     },
     setSelectId(id: string) {
       self.selectId = id;
+      self.setSelectedComp();
+    },
+    setSelectedComp() {
+      dfs(self.codeTree, (curField: FieldNodeSchema) => {
+        if (curField.id === self.selectId) {
+          self.selectedComp = curField;
+          return false;
+        }
+        return true;
+      });
     },
     // 根级新增
     append(data: FieldNode) {
       const id = uuid();
-      console.log(333, data);
       self.codeTree = {
         ...self.codeTree,
         children: [

@@ -20,8 +20,10 @@ function DragItem(props: Props) {
       type: CARD,
       item: { data },
       collect: (monitor) => {
+        const isDragging = monitor.isDragging();
+        setIsDragging(isDragging);
         return {
-          isDragging: monitor.isDragging(),
+          isDragging,
         };
       },
       end() {
@@ -29,7 +31,6 @@ function DragItem(props: Props) {
       },
     };
   });
-  setIsDragging(isDragging);
 
   useEffect(() => {
     preview(getEmptyImage(), { captureDraggingState: true });

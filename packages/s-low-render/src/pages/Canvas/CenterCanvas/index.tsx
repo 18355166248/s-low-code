@@ -1,15 +1,13 @@
 import React, { useEffect } from "react";
 import { useDrop } from "react-dnd";
-import cl from "classnames";
 import { CARD } from "../ItemTypes";
-import CustomDragLayer from "./CustomDragLayer";
 import { inject, observer } from "mobx-react";
 import { FieldNodeSchema } from "../types";
 import Child from "./Child";
 
 function CenterCanvas({ edit }: any) {
   // !!!不能删除 用于刷新组件
-  const { refreshId, append } = edit;
+  const { refreshId, append, selectedComp } = edit;
 
   useEffect(() => {
     // 统一接收平台信息，调用对应方法处理
@@ -18,6 +16,18 @@ function CenterCanvas({ edit }: any) {
       window.removeEventListener("message", move);
     };
   }, []);
+
+  useEffect(() => {
+    console.log("selectedComp", selectedComp);
+    selectedComp &&
+      window.parent.postMessage(
+        {
+          type: "selectedComp",
+          params: selectedComp,
+        },
+        "*"
+      );
+  }, [selectedComp]);
 
   function move(e: any) {
     if (e.source !== window.parent) return;
@@ -30,7 +40,6 @@ function CenterCanvas({ edit }: any) {
   }
 
   function moveWaiting(params: any) {
-    console.log(22, params);
     append(params.data);
   }
 

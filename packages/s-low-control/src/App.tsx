@@ -17,7 +17,7 @@ function App() {
     <Provider app={app}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Drop />}>
+          {/* <Route path="/" element={<Drop />}>
             <Route path="expenses" element={<Expenses />} />
             <Route path="invoices" element={<Invoices />}>
               <Route
@@ -30,8 +30,8 @@ function App() {
               />
               <Route path=":invoiceId" element={<Invoice />} />
             </Route>
-          </Route>
-          <Route path="/editor" element={<Editor />} />
+          </Route> */}
+          <Route path="/" element={<Editor />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
