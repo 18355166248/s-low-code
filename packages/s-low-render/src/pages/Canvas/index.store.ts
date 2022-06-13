@@ -50,16 +50,6 @@ export const EditStore = types
     },
     setSelectId(id: string) {
       self.selectId = id;
-      self.setSelectedComp();
-    },
-    setSelectedComp() {
-      dfs(self.codeTree, (curField: FieldNodeSchema) => {
-        if (curField.id === self.selectId) {
-          self.selectedComp = curField;
-          return false;
-        }
-        return true;
-      });
     },
     // 根级新增
     append(data: FieldNode) {
@@ -77,7 +67,7 @@ export const EditStore = types
       };
 
       if (self.codeTree.children.length === 1) {
-        self.selectId = self.codeTree.children[0].id;
+        self.setSelectId(self.codeTree.children[0].id);
       }
     },
     /**
@@ -194,7 +184,6 @@ export const EditStore = types
       const s = list.splice(dragIndex, 1)[0];
       list.splice(dropIndex, 0, s);
       self.codeTree.children = [...list];
-      console.log(self.codeTree.children);
     },
     removeCom(parentId: string, hoverIndex: number) {
       dfs(self.codeTree, (curField: FieldNodeSchema) => {

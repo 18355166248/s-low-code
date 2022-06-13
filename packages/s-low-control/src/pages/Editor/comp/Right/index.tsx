@@ -5,7 +5,7 @@ import { Fields } from "./fields";
 import editFields from "../../schema/edit";
 
 function Right({ edit }: any) {
-  const { selectedComp, updateSelected, setSelectedComp } = edit;
+  const { selectedComp, updateSelected, setCodeTree, setSelectId } = edit;
 
   useEffect(() => {
     window.addEventListener("message", setSelected);
@@ -30,9 +30,17 @@ function Right({ edit }: any) {
   function setSelected(e: any) {
     const { data = {} } = e;
     const { type, params } = data;
-    if (type === "selectedComp" && params) {
-      // setSelectId(params);
-      setSelectedComp(params);
+    if (params) {
+      switch (type) {
+        case "updateCodeTree":
+          setCodeTree(params);
+          break;
+        case "selectId":
+          setSelectId(params);
+          break;
+        default:
+          break;
+      }
     }
   }
 
@@ -42,6 +50,8 @@ function Right({ edit }: any) {
       value,
     });
   }
+
+  console.log("selectedComp", selectedComp);
 
   return (
     <div className="w-80 overflow-y-scroll">

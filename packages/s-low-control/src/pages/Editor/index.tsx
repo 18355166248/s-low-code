@@ -15,8 +15,6 @@ import CenterCanvas from './comp/CenterCanvas';
 const editStore = EditStore.create();
 
 function Editor() {
-  const [checked, setChecked] = useState(false);
-
   return (
     <DndProvider backend={HTML5Backend}>
       <Provider edit={editStore}>
