@@ -7,13 +7,13 @@ import Child from "./Child";
 
 function CenterCanvas({ edit }: any) {
   // !!!不能删除 用于刷新组件
-  const { refreshId, append, selectId } = edit;
+  const { refreshId, append, selectId, setCodeTree } = edit;
 
   useEffect(() => {
     // 统一接收平台信息，调用对应方法处理
-    window.addEventListener("message", move);
+    window.addEventListener("message", getMessage);
     return () => {
-      window.removeEventListener("message", move);
+      window.removeEventListener("message", getMessage);
     };
   }, []);
 
@@ -39,18 +39,23 @@ function CenterCanvas({ edit }: any) {
       );
   }, [selectId]);
 
-  function move(e: any) {
+  function getMessage(e: any) {
     if (e.source !== window.parent) return;
 
     if (e.data) {
       let { even, params } = e.data;
 
       if (even === "move") moveWaiting(params);
+      if (even === "updateCodeTree") updateCodeTree(params);
     }
   }
 
   function moveWaiting(params: any) {
     append(params.data);
+  }
+
+  function updateCodeTree(params: any) {
+    setCodeTree(params);
   }
 
   const [{ isOver, canDrop, item }, drop] = useDrop(() => ({

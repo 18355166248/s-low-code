@@ -75,18 +75,6 @@ export const EditStore = types
     setIframeRef(ref: { current: any }) {
       self.iframeRef = ref;
     },
-    removeCom(parentId: string, hoverIndex: number) {
-      dfs(self.codeTree, (curField: FieldNodeSchema) => {
-        if (curField.id === parentId) {
-          curField.children.splice(hoverIndex, 1);
-
-          return false;
-        }
-        return true;
-      });
-
-      self.refresh();
-    },
     updateSelected({ key, value }: { key: string; value: any }) {
       dfs(self.codeTree, (curField: FieldNodeSchema) => {
         if (curField.id === self.selectId) {
@@ -96,7 +84,14 @@ export const EditStore = types
         }
         return true;
       });
-      self.refresh();
+
+      (self.iframeRef.current as any)?.contentWindow.postMessage(
+        {
+          even: "updateCodeTree",
+          params: self.codeTree,
+        },
+        "*"
+      );
     },
     afterCreate() {
       console.log("EditStore afterCreate");

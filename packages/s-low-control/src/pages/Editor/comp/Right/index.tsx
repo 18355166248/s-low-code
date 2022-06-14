@@ -51,8 +51,6 @@ function Right({ edit }: any) {
     });
   }
 
-  console.log("selectedComp", selectedComp);
-
   return (
     <div className="w-80 overflow-y-scroll">
       <div className="h-10 text-center font-medium border-b py-2">属性设置</div>

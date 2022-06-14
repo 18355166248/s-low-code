@@ -42,6 +42,9 @@ export const EditStore = types
     },
   }))
   .actions((self: any) => ({
+    setCodeTree (code: any) {
+      self.codeTree = code
+    },
     refresh() {
       self.refreshId += 1;
     },
