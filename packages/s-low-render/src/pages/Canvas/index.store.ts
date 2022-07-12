@@ -10,7 +10,7 @@ export interface FieldNodeSchema extends FieldNode {
   children: FieldNodeSchema[];
 }
 
-export interface State extends FieldNodeSchema {
+export interface State extends Omit<FieldNodeSchema, "type"> {
   focusId?: string;
 }
 
@@ -22,7 +22,6 @@ interface Self {
 const initialValue: State = {
   id: "root",
   props: {},
-  type: "div",
   children: [],
 };
 
@@ -42,8 +41,8 @@ export const EditStore = types
     },
   }))
   .actions((self: any) => ({
-    setCodeTree (code: any) {
-      self.codeTree = code
+    setCodeTree(code: any) {
+      self.codeTree = code;
     },
     refresh() {
       self.refreshId += 1;

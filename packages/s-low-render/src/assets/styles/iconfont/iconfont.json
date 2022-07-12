@@ -1,0 +1,30 @@
+{
+  "id": "3516531",
+  "name": "s-low-code",
+  "font_family": "iconfont",
+  "css_prefix_text": "slow-",
+  "description": "SMegalo低代码",
+  "glyphs": [
+    {
+      "icon_id": "10463895",
+      "name": "图片",
+      "font_class": "tupian1",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "19041706",
+      "name": "标题组件",
+      "font_class": "biaotizujian",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "666891",
+      "name": "图片",
+      "font_class": "tupian",
+      "unicode": "e695",
+      "unicode_decimal": 59029
+    }
+  ]
+}

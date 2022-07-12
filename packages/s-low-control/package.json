@@ -17,6 +17,7 @@
     "@testing-library/user-event": "^13.5.0",
     "ace-builds": "^1.5.1",
     "antd": "^4.20.4",
+    "antd-img-crop": "^4.2.3",
     "babel-jest": "^27.4.2",
     "babel-loader": "^8.2.3",
     "babel-plugin-named-asset-import": "^0.3.8",

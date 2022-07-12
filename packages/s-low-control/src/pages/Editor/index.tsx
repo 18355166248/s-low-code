@@ -1,6 +1,4 @@
 import { Provider } from "mobx-react";
-import React, { useState } from "react";
-import styles from "./index.module.scss";
 import { EditStore } from "./index.store";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
@@ -10,7 +8,6 @@ import Right from "./comp/Right";
 import ShowCode from "./comp/ShowCode";
 import PreviewHtml from "./comp/PreviewHtml";
 import CenterCanvasIframe from "./comp/CenterCanvasIframe";
-import CenterCanvas from './comp/CenterCanvas';
 
 const editStore = EditStore.create();
 
@@ -30,7 +27,6 @@ function Editor() {
           <main className="flex-1 overflow-hidden flex">
             <Left />
             <CenterCanvasIframe />
-            {/* <CenterCanvas /> */}
             <Right />
           </main>
         </div>

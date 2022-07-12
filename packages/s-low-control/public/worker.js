@@ -4,7 +4,6 @@ importScripts("https://unpkg.com/prettier@2.2.1/parser-babel.js");
 self.addEventListener(
   "message",
   function (e) {
-    console.log(111, e.data);
     self.postMessage(
       prettier.format(e.data, {
         parser: "babel",

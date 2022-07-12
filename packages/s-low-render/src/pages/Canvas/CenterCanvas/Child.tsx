@@ -2,12 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { FieldNodeSchema } from "../types";
 import { useDrop, useDrag } from "react-dnd";
 import { CARD } from "../ItemTypes";
-import previewData from "../preview";
+import previewData from "../schema/preview";
 import cl from "classnames";
 import { getEmptyImage } from "react-dnd-html5-backend";
 import { canNesting } from "../utils";
-import { DeleteOutlined } from "@ant-design/icons";
-import styles from "./child.module.scss";
 
 interface Props {
   parentId: string;
@@ -106,41 +104,30 @@ function Child(props: Props) {
 
   drop(drag(ref));
 
-  useEffect(() => {
-    preview(getEmptyImage(), { captureDraggingState: true });
-  }, []);
+  // useEffect(() => {
+  //   preview(getEmptyImage(), { captureDraggingState: true });
+  // }, []);
 
   function setSelectId(e: any) {
     e.stopPropagation();
     edit.setSelectId(data.id);
   }
 
-  function onRemove() {
-    edit.removeCom(parentId, index);
-  }
-
   return (
-    <div
-      ref={ref}
-      className={cl(
-        "min-h-field relative p-3 border border-dashed",
-        styles.child,
-        {
-          "outline outline-1 outline-cyan-500 border-opacity-0": selected,
-          "border-purple-700": isOverCurrent,
+    <div ref={ref} onClick={setSelectId} className="relative">
+      {/* 选中border */}
+      <div
+        className={cl("absolute w-full h-full", {
+          "border border-primary": selected,
+          "border border-primary border-dashed": isOverCurrent,
+        })}
+      ></div>
+      {/* hover border */}
+      <div
+        className={
+          "absolute w-full h-full hover:border hover:border-primary hover:border-dashed"
         }
-      )}
-      onClick={setSelectId}
-    >
-      {selected && (
-        <DeleteOutlined
-          onClick={onRemove}
-          className={cl(
-            "cursor-pointer absolute top-0 right-0",
-            styles.deleteChildIcon
-          )}
-        />
-      )}
+      ></div>
       <CurrentNode {...data.props}>
         {!canNesting(data.type)
           ? data.props.children

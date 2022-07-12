@@ -6,13 +6,7 @@ interface Props {
   value: any;
 }
 function InputCustom({ onChange, value }: Props): ReactElement {
-  return (
-    <Input
-      size="small"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-    />
-  );
+  return <Input value={value} onChange={(e) => onChange(e.target.value)} />;
 }
 
 export default InputCustom;

@@ -1,4 +1,4 @@
-import previewData from "./preview";
+import previewData from "./schema/preview";
 
 export interface FieldNode {
   type: keyof typeof previewData;

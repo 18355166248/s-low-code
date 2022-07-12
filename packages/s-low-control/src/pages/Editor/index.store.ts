@@ -1,28 +1,22 @@
 import { types } from "mobx-state-tree";
 import { FieldNode } from "./schema/types";
-import { v4 as uuid } from "uuid";
 import { dfs } from "@/utils";
-import { canNesting } from "./schema/utils";
-import { cloneDeep } from "lodash-es";
 
 export interface FieldNodeSchema extends FieldNode {
   id: string;
   children: FieldNodeSchema[];
 }
 
-export interface State extends FieldNodeSchema {
+export interface State
+  extends Omit<FieldNodeSchema, "type" | "iconfont" | "name"> {
   focusId?: string;
-}
-
-interface Self {
-  codeTree: State;
-  selectId?: string;
+  type: "";
 }
 
 const initialValue: State = {
   id: "root",
   props: {},
-  type: "div",
+  type: "",
   children: [],
 };
 
@@ -36,7 +30,7 @@ export const EditStore = types
     selectId: "",
     isDragging: false,
     iframeRef: { current: null },
-    selectedComp: null,
+    selectedComp: {},
   }))
   .views((self: any) => ({
     get rootCode() {

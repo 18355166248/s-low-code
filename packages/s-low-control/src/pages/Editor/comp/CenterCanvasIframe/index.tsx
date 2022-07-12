@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { useDrop } from "react-dnd";
 import { FieldNodeSchema } from "../../index.store";
 import { CARD } from "../../ItemTypes";
-import CustomDragLayer from "../CenterCanvas/CustomDragLayer";
+// import CustomDragLayer from "../CenterCanvas/CustomDragLayer";
 import styles from "./index.module.scss";
 
 function CenterCanvasIframe(props: any) {
@@ -60,7 +60,7 @@ function CenterCanvasIframe(props: any) {
             className={styles.pageLayer}
             style={{ zIndex: isDragging ? 20 : 1 }}
           >
-            <CustomDragLayer />
+            {/* <CustomDragLayer /> */}
           </div>
         </div>
       </PhoneContainer>
