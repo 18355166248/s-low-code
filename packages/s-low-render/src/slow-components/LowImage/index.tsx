@@ -2,13 +2,41 @@ import { FC } from "react";
 
 interface Props {
   url?: string;
+  jumpConfig?: { config: string; url: string }; // 跳转地址
+  paddingXY?: number; // 左右间距
+  paddingTop?: number; // 上间距
+  paddingBottom?: number; // 下间距
+  radiusDep?: number; // 图片圆角
 }
 
 const LowImage: FC<Props> = (props: Props) => {
-  const { url } = props;
+  const {
+    url,
+    paddingXY = 0,
+    paddingTop = 0,
+    paddingBottom = 0,
+    radiusDep = 0,
+    jumpConfig,
+  } = props;
+
+  function imgClick() {
+    jumpConfig?.url && (window.location.href = jumpConfig?.url);
+  }
+
   return url ? (
     <div>
-      <img src={url} alt="" />
+      <img
+        src={url}
+        alt=""
+        style={{
+          paddingLeft: paddingXY,
+          paddingRight: paddingXY,
+          paddingTop,
+          paddingBottom,
+          borderRadius: `${radiusDep}%`,
+        }}
+        onClick={imgClick}
+      />
     </div>
   ) : (
     <div

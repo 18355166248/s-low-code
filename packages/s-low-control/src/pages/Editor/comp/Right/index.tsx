@@ -8,6 +8,9 @@ import EditTitle from "@/components/EditTitle";
 function Right({ edit }: any) {
   const { selectedComp, updateSelected, setCodeTree, setSelectId } = edit;
 
+  const { list = [], subLabelWidth = 70 } =
+    editField[selectedComp.type as editKey] || {};
+
   useEffect(() => {
     window.addEventListener("message", setSelected);
 
@@ -52,6 +55,7 @@ function Right({ edit }: any) {
     });
   }
 
+  // 渲染编辑属性组件
   function renderSetting(editSettingList: any[]) {
     return editSettingList.map((item) => {
       const { key, name, children, type, component: Com } = item;
@@ -69,7 +73,7 @@ function Right({ edit }: any) {
         case "custom":
           return (
             <div key={key} className="flex items-center mb-2">
-              <div>{name}</div>
+              <div style={{ width: subLabelWidth }}>{name}</div>
               <div className="ml-2 flex-1">
                 {Com ? (
                   <Com
@@ -94,12 +98,12 @@ function Right({ edit }: any) {
       }
     });
   }
+
   return (
     <div className="w-80 overflow-y-scroll">
       <div className="h-10 text-center font-medium border-b py-2">属性设置</div>
       <div className="py-4 text-xs">
-        {selectedComp.type &&
-          renderSetting(editField[selectedComp.type as editKey])}
+        {selectedComp.type && renderSetting(list)}
       </div>
     </div>
   );

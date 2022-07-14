@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { FieldNodeSchema } from "../types";
 import { useDrop, useDrag } from "react-dnd";
 import { CARD } from "../ItemTypes";
 import previewData from "../schema/preview";
 import cl from "classnames";
-import { getEmptyImage } from "react-dnd-html5-backend";
 import { canNesting } from "../utils";
 
 interface Props {
+  id?: string;
   parentId: string;
   data: FieldNodeSchema;
   index: number;
@@ -16,10 +16,7 @@ interface Props {
 }
 
 function Child(props: Props) {
-  const { parentId, data, index, selectId, edit } = props;
-
-  const [hasDropped, setHasDropped] = useState(false);
-  const [hasDroppedOnChild, setHasDroppedOnChild] = useState(false);
+  const { id, parentId, data, index, selectId, edit } = props;
   const [positionDown, setPositionDown] = useState(false);
 
   const ref = useRef<HTMLDivElement | null>(null);
@@ -32,9 +29,6 @@ function Child(props: Props) {
       drop(_item: any, monitor) {
         const didDrop = monitor.didDrop();
         if (didDrop) return;
-
-        setHasDropped(true);
-        setHasDroppedOnChild(didDrop);
 
         // 没有id是新增 反之是移动
         if (!_item.data.id) {
@@ -79,18 +73,10 @@ function Child(props: Props) {
         }
       },
     }),
-    [
-      data,
-      parentId,
-      index,
-      setHasDropped,
-      setHasDroppedOnChild,
-      positionDown,
-      edit,
-    ]
+    [data, parentId, index, positionDown, edit]
   );
 
-  const [, drag, preview] = useDrag(() => {
+  const [, drag] = useDrag(() => {
     return {
       type: CARD,
       item: { data, parentId, index },
@@ -104,17 +90,13 @@ function Child(props: Props) {
 
   drop(drag(ref));
 
-  // useEffect(() => {
-  //   preview(getEmptyImage(), { captureDraggingState: true });
-  // }, []);
-
   function setSelectId(e: any) {
     e.stopPropagation();
     edit.setSelectId(data.id);
   }
 
   return (
-    <div ref={ref} onClick={setSelectId} className="relative">
+    <div ref={ref} onClick={setSelectId} id={id} className="relative">
       {/* 选中border */}
       <div
         className={cl("absolute w-full h-full", {

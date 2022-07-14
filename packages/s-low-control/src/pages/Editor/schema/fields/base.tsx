@@ -4,17 +4,13 @@ const data: FieldNode[] = [
   {
     name: "图片",
     type: "LowImage",
-    props: {
-      children: "Button",
-    },
+    props: {},
     iconfont: "slow-tupian",
   },
   {
     name: "标题",
     type: "LowTitle",
-    props: {
-      children: "Button",
-    },
+    props: {},
     iconfont: "slow-biaotizujian",
   },
 ];

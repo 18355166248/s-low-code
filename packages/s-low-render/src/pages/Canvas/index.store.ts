@@ -11,24 +11,20 @@ export interface FieldNodeSchema extends FieldNode {
 }
 
 export interface State extends Omit<FieldNodeSchema, "type"> {
+  refreshId: number;
   focusId?: string;
-}
-
-interface Self {
-  codeTree: State;
-  selectId?: string;
 }
 
 const initialValue: State = {
   id: "root",
   props: {},
   children: [],
+  refreshId: 0,
 };
 
 export const EditStore = types
   .model("EditStore", {
     refreshId: types.optional(types.number, 0),
-    rightRefreshId: types.optional(types.number, 0),
   })
   .volatile(() => ({
     codeTree: initialValue,
@@ -47,8 +43,8 @@ export const EditStore = types
     refresh() {
       self.refreshId += 1;
     },
-    refreshRight() {
-      self.rightRefreshId += 1;
+    refreshCodeTree() {
+      self.codeTree.refreshId += 1;
     },
     setSelectId(id: string) {
       self.selectId = id;
@@ -127,6 +123,7 @@ export const EditStore = types
       });
 
       self.selectId = id;
+      self.refreshCodeTree();
     },
     // 移动组件
     moveCom({

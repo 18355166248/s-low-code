@@ -1,11 +1,6 @@
 import { message, Upload } from "antd";
 import ImgCrop from "antd-img-crop";
-import type {
-  RcFile,
-  UploadChangeParam,
-  UploadFile,
-  UploadProps,
-} from "antd/es/upload/interface";
+import type { RcFile } from "antd/es/upload/interface";
 import React, { useEffect, useState } from "react";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import { isFunction } from "lodash-es";
@@ -64,7 +59,6 @@ const UploadSingleImg: React.FC<Props> = (props) => {
         listType="picture-card"
         showUploadList={false}
         beforeUpload={beforeUpload}
-        // onChange={handleChange}
       >
         {imageUrl ? (
           <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />

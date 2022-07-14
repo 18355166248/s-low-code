@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
-import { useDrop } from "react-dnd";
-import { CARD } from "../ItemTypes";
+import React, { useEffect, useLayoutEffect } from "react";
 import { inject, observer } from "mobx-react";
-import { FieldNodeSchema } from "../types";
 import Child from "./Child";
 
 function CenterCanvas({ edit }: any) {
@@ -18,7 +15,12 @@ function CenterCanvas({ edit }: any) {
   }, []);
 
   useEffect(() => {
-    edit.codeTree &&
+    if (edit.codeTree) {
+      edit.codeTree.children.map((child: any) => {
+        const height = document.getElementById(child.id)?.offsetHeight;
+        child.height = height;
+      });
+
       window.parent.postMessage(
         {
           type: "updateCodeTree",
@@ -26,7 +28,8 @@ function CenterCanvas({ edit }: any) {
         },
         "*"
       );
-  }, [edit.codeTree]);
+    }
+  }, [edit.codeTree, edit.codeTree.refreshId]);
 
   useEffect(() => {
     selectId &&
@@ -58,42 +61,12 @@ function CenterCanvas({ edit }: any) {
     setCodeTree(params);
   }
 
-  const [{ isOver, canDrop, item }, drop] = useDrop(() => ({
-    accept: CARD,
-    drop: (
-      item: { data: FieldNodeSchema; index?: number; parentId?: string },
-      monitor
-    ) => {
-      const didDrop = monitor.didDrop(); // returns false for direct drop target
-      if (didDrop) return;
-
-      if (!item.data.id) {
-        edit.append(item.data);
-      } else {
-        edit.moveCom({
-          dragParentId: item.parentId,
-          dragIndex: item.index,
-          item: item.data,
-          data: edit.codeTree,
-        });
-      }
-
-      return {};
-    },
-    collect: (monitor) => ({
-      isOver: monitor.isOver({
-        shallow: true,
-      }),
-      canDrop: monitor.canDrop(),
-      item: monitor.getItem(),
-    }),
-  }));
-
   return (
     <>
       {edit.codeTree.children.map((code: any, index: number) => (
         <Child
           key={code.id}
+          id={code.id}
           data={code}
           parentId={edit.codeTree.id}
           index={index}

@@ -22,6 +22,13 @@ export interface Field extends editType, Record<string, any> {
   name: string;
 }
 
+export interface EditFieldValue {
+  subLabelWidth?: number; // 字表单label宽度
+  list: Field[];
+}
+
+export type EditFieldType = Record<editKey, EditFieldValue>;
+
 // 组件名
 export type editKey = "LowImage" | "LowTitle";
 
