@@ -1,9 +1,9 @@
-import { message, Upload } from "antd";
 import ImgCrop from "antd-img-crop";
 import type { RcFile } from "antd/es/upload/interface";
 import React, { useEffect, useState } from "react";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import { isFunction } from "lodash-es";
+import { message, Upload } from "antd";
 
 interface Props {
   onChange: (value: string) => void;

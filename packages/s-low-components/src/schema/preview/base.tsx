@@ -1,5 +1,5 @@
-import LowImage from "@/slow-components/LowImage";
-import LowTitle from "@/slow-components/LowTitle";
+import LowImage from "../../PreviewComponents/LowImage";
+import LowTitle from "../../PreviewComponents/LowTitle";
 
 const previewField = {
   LowImage: (props: any) => <LowImage {...props}> /</LowImage>,

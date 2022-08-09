@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import menus from "../../schema/fields";
 
 function Left() {

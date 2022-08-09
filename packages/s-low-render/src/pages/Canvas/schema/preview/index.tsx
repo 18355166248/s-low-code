@@ -1,7 +1,7 @@
-import baseData from "./base";
+import previewData from "remote/preview";
 
 const data = {
-  ...baseData,
+  ...(previewData as any),
 };
 
 export default data;

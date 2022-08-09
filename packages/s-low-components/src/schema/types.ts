@@ -1,10 +1,7 @@
-import editData from "./edit";
-import { Fields } from "../comp/Right/fields";
 import { ReactElement } from "react";
 
 // 组件属性
 export interface FieldNode {
-  // type: keyof typeof editData;
   type: any;
   props: Record<string, any>;
   iconfont: string;
@@ -14,7 +11,7 @@ export interface FieldNode {
 
 // 右侧
 export interface editType {
-  type: "title" | keyof typeof Fields;
+  type: "title" | "Input";
 }
 
 // 右侧 组件的可编辑属性

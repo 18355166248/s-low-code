@@ -1,6 +1,5 @@
-import PageJump from "@/EditFormComponents/PageJump";
-import UploadSingleImg from "@/EditFormComponents/UploadSingleImg";
 import { Slider } from "antd";
+import { lazy } from "react";
 import { EditFieldType } from "../types";
 
 const editField: EditFieldType = {
@@ -15,13 +14,23 @@ const editField: EditFieldType = {
             key: "url",
             name: "图片上传",
             type: "custom",
-            component: UploadSingleImg,
+            component: lazy(
+              () =>
+                import(
+                  /* webpackChunkName: "components-UploadSingleImg" */ "../../EditFormComponents/UploadSingleImg"
+                )
+            ),
           },
           {
             key: "jumpConfig",
             name: "页面跳转",
             type: "custom",
-            component: PageJump,
+            component: lazy(
+              () =>
+                import(
+                  /* webpackChunkName: "components-PageJump" */ "../../EditFormComponents/PageJump"
+                )
+            ),
           },
         ],
       },

@@ -30,6 +30,8 @@ const BundleAnalyzerPlugin =
 
 const createEnvironmentHash = require("./webpack/persistentCache/createEnvironmentHash");
 
+const { ModuleFederationPlugin } = require('webpack').container;
+
 // 本地是否展示webpack-bundle-analyzer
 const showReactAppAnalyzer =
   process.env.REACT_APP_ANALYZER === "1" ? [new BundleAnalyzerPlugin()] : [];
@@ -581,6 +583,9 @@ module.exports = function (webpackEnv) {
     },
     plugins: [
       ...showReactAppAnalyzer,
+
+      new ModuleFederationPlugin(require('./webpack/modulefederation.config.js')),
+
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(

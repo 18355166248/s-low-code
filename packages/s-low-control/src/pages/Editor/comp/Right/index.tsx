@@ -4,6 +4,7 @@ import { editKey, Field } from "../../schema/types";
 import { Fields } from "./fields";
 import editField from "../../schema/edit";
 import EditTitle from "@/components/EditTitle";
+import "antd/dist/antd.css"; // TODO 因为组件仓库没有打包antd的css 所以这里全量引入
 
 function Right({ edit }: any) {
   const { selectedComp, updateSelected, setCodeTree, setSelectId } = edit;

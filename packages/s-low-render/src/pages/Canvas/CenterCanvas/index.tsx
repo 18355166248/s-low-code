@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import { inject, observer } from "mobx-react";
 import Child from "./Child";
 

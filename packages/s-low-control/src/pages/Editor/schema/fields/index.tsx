@@ -1,11 +1,11 @@
 import DragPanel from "../../comp/Left/DragPanel";
 import { MenuType } from "../types";
-import baseData from "./base";
+import fields from "remote/fields";
 
 const menus: MenuType[] = [
   {
     key: "base",
-    panel: <DragPanel data={baseData} />,
+    panel: <DragPanel data={fields} />,
   },
 ];
 

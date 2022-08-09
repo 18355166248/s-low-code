@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/18355166248/s-low-code#readme",
   "devDependencies": {
-    "lerna": "^5.0.0"
+    "@types/lodash-es": "^4.17.6",
+    "lerna": "^5.0.0",
+    "sass": "^1.54.3"
   }
 }
