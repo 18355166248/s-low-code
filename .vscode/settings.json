@@ -1,0 +1,4 @@
+{
+  "cSpell.enableFiletypes": ["!c", "bat"],
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

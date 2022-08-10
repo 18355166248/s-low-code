@@ -1,0 +1,21 @@
+{
+  "name": "cli",
+  "version": "1.0.0",
+  "description": "脚手架",
+  "main": "lib/index.js",
+  "bin": {
+    "low": "lib/index.js"
+  },
+  "scripts": {
+    "start": "tsc -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "4.1.2",
+    "commander": "^9.4.0",
+    "inquirer": "^9.1.0",
+    "ts-node": "^10.9.1"
+  }
+}
