@@ -27,7 +27,7 @@ export const loadTsConfigFile = async <T>(configPath: string): Promise<T> => {
   tsNodeService.enabled(true);
 
   let configObject = interopRequireDefault(require(configPath)).default;
-
+  console.log("configObject", configObject);
   // 配置文件是一个函数，调用之
   if (typeof configObject === "function") {
     configObject = await configObject();

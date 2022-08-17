@@ -13,15 +13,15 @@ const log = console.log;
 commander_1.program.version(`🔱 @s-low/cli ${require("../package.json").version} 🔱`, "-v, --version");
 // 类型定义生成器 low generate-dts ?--app-config-path 路径
 commander_1.program
-    .command("generate-dts")
+    .command("gt")
     .description("生成 Typescript 类型定义")
-    .option("--app-config-path <config>", "应用配置文件路径", "app-config.ts")
+    .option("-acp --app-config-path <config>", "应用配置文件路径", "app-config.ts")
     .action(async (opt) => {
     log("opt", opt);
     try {
         const { appConfigPath } = opt;
         const appConfig = await (0, load_ts_config_file_1.loadTsConfigFile)(path_1.default.resolve(process.cwd(), appConfigPath));
-        log("appConfig", appConfig);
+        log("appConfig", JSON.stringify(appConfig));
     }
     catch (error) {
         log(chalk_1.default.red("Error \n", chalk_1.default.red(error.message)));

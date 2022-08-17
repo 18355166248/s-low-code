@@ -15,9 +15,13 @@ program.version(
 
 // 类型定义生成器 low generate-dts ?--app-config-path 路径
 program
-  .command("generate-dts")
+  .command("gt")
   .description("生成 Typescript 类型定义")
-  .option("--app-config-path <config>", "应用配置文件路径", "app-config.ts")
+  .option(
+    "-acp --app-config-path <config>",
+    "应用配置文件路径",
+    "app-config.ts"
+  )
   .action(async (opt) => {
     log("opt", opt);
     try {
@@ -25,7 +29,7 @@ program
       const appConfig = await loadTsConfigFile(
         path.resolve(process.cwd(), appConfigPath)
       );
-      log("appConfig", appConfig);
+      log("appConfig", JSON.stringify(appConfig));
     } catch (error: any) {
       log(chalk.red("Error \n", chalk.red(error.message)));
     }

@@ -23,6 +23,7 @@ const loadTsConfigFile = async (configPath) => {
     }
     tsNodeService.enabled(true);
     let configObject = (0, interop_require_default_1.interopRequireDefault)(require(configPath)).default;
+    console.log("configObject", configObject);
     // 配置文件是一个函数，调用之
     if (typeof configObject === "function") {
         configObject = await configObject();

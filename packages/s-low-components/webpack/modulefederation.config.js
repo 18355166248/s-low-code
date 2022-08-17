@@ -2,6 +2,7 @@ const { dependencies } = require("../package.json");
 
 module.exports = {
   name: "remote",
+  url: 'http://localhost:4000/',
   exposes: {
     "./fields": "./src/schema/fields/base",
     "./edit": "./src/schema/edit/base",
