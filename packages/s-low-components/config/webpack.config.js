@@ -29,6 +29,7 @@ const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin"
 const createEnvironmentHash = require("./webpack/persistentCache/createEnvironmentHash");
 const MFConfig = require("./webpack/modulefederation.config");
 const { formatMFConfig } = require("./webpack/util");
+const { ModuleFederationPlugin } = require("webpack").container;
 
 const { EmitExposeWebpackPlugin } = require("@slow/core");
 
@@ -568,6 +569,9 @@ module.exports = function (webpackEnv) {
       ].filter(Boolean),
     },
     plugins: [
+      // 模块联邦
+      new ModuleFederationPlugin(formatMFConfig(MFConfig)),
+
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
@@ -666,6 +670,7 @@ module.exports = function (webpackEnv) {
         resourceRegExp: /^\.\/locale$/,
         contextRegExp: /moment$/,
       }),
+
       // Generate a service worker script that will precache, and keep up to date,
       // the HTML & assets that are part of the webpack build.
       isEnvProduction &&
@@ -754,7 +759,7 @@ module.exports = function (webpackEnv) {
         }),
       isEnvDevelopment &&
         new EmitExposeWebpackPlugin({
-          appConfig: formatMFConfig(MFConfig),
+          appConfig: MFConfig,
           outputBasePath: paths.appPublic,
         }),
     ].filter(Boolean),

@@ -35,11 +35,12 @@ const writeMfDeclare = async (appConfig, baseUrl) => {
     console.log("appConfig", appConfig.exposes);
     console.log("baseUrl", baseUrl);
     // 增加临时缓存, 用来打包每个小 bundle
-    await fs.ensureDir(path_1.default.resolve(baseUrl, ".cache"));
+    const cacheFilePath = path_1.default.resolve(baseUrl, ".cache");
+    await fs.ensureDir(cacheFilePath);
     const entries = [];
     Object.keys(appConfig.exposes).forEach((key) => {
         const expose = appConfig.exposes[key];
-        if (typeof expose === "string") {
+        if (typeof expose === "string" && /\.ts$/.test(expose)) {
             entries.push({
                 name: key,
                 entryPath: path_1.default.resolve(process.cwd(), expose),
@@ -54,6 +55,8 @@ const writeMfDeclare = async (appConfig, baseUrl) => {
         path: en.outputPath,
         moduleName: `${appConfig.name}/${en.name}`,
     })));
+    await fs.writeFile(path_1.default.resolve(baseUrl, "expose.d.ts"), content);
+    await fs.remove(path_1.default.resolve(baseUrl, ".cache"));
 };
 exports.writeMfDeclare = writeMfDeclare;
 //# sourceMappingURL=write-mf-declare.js.map

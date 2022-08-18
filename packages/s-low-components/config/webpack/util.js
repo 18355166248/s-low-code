@@ -7,5 +7,10 @@ exports.formatMFConfig = function (config) {
     delete configClone.exposes[key];
   });
 
+  delete configClone.url;
+
+  console.log("configClone", configClone);
+  console.log("end");
+
   return configClone;
 };

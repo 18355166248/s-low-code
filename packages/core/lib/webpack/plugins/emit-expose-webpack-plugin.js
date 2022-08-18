@@ -19,7 +19,7 @@ class EmitExposeWebpackPlugin {
     }
     apply(compiler) {
         const { appConfig, outputBasePath } = this.config;
-        console.log(appConfig, outputBasePath);
+        console.log("EmitExposeWebpackPlugin", appConfig, outputBasePath);
         const handler = (0, utils_1.debounce)(async (compilation) => {
             try {
                 // 用 try catch 包裹一下防止 webpack-dev-server 热更新过程中偶发的强制 exit 现象

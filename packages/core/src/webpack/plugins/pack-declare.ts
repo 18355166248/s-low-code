@@ -1,4 +1,4 @@
-import { ModuleDeclarationKind, Project, SyntaxKind } from "ts-morph";
+import fs from "fs";
 
 export interface FileOptions {
   // 声明文件路径
@@ -12,21 +12,15 @@ export interface FileOptions {
  * @Author lang.jiang
  * @Date 2022-08-17 17:32:43
  */
-export const packDeclare = (fileOptions: FileOptions[]) => {
-  const project = new Project();
-  const content = [];
-  fileOptions.forEach((file) => {
-    const source = project.addSourceFileAtPath(file.path);
 
-    // 遍历每一个子节点，如果是 SyntaxKind.DeclareKeyword（即 declare 关键词），进行文本替换
-    source.forEachDescendant((item) => {
-      if (item.getKind() === SyntaxKind.DeclareKeyword) {
-        // 删除即可, 需要判断是不是第一个节点，否则会报异常
-        item.replaceWithText(item.isFirstNodeOnLine() ? "export" : "");
-      }
-    });
+export const packDeclare = (fileOptions: FileOptions[]) => {
+  const content = [];
+
+  fileOptions.forEach((file) => {
+    let source = fs.readFileSync(file.path, "utf-8");
+    content.push(source);
+    content.push("\n");
   });
 
-  console.log("content", content);
-  return content;
+  return content.join("");
 };

@@ -19,8 +19,6 @@ export const bundleTsDeclaration = async (entries: BundleFileConfig[]) => {
     await Promise.all(
       runningItems.map((item) => {
         const { entryPath, outputPath } = item;
-        console.log("entryPath", entryPath);
-        console.log("outputPath", outputPath);
         return runCommand(
           path.resolve(
             require.resolve("dts-bundle-generator"),

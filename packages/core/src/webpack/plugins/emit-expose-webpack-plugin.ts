@@ -35,7 +35,7 @@ export class EmitExposeWebpackPlugin {
 
   apply(compiler: webpack.Compiler) {
     const { appConfig, outputBasePath } = this.config;
-    console.log(appConfig, outputBasePath);
+    console.log("EmitExposeWebpackPlugin", appConfig, outputBasePath);
 
     const handler = debounce(async (compilation: webpack.Compilation) => {
       try {

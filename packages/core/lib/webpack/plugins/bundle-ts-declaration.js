@@ -34,8 +34,6 @@ const bundleTsDeclaration = async (entries) => {
         const runningItems = entries.splice(0, maxWorkSize);
         await Promise.all(runningItems.map((item) => {
             const { entryPath, outputPath } = item;
-            console.log("entryPath", entryPath);
-            console.log("outputPath", outputPath);
             return (0, utils_1.runCommand)(path.resolve(require.resolve("dts-bundle-generator"), "../bin/dts-bundle-generator.js"), [
                 entryPath,
                 "--out-file",

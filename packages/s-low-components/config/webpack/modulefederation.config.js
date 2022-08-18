@@ -6,8 +6,9 @@ module.exports = {
   url: "http://localhost:4000/",
   // exposes的key需要特殊处理前面加 ./
   exposes: {
-    fields: path.resolve("./src/schema/fields/base.tsx"),
-    edit: "./src/schema/edit/base.ts",
+    fields: "./src/schema/fields/base.ts",
+    test: "./src/schema/fields/test.ts",
+    edit: "./src/schema/edit/base.tsx",
     preview: "./src/schema/preview/base.tsx",
   },
   filename: "remoteEntry.js",
