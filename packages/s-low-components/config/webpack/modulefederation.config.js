@@ -1,12 +1,14 @@
-const { dependencies } = require("../package.json");
+const path = require("path");
+const { dependencies } = require("../../../../package.json");
 
 module.exports = {
   name: "remote",
-  url: 'http://localhost:4000/',
+  url: "http://localhost:4000/",
+  // exposes的key需要特殊处理前面加 ./
   exposes: {
-    "./fields": "./src/schema/fields/base",
-    "./edit": "./src/schema/edit/base",
-    "./preview": "./src/schema/preview/base",
+    fields: path.resolve("./src/schema/fields/base.tsx"),
+    edit: "./src/schema/edit/base.ts",
+    preview: "./src/schema/preview/base.tsx",
   },
   filename: "remoteEntry.js",
   shared: {

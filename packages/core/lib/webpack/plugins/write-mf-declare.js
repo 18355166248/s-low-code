@@ -29,11 +29,31 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.writeMfDeclare = void 0;
 const fs = __importStar(require("fs-extra"));
 const path_1 = __importDefault(require("path"));
+const bundle_ts_declaration_1 = require("./bundle-ts-declaration");
+const pack_declare_1 = require("./pack-declare");
 const writeMfDeclare = async (appConfig, baseUrl) => {
-    console.log("appConfig", appConfig);
+    console.log("appConfig", appConfig.exposes);
     console.log("baseUrl", baseUrl);
     // 增加临时缓存, 用来打包每个小 bundle
     await fs.ensureDir(path_1.default.resolve(baseUrl, ".cache"));
+    const entries = [];
+    Object.keys(appConfig.exposes).forEach((key) => {
+        const expose = appConfig.exposes[key];
+        if (typeof expose === "string") {
+            entries.push({
+                name: key,
+                entryPath: path_1.default.resolve(process.cwd(), expose),
+                outputPath: path_1.default.resolve(baseUrl, ".cache", `${key}.d.ts`),
+            });
+        }
+    });
+    // 并行打包
+    await (0, bundle_ts_declaration_1.bundleTsDeclaration)(entries.slice());
+    // 合并上面的小bundle
+    const content = (0, pack_declare_1.packDeclare)(entries.map((en) => ({
+        path: en.outputPath,
+        moduleName: `${appConfig.name}/${en.name}`,
+    })));
 };
 exports.writeMfDeclare = writeMfDeclare;
 //# sourceMappingURL=write-mf-declare.js.map

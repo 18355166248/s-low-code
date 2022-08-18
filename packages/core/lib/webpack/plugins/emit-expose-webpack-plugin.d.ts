@@ -1,7 +1,9 @@
 import webpack from "webpack";
 export interface MicroAppConfig {
     name: string;
-    exposes: Record<string, string>;
+    exposes: {
+        [key: string]: string;
+    };
     filename: string;
     shared: Record<string, any>;
 }

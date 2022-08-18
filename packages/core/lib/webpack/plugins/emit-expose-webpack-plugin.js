@@ -26,7 +26,6 @@ class EmitExposeWebpackPlugin {
                 if (appConfig) {
                     // 拿到本项目的 outputPath
                     const { outputPath } = compilation.compiler;
-                    console.log("outputPath", outputPath);
                     // 生成相关目录
                     const target = path_1.default.resolve(outputBasePath ?? outputPath, "mf-expose-types");
                     console.log("[mf-lite] compiling shared remote module declarations...");

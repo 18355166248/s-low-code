@@ -7,11 +7,15 @@
     "low": "lib/index.js"
   },
   "scripts": {
-    "start": "tsc -w",
+    "start": "tsc -w --module commonjs --outDir lib",
     "build:cjs": "rimraf ./lib && tsc --module commonjs --outDir lib"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "devDependencies": {
+    "dts-bundle-generator": "^6.12.0",
+    "execa": "^5.1.1",
+    "ts-morph": "^15.1.0"
+  }
 }

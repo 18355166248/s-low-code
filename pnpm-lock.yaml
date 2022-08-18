@@ -186,7 +186,14 @@ importers:
       ts-node: registry.npmmirror.com/ts-node/10.9.1
 
   packages/core:
-    specifiers: {}
+    specifiers:
+      dts-bundle-generator: ^6.12.0
+      execa: ^5.1.1
+      ts-morph: ^15.1.0
+    devDependencies:
+      dts-bundle-generator: registry.npmmirror.com/dts-bundle-generator/6.12.0
+      execa: registry.npmmirror.com/execa/5.1.1
+      ts-morph: registry.npmmirror.com/ts-morph/15.1.0
 
   packages/s-low-components:
     specifiers:
@@ -4004,6 +4011,17 @@ packages:
     version: 0.2.0
     engines: {node: '>=10.13.0'}
 
+  registry.npmmirror.com/@ts-morph/common/0.16.0:
+    resolution: {integrity: sha512-SgJpzkTgZKLKqQniCjLaE3c2L2sdL7UShvmTmPBejAKd2OKV/yfMpQ2IWpAuA+VY5wy7PkSUaEObIqEK6afFuw==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@ts-morph/common/-/common-0.16.0.tgz}
+    name: '@ts-morph/common'
+    version: 0.16.0
+    dependencies:
+      fast-glob: registry.npmmirror.com/fast-glob/3.2.11
+      minimatch: registry.npmmirror.com/minimatch/5.1.0
+      mkdirp: registry.npmmirror.com/mkdirp/1.0.4
+      path-browserify: registry.npmmirror.com/path-browserify/1.0.1
+    dev: true
+
   registry.npmmirror.com/@tsconfig/node10/1.0.9:
     resolution: {integrity: sha512-jNsYVVxU8v5g43Erja32laIDHXeoNvFEpX33OK4d6hljo3jDhCBDhx5dhCCTMWUojscpAagGiRkBKxpdl9fxqA==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@tsconfig/node10/-/node10-1.0.9.tgz}
     name: '@tsconfig/node10'
@@ -5998,6 +6016,12 @@ packages:
       chalk: registry.npmmirror.com/chalk/2.4.2
       q: registry.npmmirror.com/q/1.5.1
 
+  registry.npmmirror.com/code-block-writer/11.0.3:
+    resolution: {integrity: sha512-NiujjUFB4SwScJq2bwbYUtXbZhBSlY6vYzm++3Q6oC+U+injTqfPYFK8wS9COOmb2lueqp0ZRB4nK1VYeHgNyw==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/code-block-writer/-/code-block-writer-11.0.3.tgz}
+    name: code-block-writer
+    version: 11.0.3
+    dev: true
+
   registry.npmmirror.com/collect-v8-coverage/1.0.1:
     resolution: {integrity: sha512-iBPtljfCNcTKNAto0KEtDfZ3qzjJvqE3aTGZsbhjSBlorqpXJlaWWtPO35D+ZImoC3KWejX64o+yPGxhWSTzfg==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/collect-v8-coverage/-/collect-v8-coverage-1.0.1.tgz}
     name: collect-v8-coverage
@@ -7110,6 +7134,17 @@ packages:
     name: dotenv
     version: 10.0.0
     engines: {node: '>=10'}
+
+  registry.npmmirror.com/dts-bundle-generator/6.12.0:
+    resolution: {integrity: sha512-k/QAvuVaLIdyWRUHduDrWBe4j8PcE6TDt06+f32KHbW7/SmUPbX1O23fFtQgKwUyTBkbIjJFOFtNrF97tJcKug==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/dts-bundle-generator/-/dts-bundle-generator-6.12.0.tgz}
+    name: dts-bundle-generator
+    version: 6.12.0
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    dependencies:
+      typescript: registry.npmmirror.com/typescript/4.7.4
+      yargs: registry.npmmirror.com/yargs/17.5.1
+    dev: true
 
   registry.npmmirror.com/duplexer/0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/duplexer/-/duplexer-0.1.2.tgz}
@@ -11776,6 +11811,12 @@ packages:
       no-case: registry.npmmirror.com/no-case/3.0.4
       tslib: registry.npmmirror.com/tslib/2.4.0
 
+  registry.npmmirror.com/path-browserify/1.0.1:
+    resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/path-browserify/-/path-browserify-1.0.1.tgz}
+    name: path-browserify
+    version: 1.0.1
+    dev: true
+
   registry.npmmirror.com/path-exists/3.0.0:
     resolution: {integrity: sha512-bpC7GYwiDYQ4wYLe+FA8lhRjhQCMcQGuSgGGqDkg/QerRWw9CmGRT0iSOVRSZJ29NMLZgIzqaljJ63oaL4NIJQ==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/path-exists/-/path-exists-3.0.0.tgz}
     name: path-exists
@@ -15534,6 +15575,15 @@ packages:
     resolution: {integrity: sha512-c3zayb8/kWWpycWYg87P71E1S1ZL6b6IJxfb5fvsUgsf0S2MVGaDhDXXjDMpdCpfWXqptc+4mXwmiy1ypXqRAA==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/tryer/-/tryer-1.0.1.tgz}
     name: tryer
     version: 1.0.1
+
+  registry.npmmirror.com/ts-morph/15.1.0:
+    resolution: {integrity: sha512-RBsGE2sDzUXFTnv8Ba22QfeuKbgvAGJFuTN7HfmIRUkgT/NaVLfDM/8OFm2NlFkGlWEXdpW5OaFIp1jvqdDuOg==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/ts-morph/-/ts-morph-15.1.0.tgz}
+    name: ts-morph
+    version: 15.1.0
+    dependencies:
+      '@ts-morph/common': registry.npmmirror.com/@ts-morph/common/0.16.0
+      code-block-writer: registry.npmmirror.com/code-block-writer/11.0.3
+    dev: true
 
   registry.npmmirror.com/ts-node/10.9.1:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/ts-node/-/ts-node-10.9.1.tgz}

@@ -5,7 +5,9 @@ import { writeMfDeclare } from "./write-mf-declare";
 
 export interface MicroAppConfig {
   name: string;
-  exposes: Record<string, string>;
+  exposes: {
+    [key: string]: string;
+  };
   filename: string;
   shared: Record<string, any>;
 }
@@ -41,7 +43,6 @@ export class EmitExposeWebpackPlugin {
         if (appConfig) {
           // 拿到本项目的 outputPath
           const { outputPath } = compilation.compiler;
-          console.log("outputPath", outputPath);
           // 生成相关目录
           const target = path.resolve(
             outputBasePath ?? outputPath,

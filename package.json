@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "install": "pnpm install",
     "ls": "lerna ls",
     "start": "lerna run start"
   },

@@ -1,6 +1,6 @@
 const { ModuleFederationPlugin } = require("webpack").container;
 const { EmitExposeWebpackPlugin } = require("@slow/core");
-const MFConfig = require("../modulefederation.config.js");
+const MFConfig = require("../../config/webpack/modulefederation.config.js");
 const { publicPath } = require("./path.js");
 
 const webpackConfigPath = "react-scripts/config/webpack.config";
