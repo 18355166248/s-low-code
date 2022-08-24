@@ -5,9 +5,12 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "pnpm -C ./packages/s-low-components start & pnpm -C ./packages/s-low-control start & pnpm -C ./packages/s-low-render start",
+    "preinstall": "npx only-allow pnpm",
+    "start": "pnpm -r --filter ./packages run start",
+    "build": "pnpm -r --filter ./packages run build",
     "clean": "rm -rf node_modules **/*/node_modules",
-    "changeset": "pnpm changeset"
+    "changeset": "pnpm changeset",
+    "version-packages": "changeset version"
   },
   "repository": {
     "type": "git",

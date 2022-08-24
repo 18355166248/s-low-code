@@ -6,6 +6,9 @@
 
 ### 全局安装依赖  pnpm install typescript -D -W
 
+如果是一个开发依赖的话，可以加上 -D 参数，表示这是一个开发依赖，会装到 pacakage.json 中的 devDependencies 中
+pnpm install rollup -wD
+
 ### 局部安装依赖 pnpm install vue -r --filter @panda/web
 
 ### 模块建依赖安装 pnpm i @panda/tools -r --filter @panda/server @panda/web
