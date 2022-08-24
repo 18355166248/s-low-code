@@ -31,14 +31,18 @@ importers:
       browserslist: ^4.18.1
       camelcase: ^6.2.1
       case-sensitive-paths-webpack-plugin: ^2.4.0
+      chalk: 4.1.2
       classnames: ^2.3.1
+      commander: ^9.4.0
       css-loader: ^6.5.1
       css-minimizer-webpack-plugin: ^3.2.0
       dotenv: ^10.0.0
       dotenv-expand: ^5.1.0
+      dts-bundle-generator: ^6.12.0
       eslint: ^8.3.0
       eslint-config-react-app: ^7.0.1
       eslint-webpack-plugin: ^3.1.1
+      execa: 5.1.1
       file-loader: ^6.2.0
       fs-extra: ^10.0.0
       html-webpack-plugin: ^5.5.0
@@ -77,6 +81,7 @@ importers:
       style-loader: ^3.3.1
       tailwindcss: ^3.0.2
       terser-webpack-plugin: ^5.2.5
+      ts-node: ^10.9.1
       typescript: ^4.6.4
       uuid: ^8.3.2
       web-vitals: ^2.1.4
@@ -114,7 +119,7 @@ importers:
       fs-extra: registry.npmmirror.com/fs-extra/10.1.0
       html-webpack-plugin: registry.npmmirror.com/html-webpack-plugin/5.5.0_webpack@5.74.0
       identity-obj-proxy: registry.npmmirror.com/identity-obj-proxy/3.0.0
-      jest: registry.npmmirror.com/jest/27.5.1
+      jest: registry.npmmirror.com/jest/27.5.1_ts-node@10.9.1
       jest-resolve: registry.npmmirror.com/jest-resolve/27.5.1
       jest-watch-typeahead: registry.npmmirror.com/jest-watch-typeahead/1.1.0_jest@27.5.1
       lodash-es: registry.npmmirror.com/lodash-es/4.17.21
@@ -143,7 +148,7 @@ importers:
       semver: registry.npmmirror.com/semver/7.3.7
       source-map-loader: registry.npmmirror.com/source-map-loader/3.0.1_webpack@5.74.0
       style-loader: registry.npmmirror.com/style-loader/3.3.1_webpack@5.74.0
-      tailwindcss: registry.npmmirror.com/tailwindcss/3.1.8_postcss@8.4.16
+      tailwindcss: registry.npmmirror.com/tailwindcss/3.1.8_57znarxsqwmnneadci5z5fd5gu
       terser-webpack-plugin: registry.npmmirror.com/terser-webpack-plugin/5.3.3_webpack@5.74.0
       typescript: registry.npmmirror.com/typescript/4.7.4
       uuid: registry.npmmirror.com/uuid/8.3.2
@@ -165,14 +170,22 @@ importers:
       '@types/testing-library__jest-dom': registry.npmmirror.com/@types/testing-library__jest-dom/5.14.5
       '@types/uuid': registry.npmmirror.com/@types/uuid/8.3.4
       babel-plugin-import: registry.npmmirror.com/babel-plugin-import/1.13.5
+      chalk: registry.npmmirror.com/chalk/4.1.2
+      commander: registry.npmmirror.com/commander/9.4.0
+      dts-bundle-generator: registry.npmmirror.com/dts-bundle-generator/6.12.0
+      execa: registry.npmmirror.com/execa/5.1.1
       prettier: registry.npmmirror.com/prettier/2.6.2
-      react-scripts: registry.npmmirror.com/react-scripts/5.0.1_gpqcktkud2d3uj4kcrz7z7o2we
+      react-scripts: registry.npmmirror.com/react-scripts/5.0.1_coc7r2powe533swxg347ixmfbu
       sass: registry.npmmirror.com/sass/1.54.4
+      ts-node: registry.npmmirror.com/ts-node/10.9.1_x2utdhayajzrh747hktprshhby
       webpack-bundle-analyzer: registry.npmmirror.com/webpack-bundle-analyzer/4.5.0
       webpack-merge: registry.npmmirror.com/webpack-merge/5.8.0
 
   packages/s-low-components:
-    specifiers: {}
+    specifiers:
+      '@slow/core': workspace:^1.0.0
+    dependencies:
+      '@slow/core': link:../core
 
   packages/s-low-control:
     specifiers: {}
@@ -2052,6 +2065,14 @@ packages:
       prettier: registry.npmmirror.com/prettier/1.19.1
     dev: true
 
+  registry.npmmirror.com/@cspotcode/source-map-support/0.8.1:
+    resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@cspotcode/source-map-support/-/source-map-support-0.8.1.tgz}
+    name: '@cspotcode/source-map-support'
+    version: 0.8.1
+    engines: {node: '>=12'}
+    dependencies:
+      '@jridgewell/trace-mapping': registry.npmmirror.com/@jridgewell/trace-mapping/0.3.9
+
   registry.npmmirror.com/@csstools/normalize.css/12.0.0:
     resolution: {integrity: sha512-M0qqxAcwCsIVfpFQSlGN5XjXWu8l5JDZN+fPt1LeW5SZexQTgnaEvgXAY+CeygRw0EeppWHi12JxESWiWrB0Sg==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@csstools/normalize.css/-/normalize.css-12.0.0.tgz}
     name: '@csstools/normalize.css'
@@ -2309,8 +2330,9 @@ packages:
       jest-util: registry.npmmirror.com/jest-util/28.1.3
       slash: registry.npmmirror.com/slash/3.0.0
 
-  registry.npmmirror.com/@jest/core/27.5.1:
+  registry.npmmirror.com/@jest/core/27.5.1_ts-node@10.9.1:
     resolution: {integrity: sha512-AK6/UTrvQD0Cd24NSqmIA6rKsu0tKIxfiCducZvqxYdmMisOYAsdItspT+fQDQYARPf8XgjAFZi0ogW2agH5nQ==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@jest/core/-/core-27.5.1.tgz}
+    id: registry.npmmirror.com/@jest/core/27.5.1
     name: '@jest/core'
     version: 27.5.1
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -2332,7 +2354,7 @@ packages:
       exit: registry.npmmirror.com/exit/0.1.2
       graceful-fs: registry.npmmirror.com/graceful-fs/4.2.10
       jest-changed-files: registry.npmmirror.com/jest-changed-files/27.5.1
-      jest-config: registry.npmmirror.com/jest-config/27.5.1
+      jest-config: registry.npmmirror.com/jest-config/27.5.1_ts-node@10.9.1
       jest-haste-map: registry.npmmirror.com/jest-haste-map/27.5.1
       jest-message-util: registry.npmmirror.com/jest-message-util/27.5.1
       jest-regex-util: registry.npmmirror.com/jest-regex-util/27.5.1
@@ -2578,6 +2600,14 @@ packages:
     resolution: {integrity: sha512-bJWEfQ9lPTvm3SneWwRFVLzrh6nhjwqw7TUFFBEMzwvg7t7PCDenf2lDwqo4NQXzdpgBXyFgDWnQA+2vkruksQ==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@jridgewell/trace-mapping/-/trace-mapping-0.3.14.tgz}
     name: '@jridgewell/trace-mapping'
     version: 0.3.14
+    dependencies:
+      '@jridgewell/resolve-uri': registry.npmmirror.com/@jridgewell/resolve-uri/3.1.0
+      '@jridgewell/sourcemap-codec': registry.npmmirror.com/@jridgewell/sourcemap-codec/1.4.14
+
+  registry.npmmirror.com/@jridgewell/trace-mapping/0.3.9:
+    resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@jridgewell/trace-mapping/-/trace-mapping-0.3.9.tgz}
+    name: '@jridgewell/trace-mapping'
+    version: 0.3.9
     dependencies:
       '@jridgewell/resolve-uri': registry.npmmirror.com/@jridgewell/resolve-uri/3.1.0
       '@jridgewell/sourcemap-codec': registry.npmmirror.com/@jridgewell/sourcemap-codec/1.4.14
@@ -2992,6 +3022,26 @@ packages:
     name: '@trysound/sax'
     version: 0.2.0
     engines: {node: '>=10.13.0'}
+
+  registry.npmmirror.com/@tsconfig/node10/1.0.9:
+    resolution: {integrity: sha512-jNsYVVxU8v5g43Erja32laIDHXeoNvFEpX33OK4d6hljo3jDhCBDhx5dhCCTMWUojscpAagGiRkBKxpdl9fxqA==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@tsconfig/node10/-/node10-1.0.9.tgz}
+    name: '@tsconfig/node10'
+    version: 1.0.9
+
+  registry.npmmirror.com/@tsconfig/node12/1.0.11:
+    resolution: {integrity: sha512-cqefuRsh12pWyGsIoBKJA9luFu3mRxCA+ORZvA4ktLSzIuCUtWVxGIuXigEwO5/ywWFMZ2QEGKWvkZG1zDMTag==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@tsconfig/node12/-/node12-1.0.11.tgz}
+    name: '@tsconfig/node12'
+    version: 1.0.11
+
+  registry.npmmirror.com/@tsconfig/node14/1.0.3:
+    resolution: {integrity: sha512-ysT8mhdixWK6Hw3i1V2AeRqZ5WfXg1G43mqoYlM2nc6388Fq5jcXyr5mRsqViLx/GJYdoL0bfXD8nmF+Zn/Iow==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@tsconfig/node14/-/node14-1.0.3.tgz}
+    name: '@tsconfig/node14'
+    version: 1.0.3
+
+  registry.npmmirror.com/@tsconfig/node16/1.0.3:
+    resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@tsconfig/node16/-/node16-1.0.3.tgz}
+    name: '@tsconfig/node16'
+    version: 1.0.3
 
   registry.npmmirror.com/@types/aria-query/4.2.2:
     resolution: {integrity: sha512-HnYpAE1Y6kRyKM/XkEuiRQhTHvkzMBurTHnpFLYLBGPIylZNPs9jJcuOOYWxPLJCSEtmZT0Y8rHDokKN7rRTig==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@types/aria-query/-/aria-query-4.2.2.tgz}
@@ -3714,7 +3764,6 @@ packages:
     name: acorn-walk
     version: 8.2.0
     engines: {node: '>=0.4.0'}
-    dev: true
 
   registry.npmmirror.com/acorn/7.4.1:
     resolution: {integrity: sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/acorn/-/acorn-7.4.1.tgz}
@@ -3943,6 +3992,11 @@ packages:
     dependencies:
       normalize-path: registry.npmmirror.com/normalize-path/3.0.0
       picomatch: registry.npmmirror.com/picomatch/2.3.1
+
+  registry.npmmirror.com/arg/4.1.3:
+    resolution: {integrity: sha512-58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/arg/-/arg-4.1.3.tgz}
+    name: arg
+    version: 4.1.3
 
   registry.npmmirror.com/arg/5.0.2:
     resolution: {integrity: sha512-PYjyFOLKQ9y57JvQ6QLo8dAgNqswh8M1RMJYdQduT6xbWSgK36P/Z/v+p888pM69jMMfS8Xd8F6I1kQ/I9HUGg==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/arg/-/arg-5.0.2.tgz}
@@ -4766,6 +4820,13 @@ packages:
     version: 8.3.0
     engines: {node: '>= 12'}
 
+  registry.npmmirror.com/commander/9.4.0:
+    resolution: {integrity: sha512-sRPT+umqkz90UA8M1yqYfnHlZA7fF6nSphDtxeywPZ49ysjxDQybzk13CL+mXekDRG92skbcqCLVovuCusNmFw==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/commander/-/commander-9.4.0.tgz}
+    name: commander
+    version: 9.4.0
+    engines: {node: ^12.20.0 || >=14}
+    dev: true
+
   registry.npmmirror.com/common-path-prefix/3.0.0:
     resolution: {integrity: sha512-QE33hToZseCH3jS0qN96O/bSh3kaw/h+Tq7ngyY9eWDUnTlTNUyqfqvCXioLe5Na5jFsL78ra/wuBU4iuEgd4w==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/common-path-prefix/-/common-path-prefix-3.0.0.tgz}
     name: common-path-prefix
@@ -4916,6 +4977,11 @@ packages:
       parse-json: registry.npmmirror.com/parse-json/5.2.0
       path-type: registry.npmmirror.com/path-type/4.0.0
       yaml: registry.npmmirror.com/yaml/1.10.2
+
+  registry.npmmirror.com/create-require/1.1.1:
+    resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/create-require/-/create-require-1.1.1.tgz}
+    name: create-require
+    version: 1.1.1
 
   registry.npmmirror.com/cross-spawn/5.1.0:
     resolution: {integrity: sha512-pTgQJ5KC0d2hcY8eyL1IzlBPYjTkyH72XRZPnLyKus2mBfNjQs3klqbJU2VILqZryAZUt9JOb3h/mWMy23/f5A==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/cross-spawn/-/cross-spawn-5.1.0.tgz}
@@ -5462,6 +5528,12 @@ packages:
     version: 27.5.1
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
 
+  registry.npmmirror.com/diff/4.0.2:
+    resolution: {integrity: sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/diff/-/diff-4.0.2.tgz}
+    name: diff
+    version: 4.0.2
+    engines: {node: '>=0.3.1'}
+
   registry.npmmirror.com/dir-glob/3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/dir-glob/-/dir-glob-3.0.1.tgz}
     name: dir-glob
@@ -5611,6 +5683,17 @@ packages:
     name: dotenv
     version: 10.0.0
     engines: {node: '>=10'}
+
+  registry.npmmirror.com/dts-bundle-generator/6.12.0:
+    resolution: {integrity: sha512-k/QAvuVaLIdyWRUHduDrWBe4j8PcE6TDt06+f32KHbW7/SmUPbX1O23fFtQgKwUyTBkbIjJFOFtNrF97tJcKug==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/dts-bundle-generator/-/dts-bundle-generator-6.12.0.tgz}
+    name: dts-bundle-generator
+    version: 6.12.0
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    dependencies:
+      typescript: registry.npmmirror.com/typescript/4.7.4
+      yargs: registry.npmmirror.com/yargs/17.5.1
+    dev: true
 
   registry.npmmirror.com/duplexer/0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/duplexer/-/duplexer-0.1.2.tgz}
@@ -5949,7 +6032,7 @@ packages:
       '@typescript-eslint/eslint-plugin': registry.npmmirror.com/@typescript-eslint/eslint-plugin/5.33.0_njno5y7ry2l2lcmiu4tywxkwnq
       '@typescript-eslint/experimental-utils': registry.npmmirror.com/@typescript-eslint/experimental-utils/5.33.0_qugx7qdu5zevzvxaiqyxfiwquq
       eslint: registry.npmmirror.com/eslint/8.21.0
-      jest: registry.npmmirror.com/jest/27.5.1
+      jest: registry.npmmirror.com/jest/27.5.1_ts-node@10.9.1
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -7532,8 +7615,9 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  registry.npmmirror.com/jest-cli/27.5.1:
+  registry.npmmirror.com/jest-cli/27.5.1_ts-node@10.9.1:
     resolution: {integrity: sha512-Hc6HOOwYq4/74/c62dEE3r5elx8wjYqxY0r0G/nFrLDPMFRu6RA/u8qINOIkvhxG7mMQ5EJsOGfRpI8L6eFUVw==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/jest-cli/-/jest-cli-27.5.1.tgz}
+    id: registry.npmmirror.com/jest-cli/27.5.1
     name: jest-cli
     version: 27.5.1
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -7544,14 +7628,14 @@ packages:
       node-notifier:
         optional: true
     dependencies:
-      '@jest/core': registry.npmmirror.com/@jest/core/27.5.1
+      '@jest/core': registry.npmmirror.com/@jest/core/27.5.1_ts-node@10.9.1
       '@jest/test-result': registry.npmmirror.com/@jest/test-result/27.5.1
       '@jest/types': registry.npmmirror.com/@jest/types/27.5.1
       chalk: registry.npmmirror.com/chalk/4.1.2
       exit: registry.npmmirror.com/exit/0.1.2
       graceful-fs: registry.npmmirror.com/graceful-fs/4.2.10
       import-local: registry.npmmirror.com/import-local/3.1.0
-      jest-config: registry.npmmirror.com/jest-config/27.5.1
+      jest-config: registry.npmmirror.com/jest-config/27.5.1_ts-node@10.9.1
       jest-util: registry.npmmirror.com/jest-util/27.5.1
       jest-validate: registry.npmmirror.com/jest-validate/27.5.1
       prompts: registry.npmmirror.com/prompts/2.4.2
@@ -7563,8 +7647,9 @@ packages:
       - ts-node
       - utf-8-validate
 
-  registry.npmmirror.com/jest-config/27.5.1:
+  registry.npmmirror.com/jest-config/27.5.1_ts-node@10.9.1:
     resolution: {integrity: sha512-5sAsjm6tGdsVbW9ahcChPAFCk4IlkQUknH5AvKjuLTSlcO/wCZKyFdn7Rg0EkC+OGgWODEy2hDpWB1PgzH0JNA==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/jest-config/-/jest-config-27.5.1.tgz}
+    id: registry.npmmirror.com/jest-config/27.5.1
     name: jest-config
     version: 27.5.1
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -7598,6 +7683,7 @@ packages:
       pretty-format: registry.npmmirror.com/pretty-format/27.5.1
       slash: registry.npmmirror.com/slash/3.0.0
       strip-json-comments: registry.npmmirror.com/strip-json-comments/3.1.1
+      ts-node: registry.npmmirror.com/ts-node/10.9.1_x2utdhayajzrh747hktprshhby
     transitivePeerDependencies:
       - bufferutil
       - canvas
@@ -7990,7 +8076,7 @@ packages:
     dependencies:
       ansi-escapes: registry.npmmirror.com/ansi-escapes/4.3.2
       chalk: registry.npmmirror.com/chalk/4.1.2
-      jest: registry.npmmirror.com/jest/27.5.1
+      jest: registry.npmmirror.com/jest/27.5.1_ts-node@10.9.1
       jest-regex-util: registry.npmmirror.com/jest-regex-util/28.0.2
       jest-watcher: registry.npmmirror.com/jest-watcher/28.1.3
       slash: registry.npmmirror.com/slash/4.0.0
@@ -8056,8 +8142,9 @@ packages:
       merge-stream: registry.npmmirror.com/merge-stream/2.0.0
       supports-color: registry.npmmirror.com/supports-color/8.1.1
 
-  registry.npmmirror.com/jest/27.5.1:
+  registry.npmmirror.com/jest/27.5.1_ts-node@10.9.1:
     resolution: {integrity: sha512-Yn0mADZB89zTtjkPJEXwrac3LHudkQMR+Paqa8uxJHCBr9agxztUifWCyiYrjhMPBoUVBjyny0I7XH6ozDr7QQ==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/jest/-/jest-27.5.1.tgz}
+    id: registry.npmmirror.com/jest/27.5.1
     name: jest
     version: 27.5.1
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -8068,9 +8155,9 @@ packages:
       node-notifier:
         optional: true
     dependencies:
-      '@jest/core': registry.npmmirror.com/@jest/core/27.5.1
+      '@jest/core': registry.npmmirror.com/@jest/core/27.5.1_ts-node@10.9.1
       import-local: registry.npmmirror.com/import-local/3.1.0
-      jest-cli: registry.npmmirror.com/jest-cli/27.5.1
+      jest-cli: registry.npmmirror.com/jest-cli/27.5.1_ts-node@10.9.1
     transitivePeerDependencies:
       - bufferutil
       - canvas
@@ -8483,6 +8570,11 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       semver: registry.npmmirror.com/semver/6.3.0
+
+  registry.npmmirror.com/make-error/1.3.6:
+    resolution: {integrity: sha512-s8UhlNe7vPKomQhC1qFelMokr/Sc3AgNbso3n74mVPA5LTZwkB9NlXf4XPamLxJE8h0gh73rM94xvwRT2CVInw==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/make-error/-/make-error-1.3.6.tgz}
+    name: make-error
+    version: 1.3.6
 
   registry.npmmirror.com/makeerror/1.0.12:
     resolution: {integrity: sha512-JmqCvUhmt43madlpFzG4BQzG2Z3m6tvQDNKdClZnO3VbIudJYmxsT0FNJMeiB2+JTSlTQTSbU8QdesVmwJcmLg==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/makeerror/-/makeerror-1.0.12.tgz}
@@ -9649,7 +9741,7 @@ packages:
       postcss: registry.npmmirror.com/postcss/8.4.16
       postcss-value-parser: registry.npmmirror.com/postcss-value-parser/4.2.0
 
-  registry.npmmirror.com/postcss-load-config/3.1.4_postcss@8.4.16:
+  registry.npmmirror.com/postcss-load-config/3.1.4_57znarxsqwmnneadci5z5fd5gu:
     resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/postcss-load-config/-/postcss-load-config-3.1.4.tgz}
     id: registry.npmmirror.com/postcss-load-config/3.1.4
     name: postcss-load-config
@@ -9666,6 +9758,7 @@ packages:
     dependencies:
       lilconfig: registry.npmmirror.com/lilconfig/2.0.6
       postcss: registry.npmmirror.com/postcss/8.4.16
+      ts-node: registry.npmmirror.com/ts-node/10.9.1_x2utdhayajzrh747hktprshhby
       yaml: registry.npmmirror.com/yaml/1.10.2
 
   registry.npmmirror.com/postcss-loader/6.2.1_qjv4cptcpse3y5hrjkrbb7drda:
@@ -11230,7 +11323,7 @@ packages:
       react: registry.npmmirror.com/react/18.2.0
     dev: false
 
-  registry.npmmirror.com/react-scripts/5.0.1_gpqcktkud2d3uj4kcrz7z7o2we:
+  registry.npmmirror.com/react-scripts/5.0.1_coc7r2powe533swxg347ixmfbu:
     resolution: {integrity: sha512-8VAmEm/ZAwQzJ+GOMLbBsTdDKOpuZh7RPs0UymvBR2vRk4iZWCskjbFnxqjrzoIvlNNRZ3QJFx6/qDSi6zSnaQ==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/react-scripts/-/react-scripts-5.0.1.tgz}
     id: registry.npmmirror.com/react-scripts/5.0.1
     name: react-scripts
@@ -11267,7 +11360,7 @@ packages:
       fs-extra: registry.npmmirror.com/fs-extra/10.1.0
       html-webpack-plugin: registry.npmmirror.com/html-webpack-plugin/5.5.0_webpack@5.74.0
       identity-obj-proxy: registry.npmmirror.com/identity-obj-proxy/3.0.0
-      jest: registry.npmmirror.com/jest/27.5.1
+      jest: registry.npmmirror.com/jest/27.5.1_ts-node@10.9.1
       jest-resolve: registry.npmmirror.com/jest-resolve/27.5.1
       jest-watch-typeahead: registry.npmmirror.com/jest-watch-typeahead/1.1.0_jest@27.5.1
       mini-css-extract-plugin: registry.npmmirror.com/mini-css-extract-plugin/2.6.1_webpack@5.74.0
@@ -11287,7 +11380,7 @@ packages:
       semver: registry.npmmirror.com/semver/7.3.7
       source-map-loader: registry.npmmirror.com/source-map-loader/3.0.1_webpack@5.74.0
       style-loader: registry.npmmirror.com/style-loader/3.3.1_webpack@5.74.0
-      tailwindcss: registry.npmmirror.com/tailwindcss/3.1.8_postcss@8.4.16
+      tailwindcss: registry.npmmirror.com/tailwindcss/3.1.8_57znarxsqwmnneadci5z5fd5gu
       terser-webpack-plugin: registry.npmmirror.com/terser-webpack-plugin/5.3.3_webpack@5.74.0
       typescript: registry.npmmirror.com/typescript/4.7.4
       webpack: registry.npmmirror.com/webpack/5.74.0
@@ -12465,7 +12558,7 @@ packages:
     name: symbol-tree
     version: 3.2.4
 
-  registry.npmmirror.com/tailwindcss/3.1.8_postcss@8.4.16:
+  registry.npmmirror.com/tailwindcss/3.1.8_57znarxsqwmnneadci5z5fd5gu:
     resolution: {integrity: sha512-YSneUCZSFDYMwk+TGq8qYFdCA3yfBRdBlS7txSq0LUmzyeqRe3a8fBQzbz9M3WS/iFT4BNf/nmw9mEzrnSaC0g==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/tailwindcss/-/tailwindcss-3.1.8.tgz}
     id: registry.npmmirror.com/tailwindcss/3.1.8
     name: tailwindcss
@@ -12491,7 +12584,7 @@ packages:
       postcss: registry.npmmirror.com/postcss/8.4.16
       postcss-import: registry.npmmirror.com/postcss-import/14.1.0_postcss@8.4.16
       postcss-js: registry.npmmirror.com/postcss-js/4.0.0_postcss@8.4.16
-      postcss-load-config: registry.npmmirror.com/postcss-load-config/3.1.4_postcss@8.4.16
+      postcss-load-config: registry.npmmirror.com/postcss-load-config/3.1.4_57znarxsqwmnneadci5z5fd5gu
       postcss-nested: registry.npmmirror.com/postcss-nested/5.0.6_postcss@8.4.16
       postcss-selector-parser: registry.npmmirror.com/postcss-selector-parser/6.0.10
       postcss-value-parser: registry.npmmirror.com/postcss-value-parser/4.2.0
@@ -12691,6 +12784,39 @@ packages:
     resolution: {integrity: sha512-c3zayb8/kWWpycWYg87P71E1S1ZL6b6IJxfb5fvsUgsf0S2MVGaDhDXXjDMpdCpfWXqptc+4mXwmiy1ypXqRAA==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/tryer/-/tryer-1.0.1.tgz}
     name: tryer
     version: 1.0.1
+
+  registry.npmmirror.com/ts-node/10.9.1_x2utdhayajzrh747hktprshhby:
+    resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/ts-node/-/ts-node-10.9.1.tgz}
+    id: registry.npmmirror.com/ts-node/10.9.1
+    name: ts-node
+    version: 10.9.1
+    hasBin: true
+    peerDependencies:
+      '@swc/core': '>=1.2.50'
+      '@swc/wasm': '>=1.2.50'
+      '@types/node': '*'
+      typescript: '>=2.7'
+    peerDependenciesMeta:
+      '@swc/core':
+        optional: true
+      '@swc/wasm':
+        optional: true
+    dependencies:
+      '@cspotcode/source-map-support': registry.npmmirror.com/@cspotcode/source-map-support/0.8.1
+      '@tsconfig/node10': registry.npmmirror.com/@tsconfig/node10/1.0.9
+      '@tsconfig/node12': registry.npmmirror.com/@tsconfig/node12/1.0.11
+      '@tsconfig/node14': registry.npmmirror.com/@tsconfig/node14/1.0.3
+      '@tsconfig/node16': registry.npmmirror.com/@tsconfig/node16/1.0.3
+      '@types/node': registry.npmmirror.com/@types/node/17.0.45
+      acorn: registry.npmmirror.com/acorn/8.8.0
+      acorn-walk: registry.npmmirror.com/acorn-walk/8.2.0
+      arg: registry.npmmirror.com/arg/4.1.3
+      create-require: registry.npmmirror.com/create-require/1.1.1
+      diff: registry.npmmirror.com/diff/4.0.2
+      make-error: registry.npmmirror.com/make-error/1.3.6
+      typescript: registry.npmmirror.com/typescript/4.7.4
+      v8-compile-cache-lib: registry.npmmirror.com/v8-compile-cache-lib/3.0.1
+      yn: registry.npmmirror.com/yn/3.1.1
 
   registry.npmmirror.com/tsconfig-paths/3.14.1:
     resolution: {integrity: sha512-fxDhWnFSLt3VuTwtvJt5fpwxBHg5AdKWMsgcPOOIilyjymcYVZoCQF8fvFRezCNfblEXmi+PcM1eYHeOAgXCOQ==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/tsconfig-paths/-/tsconfig-paths-3.14.1.tgz}
@@ -12955,6 +13081,11 @@ packages:
     name: uuid
     version: 8.3.2
     hasBin: true
+
+  registry.npmmirror.com/v8-compile-cache-lib/3.0.1:
+    resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/v8-compile-cache-lib/-/v8-compile-cache-lib-3.0.1.tgz}
+    name: v8-compile-cache-lib
+    version: 3.0.1
 
   registry.npmmirror.com/v8-compile-cache/2.3.0:
     resolution: {integrity: sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/v8-compile-cache/-/v8-compile-cache-2.3.0.tgz}
@@ -13697,6 +13828,12 @@ packages:
       y18n: registry.npmmirror.com/y18n/5.0.8
       yargs-parser: registry.npmmirror.com/yargs-parser/21.1.1
     dev: true
+
+  registry.npmmirror.com/yn/3.1.1:
+    resolution: {integrity: sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/yn/-/yn-3.1.1.tgz}
+    name: yn
+    version: 3.1.1
+    engines: {node: '>=6'}
 
   registry.npmmirror.com/yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/yocto-queue/-/yocto-queue-0.1.0.tgz}

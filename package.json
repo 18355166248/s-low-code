@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "start": "pnpm -r --filter ./packages run start",
+    "start": "pnpm -r run start",
     "build": "pnpm -r --filter ./packages run build",
     "clean": "rm -rf node_modules **/*/node_modules",
     "changeset": "pnpm changeset",
@@ -106,9 +106,14 @@
     "@types/testing-library__jest-dom": "^5.14.5",
     "@types/uuid": "^8.3.4",
     "babel-plugin-import": "^1.13.5",
+    "chalk": "4.1.2",
+    "commander": "^9.4.0",
+    "dts-bundle-generator": "^6.12.0",
+    "execa": "5.1.1",
     "prettier": "2.6.2",
     "react-scripts": "^5.0.1",
     "sass": "^1.54.3",
+    "ts-node": "^10.9.1",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-merge": "^5.8.0"
   },

@@ -1,0 +1,16 @@
+{
+  "name": "@slow/cli",
+  "version": "1.0.0",
+  "description": "脚手架",
+  "main": "lib/index.js",
+  "bin": {
+    "low": "lib/index.js"
+  },
+  "scripts": {
+    "start": "tsc -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}
