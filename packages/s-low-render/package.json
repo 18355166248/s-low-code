@@ -8,8 +8,9 @@
     "test": "node scripts/test.js",
     "prettier ": "prettier --write ."
   },
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "@slow/core": "workspace:^1.0.0"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -1,4 +1,4 @@
-const { dependencies } = require("../../../package.json");
+const { dependencies } = require("./package.json");
 
 module.exports = {
   name: "remote",

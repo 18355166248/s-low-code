@@ -2,13 +2,15 @@
   "name": "s-low-components",
   "version": "0.1.0",
   "private": true,
+  "types": "src/react-app-env.d.ts",
   "dependencies": {
     "@slow/core": "workspace:^1.0.0"
   },
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "gc": "tsc src/schema/preview/base.tsx --outDir lib"
   },
   "eslintConfig": {
     "extends": [

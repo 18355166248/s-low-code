@@ -70,4 +70,3 @@ declare module "*.module.sass" {
   export default classes;
 }
 
-// declare module "remote/*";

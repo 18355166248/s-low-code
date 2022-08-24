@@ -5,11 +5,16 @@ import { writeMfDeclare } from "./write-mf-declare";
 
 export interface MicroAppConfig {
   name: string;
+  remotes: {
+    name: string;
+    url: string;
+  }[];
   exposes: {
     [key: string]: string;
   };
   filename: string;
   shared: Record<string, any>;
+  url: string
 }
 
 interface EmitExposeWebpackPluginConfig {

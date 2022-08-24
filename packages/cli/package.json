@@ -12,5 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "@slow/core": "workspace:^1.0.0"
+  }
 }

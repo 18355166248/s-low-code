@@ -2,7 +2,7 @@ import { FieldNode } from "../types";
 
 const data: FieldNode[] = [
   {
-    name: "图片",
+    name: "图片--",
     type: "LowImage",
     props: {},
     iconfont: "slow-tupian",

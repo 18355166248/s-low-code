@@ -28,7 +28,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 
 const createEnvironmentHash = require('./webpack/persistentCache/createEnvironmentHash');
 
-const MFConfig = require("./webpack/mf/modulefederation.config");
+const MFConfig = require("../mf.config");
 const { formatMFConfig } = require("./webpack/util");
 const { ModuleFederationPlugin } = require('webpack').container;
 // 自定义生成md类型声明文件

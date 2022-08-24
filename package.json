@@ -34,6 +34,7 @@
     "ace-builds": "^1.5.1",
     "antd": "^4.20.4",
     "antd-img-crop": "^4.2.3",
+    "axios": "^0.27.2",
     "babel-jest": "^27.4.2",
     "babel-loader": "^8.2.3",
     "babel-plugin-named-asset-import": "^0.3.8",
@@ -113,6 +114,7 @@
     "prettier": "2.6.2",
     "react-scripts": "^5.0.1",
     "sass": "^1.54.3",
+    "ts-morph": "^15.1.0",
     "ts-node": "^10.9.1",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-merge": "^5.8.0"

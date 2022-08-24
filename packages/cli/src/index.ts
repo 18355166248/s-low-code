@@ -4,6 +4,7 @@ import { program } from "commander";
 import path from "path";
 import chalk from "chalk";
 import { loadTsConfigFile } from "./utils/load-ts-config-file";
+import { generateMfExposeDeclaration, MicroAppConfig } from "@slow/core";
 
 const log = console.log;
 
@@ -13,23 +14,24 @@ program.version(
   "-v, --version"
 );
 
-// 类型定义生成器 low generate-dts ?--app-config-path 路径
+// 类型定义生成器 low gt ?--mf-config-path 路径
 program
   .command("gt")
   .description("生成 Typescript 类型定义")
   .option(
-    "-acp --app-config-path <config>",
+    "-mcp --mf-config-path <config>",
     "应用配置文件路径",
-    "app-config.ts"
+    "mf-config.js"
   )
   .action(async (opt) => {
     log("opt", opt);
     try {
-      const { appConfigPath } = opt;
+      const { mfConfigPath } = opt;
       const appConfig = await loadTsConfigFile(
-        path.resolve(process.cwd(), appConfigPath)
+        path.resolve(process.cwd(), mfConfigPath)
       );
       log("appConfig", JSON.stringify(appConfig));
+      await generateMfExposeDeclaration(appConfig as MicroAppConfig);
     } catch (error: any) {
       log(chalk.red("Error \n", chalk.red(error.message)));
     }
