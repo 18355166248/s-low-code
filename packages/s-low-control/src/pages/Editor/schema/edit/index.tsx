@@ -1,7 +1,7 @@
-import editData from "remote/edit";
+// import editData from "remote/edit";
 
 const data = {
-  ...(editData as any),
-};
+  // ...(editData as any),
+} as any;
 
 export default data;

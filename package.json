@@ -120,5 +120,8 @@
   "engines": {
     "node": ">=14",
     "pnpm": ">=7"
+  },
+  "peerDependencyRules": {
+    
   }
 }
