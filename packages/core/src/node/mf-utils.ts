@@ -7,7 +7,7 @@ import { MicroAppConfig } from '../webpack/plugins/emit-expose-webpack-plugin';
  */
 export const getModuleFederationRemotes = (microAppConfig: MicroAppConfig) => {
   const remotes: Record<string, string> = {};
-
+  console.log('microAppConfig.remote', microAppConfig.remotes)
   for (const remote of microAppConfig.remotes) {
     remotes[remote.name] = `${remote.name}@${remote.url.endsWith('/') ? remote.url : `${remote.url}/`}remoteEntry.js`;
   }

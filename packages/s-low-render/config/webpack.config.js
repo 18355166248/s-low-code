@@ -588,7 +588,7 @@ module.exports = function (webpackEnv) {
 
       new ModuleFederationPlugin({
         ...mfConfig,
-        remotes: getModuleFederationRemotes(mfConfig.remotes)
+        remotes: getModuleFederationRemotes(mfConfig)
       }),
 
       // Generates an `index.html` file with the <script> injected.

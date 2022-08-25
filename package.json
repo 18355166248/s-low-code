@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "start": "pnpm -r run start",
+    "start": "pnpm -r --filter=!@slow/cli --filter=!@slow/core run start",
     "build": "pnpm -r --filter ./packages run build",
     "clean": "rm -rf node_modules **/*/node_modules",
     "changeset": "pnpm changeset",
@@ -113,6 +113,7 @@
     "execa": "5.1.1",
     "prettier": "2.6.2",
     "react-scripts": "^5.0.1",
+    "rimraf": "^3.0.2",
     "sass": "^1.54.3",
     "ts-morph": "^15.1.0",
     "ts-node": "^10.9.1",
