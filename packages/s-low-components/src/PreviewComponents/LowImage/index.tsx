@@ -1,4 +1,5 @@
 import { FC } from "react";
+import "./index.scss";
 
 interface Props {
   url?: string;

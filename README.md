@@ -33,6 +33,7 @@ pnpm install rollup -wD
 ```json
 "scripts": {
   "start": "pnpm -C ./packages/s-low-components start & pnpm -C ./packages/s-low-control start & pnpm -C ./packages/s-low-render start",
+  "start1": "pnpm -r --filter=!@slow/cli --filter=!@slow/core run start",
 }
 ```
 

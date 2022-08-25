@@ -1,0 +1,25 @@
+.colorPicker {
+  font-size: 0;
+  position: relative;
+  .card {
+    width: 70px;
+    height: 35px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  .popover {
+    position: absolute;
+    z-index: 2;
+    top: -310px;
+    left: -80px;
+    .cover {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}

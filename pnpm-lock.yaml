@@ -16,6 +16,7 @@ importers:
       '@types/lodash-es': ^4.17.6
       '@types/node': ^17.0.35
       '@types/react': ^18.0.9
+      '@types/react-color': ^3.0.6
       '@types/react-dom': ^18.0.5
       '@types/testing-library__jest-dom': ^5.14.5
       '@types/uuid': ^8.3.4
@@ -66,6 +67,7 @@ importers:
       react: ^18.1.0
       react-ace: ^10.1.0
       react-app-polyfill: ^3.0.0
+      react-color: ^2.19.3
       react-dev-utils: ^12.0.1
       react-dnd: ^16.0.1
       react-dnd-html5-backend: ^16.0.1
@@ -140,6 +142,7 @@ importers:
       react: registry.npmmirror.com/react/18.2.0
       react-ace: registry.npmmirror.com/react-ace/10.1.0_biqbaboplfbrettd7655fr4n2y
       react-app-polyfill: registry.npmmirror.com/react-app-polyfill/3.0.0
+      react-color: registry.npmmirror.com/react-color/2.19.3_react@18.2.0
       react-dev-utils: registry.npmmirror.com/react-dev-utils/12.0.1_o76vzsp5j2es3tw47tgtdagf3m
       react-dnd: registry.npmmirror.com/react-dnd/16.0.1_hi46q4zj5bkf46kvldmlq3xro4
       react-dnd-html5-backend: registry.npmmirror.com/react-dnd-html5-backend/16.0.1
@@ -170,6 +173,7 @@ importers:
       '@types/lodash-es': registry.npmmirror.com/@types/lodash-es/4.17.6
       '@types/node': registry.npmmirror.com/@types/node/17.0.45
       '@types/react': registry.npmmirror.com/@types/react/18.0.17
+      '@types/react-color': registry.npmmirror.com/@types/react-color/3.0.6
       '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.6
       '@types/testing-library__jest-dom': registry.npmmirror.com/@types/testing-library__jest-dom/5.14.5
       '@types/uuid': registry.npmmirror.com/@types/uuid/8.3.4
@@ -2304,6 +2308,17 @@ packages:
     name: '@humanwhocodes/object-schema'
     version: 1.2.1
 
+  registry.npmmirror.com/@icons/material/0.2.4_react@18.2.0:
+    resolution: {integrity: sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@icons/material/-/material-0.2.4.tgz}
+    id: registry.npmmirror.com/@icons/material/0.2.4
+    name: '@icons/material'
+    version: 0.2.4
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: registry.npmmirror.com/react/18.2.0
+    dev: false
+
   registry.npmmirror.com/@istanbuljs/load-nyc-config/1.1.0:
     resolution: {integrity: sha512-VjeHSlIzpv/NyD3N0YuHfXOPDIixcA1q2ZV98wsMqcYlPmv2n3Yb2lYP9XMElnaFVXg5A7YLTeLu6V84uQDjmQ==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz}
     name: '@istanbuljs/load-nyc-config'
@@ -3328,6 +3343,15 @@ packages:
     name: '@types/range-parser'
     version: 1.2.4
 
+  registry.npmmirror.com/@types/react-color/3.0.6:
+    resolution: {integrity: sha512-OzPIO5AyRmLA7PlOyISlgabpYUa3En74LP8mTMa0veCA719SvYQov4WLMsHvCgXP+L+KI9yGhYnqZafVGG0P4w==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@types/react-color/-/react-color-3.0.6.tgz}
+    name: '@types/react-color'
+    version: 3.0.6
+    dependencies:
+      '@types/react': registry.npmmirror.com/@types/react/18.0.17
+      '@types/reactcss': registry.npmmirror.com/@types/reactcss/1.2.6
+    dev: true
+
   registry.npmmirror.com/@types/react-dom/18.0.6:
     resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@types/react-dom/-/react-dom-18.0.6.tgz}
     name: '@types/react-dom'
@@ -3344,6 +3368,14 @@ packages:
       '@types/prop-types': registry.npmmirror.com/@types/prop-types/15.7.5
       '@types/scheduler': registry.npmmirror.com/@types/scheduler/0.16.2
       csstype: registry.npmmirror.com/csstype/3.1.0
+
+  registry.npmmirror.com/@types/reactcss/1.2.6:
+    resolution: {integrity: sha512-qaIzpCuXNWomGR1Xq8SCFTtF4v8V27Y6f+b9+bzHiv087MylI/nTCqqdChNeWS7tslgROmYB7yeiruWX7WnqNg==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@types/reactcss/-/reactcss-1.2.6.tgz}
+    name: '@types/reactcss'
+    version: 1.2.6
+    dependencies:
+      '@types/react': registry.npmmirror.com/@types/react/18.0.17
+    dev: true
 
   registry.npmmirror.com/@types/resolve/1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@types/resolve/-/resolve-1.17.1.tgz}
@@ -8654,6 +8686,12 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  registry.npmmirror.com/material-colors/1.2.6:
+    resolution: {integrity: sha512-6qE4B9deFBIa9YSpOc9O0Sgc43zTeVYbgDT5veRKSlB2+ZuHNoVVxA1L/ckMUayV9Ay9y7Z/SZCLcGteW9i7bg==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/material-colors/-/material-colors-1.2.6.tgz}
+    name: material-colors
+    version: 1.2.6
+    dev: false
+
   registry.npmmirror.com/mdn-data/2.0.14:
     resolution: {integrity: sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/mdn-data/-/mdn-data-2.0.14.tgz}
     name: mdn-data
@@ -11234,6 +11272,24 @@ packages:
       regenerator-runtime: registry.npmmirror.com/regenerator-runtime/0.13.9
       whatwg-fetch: registry.npmmirror.com/whatwg-fetch/3.6.2
 
+  registry.npmmirror.com/react-color/2.19.3_react@18.2.0:
+    resolution: {integrity: sha512-LEeGE/ZzNLIsFWa1TMe8y5VYqr7bibneWmvJwm1pCn/eNmrabWDh659JSPn9BuaMpEfU83WTOJfnCcjDZwNQTA==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/react-color/-/react-color-2.19.3.tgz}
+    id: registry.npmmirror.com/react-color/2.19.3
+    name: react-color
+    version: 2.19.3
+    peerDependencies:
+      react: '*'
+    dependencies:
+      '@icons/material': registry.npmmirror.com/@icons/material/0.2.4_react@18.2.0
+      lodash: registry.npmmirror.com/lodash/4.17.21
+      lodash-es: registry.npmmirror.com/lodash-es/4.17.21
+      material-colors: registry.npmmirror.com/material-colors/1.2.6
+      prop-types: registry.npmmirror.com/prop-types/15.8.1
+      react: registry.npmmirror.com/react/18.2.0
+      reactcss: registry.npmmirror.com/reactcss/1.2.3_react@18.2.0
+      tinycolor2: registry.npmmirror.com/tinycolor2/1.4.2
+    dev: false
+
   registry.npmmirror.com/react-dev-utils/12.0.1_o76vzsp5j2es3tw47tgtdagf3m:
     resolution: {integrity: sha512-84Ivxmr17KjUupyqzFode6xKhjwuEJDROWKJy/BthkL7Wn6NJ8h4WE6k/exAv6ImS+0oZLRRW5j/aINMHyeGeQ==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/react-dev-utils/-/react-dev-utils-12.0.1.tgz}
     id: registry.npmmirror.com/react-dev-utils/12.0.1
@@ -11501,6 +11557,18 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: registry.npmmirror.com/loose-envify/1.4.0
+
+  registry.npmmirror.com/reactcss/1.2.3_react@18.2.0:
+    resolution: {integrity: sha512-KiwVUcFu1RErkI97ywr8nvx8dNOpT03rbnma0SSalTYjkrPYaEajR4a/MRt6DZ46K6arDRbWMNHF+xH7G7n/8A==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/reactcss/-/reactcss-1.2.3.tgz}
+    id: registry.npmmirror.com/reactcss/1.2.3
+    name: reactcss
+    version: 1.2.3
+    peerDependencies:
+      react: '*'
+    dependencies:
+      lodash: registry.npmmirror.com/lodash/4.17.21
+      react: registry.npmmirror.com/react/18.2.0
+    dev: false
 
   registry.npmmirror.com/read-cache/1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/read-cache/-/read-cache-1.0.0.tgz}
@@ -12771,6 +12839,12 @@ packages:
     resolution: {integrity: sha512-eHY7nBftgThBqOyHGVN+l8gF0BucP09fMo0oO/Lb0w1OF80dJv+lDVpXG60WMQvkcxAkNybKsrEIE3ZtKGmPrA==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/thunky/-/thunky-1.1.0.tgz}
     name: thunky
     version: 1.1.0
+
+  registry.npmmirror.com/tinycolor2/1.4.2:
+    resolution: {integrity: sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/tinycolor2/-/tinycolor2-1.4.2.tgz}
+    name: tinycolor2
+    version: 1.4.2
+    dev: false
 
   registry.npmmirror.com/tmp/0.0.33:
     resolution: {integrity: sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/tmp/-/tmp-0.0.33.tgz}

@@ -9,8 +9,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "gc": "tsc src/schema/preview/base.tsx --outDir lib"
+    "test": "node scripts/test.js"
   },
   "eslintConfig": {
     "extends": [
@@ -84,6 +83,15 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      [
+        "import",
+        {
+          "libraryName": "antd",
+          "style": "css"
+        }
+      ]
     ]
   }
 }
