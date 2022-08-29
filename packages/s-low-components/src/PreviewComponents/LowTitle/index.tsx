@@ -3,13 +3,37 @@ import cs from "classnames";
 import styles from "./index.module.scss";
 import "./index.scss";
 
-const alignEnum = {
-  start: "justify-start",
-  end: "justify-end",
-  center: "justify-center",
-  between: "justify-between",
-  around: "justify-around",
-  evenly: "justify-evenly",
+export const alignEnum = {
+  start: {
+    key: "start",
+    label: "居左",
+    value: "justify-start",
+  },
+  end: {
+    key: "end",
+    label: "居右",
+    value: "justify-end",
+  },
+  center: {
+    label: "居中",
+    key: "center",
+    value: "justify-center",
+  },
+  between: {
+    key: "between",
+    label: "两端对齐",
+    value: "justify-between",
+  },
+  around: {
+    key: "around",
+    label: "间隔相等",
+    value: "justify-around",
+  },
+  evenly: {
+    key: "evenly",
+    label: "间隔相等2",
+    value: "justify-evenly",
+  },
 };
 
 type ALIGN = keyof typeof alignEnum;
@@ -42,7 +66,7 @@ const LowTitle: FC<Props> = ({
   return (
     <div className={styles.box} style={{ backgroundColor }}>
       <div
-        className={cs(styles.lowTitle, alignEnum[align], ["flex"])}
+        className={cs(styles.lowTitle, alignEnum[align].value, ["flex"])}
         style={{
           padding: `${paddingY}px ${paddingX}px`,
         }}

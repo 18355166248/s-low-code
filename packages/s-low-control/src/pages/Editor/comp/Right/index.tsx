@@ -92,7 +92,7 @@ function Right({ edit }: any) {
         default:
           return (
             <div key={key} className="flex items-center mb-2">
-              <div>{name}</div>
+              <div style={{ width: subLabelWidth }}>{name}</div>
               <div className="ml-2 flex-1">{renderField(item)}</div>
             </div>
           );

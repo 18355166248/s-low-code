@@ -1,4 +1,5 @@
 import ColorPicker from "../../EditFormComponents/ColorPicker";
+import TitleAlignConfig from "../../EditFormComponents/TitleAlignConfig";
 import { Slider } from "antd";
 import { lazy } from "react";
 import { EditFieldType } from "../types";
@@ -69,6 +70,7 @@ const editField: EditFieldType = {
     ],
   },
   LowTitle: {
+    subLabelWidth: 70,
     list: [
       {
         key: "titleContent",
@@ -95,7 +97,8 @@ const editField: EditFieldType = {
           {
             key: "align",
             name: "布局选择",
-            type: "Input",
+            type: "custom",
+            component: (props: any) => <TitleAlignConfig {...props} />,
           },
         ],
       },
