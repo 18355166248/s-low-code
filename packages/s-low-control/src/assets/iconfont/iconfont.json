@@ -6,6 +6,13 @@
   "description": "SMegalo低代码",
   "glyphs": [
     {
+      "icon_id": "5900852",
+      "name": "删除色块",
+      "font_class": "shanchusekuai",
+      "unicode": "ec45",
+      "unicode_decimal": 60485
+    },
+    {
       "icon_id": "10463895",
       "name": "图片",
       "font_class": "tupian1",

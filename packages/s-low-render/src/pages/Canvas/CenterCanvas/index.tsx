@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { inject, observer } from "mobx-react";
 import Child from "./Child";
 
@@ -14,7 +14,7 @@ function CenterCanvas({ edit }: any) {
     };
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (edit.codeTree) {
       edit.codeTree.children.map((child: any) => {
         const height = document.getElementById(child.id)?.offsetHeight;

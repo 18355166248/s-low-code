@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import PhoneContainer from "@/components/PhoneContainer";
 import { inject, observer } from "mobx-react";
 import React, { useEffect, useRef } from "react";
@@ -6,10 +7,11 @@ import { FieldNodeSchema } from "../../index.store";
 import { CARD } from "../../ItemTypes";
 // import CustomDragLayer from "../CenterCanvas/CustomDragLayer";
 import styles from "./index.module.scss";
+import PageLayer from "./PageLayer";
 
 function CenterCanvasIframe(props: any) {
   const { edit } = props;
-  const { isDragging, setIframeRef } = edit;
+  const { setIframeRef } = edit;
 
   const iframeRef = useRef(null);
 
@@ -55,13 +57,7 @@ function CenterCanvasIframe(props: any) {
             className={styles.iframe}
           />
           {/* 拖拽和iframe交互蒙层 */}
-          <div
-            ref={drop}
-            className={styles.pageLayer}
-            style={{ zIndex: isDragging ? 20 : 1 }}
-          >
-            {/* <CustomDragLayer /> */}
-          </div>
+          <PageLayer drop={drop} />
         </div>
       </PhoneContainer>
     </div>

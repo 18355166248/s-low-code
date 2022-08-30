@@ -1,0 +1,26 @@
+.floatTab {
+  width: 80px;
+  right: -88px;
+  height: 25px;
+  line-height: 25px;
+  box-shadow: 0 0.05333333rem 0.10666667rem rgb(0 0 0 / 10%);
+  color: #333;
+  background: #fff;
+  text-align: center;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 10px;
+    width: 0;
+    height: 0;
+    border-width: 3px;
+    border-style: solid;
+    border-color: transparent;
+    margin-bottom: -1px;
+    border-right-width: 4px;
+    border-right-color: currentColor;
+    color: #fff;
+  }
+}

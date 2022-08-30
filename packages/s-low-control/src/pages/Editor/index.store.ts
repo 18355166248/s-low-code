@@ -79,6 +79,21 @@ export const EditStore = types
         return true;
       });
 
+      self.postMessageIframe();
+    },
+    removeCom(parentId: string, hoverIndex: number) {
+      dfs(self.codeTree, (curField: FieldNodeSchema) => {
+        if (curField.id === parentId) {
+          curField.children.splice(hoverIndex, 1);
+
+          return false;
+        }
+        return true;
+      });
+
+      self.postMessageIframe();
+    },
+    postMessageIframe() {
       (self.iframeRef.current as any)?.contentWindow.postMessage(
         {
           even: "updateCodeTree",
