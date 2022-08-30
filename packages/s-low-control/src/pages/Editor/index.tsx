@@ -5,7 +5,7 @@ import { DndProvider } from "react-dnd";
 import Left from "./comp/Left";
 import Right from "./comp/Right";
 import ShowCode from "./comp/ShowCode";
-import PreviewHtml from "./comp/PreviewHtml";
+import PreviewHtml from "./comp/Preview";
 import CenterCanvasIframe from "./comp/CenterCanvasIframe";
 import logo from "../../assets/images/logo.jpg";
 

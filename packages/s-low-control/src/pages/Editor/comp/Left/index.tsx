@@ -3,7 +3,7 @@ import menus from "../../schema/fields";
 
 function Left() {
   return (
-    <div className="w-60">
+    <div style={{ width: 221 }}>
       {menus.map((menu) => {
         return <Fragment key={menu.key}>{menu.panel}</Fragment>;
       })}

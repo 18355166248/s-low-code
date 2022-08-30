@@ -1,7 +1,7 @@
-import previewData from "remote/preview";
+import _previewData from "remote/preview";
 
-const data = {
-  ...(previewData as any),
+const previewData = {
+  ...(_previewData as any),
 };
 
-export default data;
+export default previewData;

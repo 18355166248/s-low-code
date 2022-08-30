@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
-import IframeHtml from './IframeHtml';
+import IframeHtml from "./IframeHtml";
+import styles from "./index.module.scss";
+import cs from "classnames";
 
 interface Props {
   className?: string;
@@ -20,14 +22,15 @@ function PreviewHtml(props: Props) {
         预览
       </Button>
       <Modal
-        title="预览"
-        width={800}
+        width={423}
         visible={visible}
         destroyOnClose
         onCancel={() => setVisible(false)}
         footer={null}
       >
-        <IframeHtml />
+        <div className={cs(styles.box, "mt-10")}>
+          <IframeHtml />
+        </div>
       </Modal>
     </div>
   );

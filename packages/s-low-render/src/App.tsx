@@ -5,6 +5,7 @@ import NotFound from "./pages/NotFound";
 import { Provider } from "mobx-react";
 import { AppStore } from "@/stores/AppStore";
 import Canvas from "./pages/Canvas";
+import Preview from "./pages/Preview";
 
 const app = AppStore.create({ userInfo: { name: "" } });
 
@@ -14,6 +15,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Canvas />} />
+          <Route path="/preview" element={<Preview />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

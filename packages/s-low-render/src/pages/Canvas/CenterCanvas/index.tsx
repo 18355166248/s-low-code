@@ -1,10 +1,14 @@
 import React, { useEffect, useLayoutEffect } from "react";
 import { inject, observer } from "mobx-react";
 import Child from "./Child";
+import useLocalStorage from "@/hooks/useLocalStorage";
+import { codeTreeStorageKey } from "../const";
 
 function CenterCanvas({ edit }: any) {
   // !!!不能删除 用于刷新组件
   const { refreshId, append, selectId, setCodeTree } = edit;
+
+  const [, setCodeTreeStorage] = useLocalStorage(codeTreeStorageKey);
 
   useEffect(() => {
     // 统一接收平台信息，调用对应方法处理
@@ -13,6 +17,10 @@ function CenterCanvas({ edit }: any) {
       window.removeEventListener("message", getMessage);
     };
   }, []);
+
+  useEffect(() => {
+    setCodeTreeStorage(edit.codeTree);
+  }, [edit.codeTree]);
 
   useLayoutEffect(() => {
     if (edit.codeTree) {

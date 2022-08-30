@@ -39,11 +39,11 @@ export const generateCode = (state: State) => {
         ? map(sub.children, render).join("")
         : getChildrenCode(sub);
     if (children) {
-      return `<${sub.type}${props}>
+      return `<${sub.type || ""}${props}>
         ${children}
-      </${sub.type}>`;
+      </${sub.type || ""}>`;
     } else {
-      return `<${sub.type}${props}/>`;
+      return `<${sub.type || "div"}${props} />`;
     }
   }
 
