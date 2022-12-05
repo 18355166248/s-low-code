@@ -40,9 +40,7 @@ function DragItem(props: Props) {
         }
       )}
     >
-      <div className="mb-2">
-        <span className={`iconfont ${data.iconfont}`}></span>
-      </div>
+      <span className={`iconfont ${data.iconfont}`} style={{ fontSize: 12 }} />
       <div>{data.name}</div>
     </div>
   );

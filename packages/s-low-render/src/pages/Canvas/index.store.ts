@@ -52,6 +52,7 @@ export const EditStore = types
     // 根级新增
     append(data: FieldNode) {
       const id = uuid();
+
       self.codeTree = {
         ...self.codeTree,
         children: [
@@ -59,7 +60,7 @@ export const EditStore = types
           {
             ...cloneDeep(data),
             id,
-            children: [],
+            children: data.children || [],
           },
         ],
       };

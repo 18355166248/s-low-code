@@ -11,6 +11,10 @@ module.exports = {
       ...theme("colors"),
       ...themeConfig,
     }),
+    borderColor: (theme) => ({
+      ...theme("colors"),
+      ...themeConfig,
+    }),
   },
   variants: {
     extend: {},

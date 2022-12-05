@@ -111,9 +111,8 @@ function Child(props: Props) {
         }
       ></div>
       <CurrentNode {...data.props}>
-        {!canNesting(data.type)
-          ? data.props.children
-          : data.children.map((curField, _i) => (
+        {canNesting(data.type)
+          ? data.children?.map((curField, _i) => (
               <Child
                 key={curField.id}
                 data={curField}
@@ -122,7 +121,8 @@ function Child(props: Props) {
                 edit={edit}
                 selectId={selectId}
               />
-            ))}
+            ))
+          : null}
       </CurrentNode>
     </div>
   );

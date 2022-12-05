@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import { editKey } from "./preview/base";
 
 // 组件属性
 export interface FieldNode {
@@ -26,9 +27,6 @@ export interface EditFieldValue {
 }
 
 export type EditFieldType = Record<editKey, EditFieldValue>;
-
-// 组件名
-export type editKey = "LowImage" | "LowTitle";
 
 // 菜单属性
 export interface MenuType {

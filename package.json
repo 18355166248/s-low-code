@@ -32,7 +32,7 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@svgr/webpack": "^5.5.0",
     "ace-builds": "^1.5.1",
-    "antd": "^4.20.4",
+    "antd": "^4.24.4",
     "antd-img-crop": "^4.2.3",
     "axios": "^0.27.2",
     "babel-jest": "^27.4.2",

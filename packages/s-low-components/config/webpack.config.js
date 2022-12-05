@@ -32,7 +32,7 @@ const MFConfig = require("../mf.config");
 const { formatMFConfig } = require("./webpack/util");
 const { ModuleFederationPlugin } = require('webpack').container;
 // 自定义生成md类型声明文件
-const { EmitExposeWebpackPlugin } = require("@slow/core");
+// const { EmitExposeWebpackPlugin } = require("@slow/core");
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -756,11 +756,11 @@ module.exports = function (webpackEnv) {
             },
           },
         }),
-      isEnvDevelopment &&
-        new EmitExposeWebpackPlugin({
-          appConfig: MFConfig,
-          outputBasePath: paths.appPublic,
-        }),
+      // isEnvDevelopment &&
+      //   new EmitExposeWebpackPlugin({
+      //     appConfig: MFConfig,
+      //     outputBasePath: paths.appPublic,
+      //   }),
     ].filter(Boolean),
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter

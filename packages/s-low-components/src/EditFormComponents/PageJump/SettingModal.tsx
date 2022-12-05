@@ -1,4 +1,5 @@
 import { Input, Form, Modal, Tabs } from "antd";
+import { table } from "console";
 import React, { forwardRef, useImperativeHandle, useState } from "react";
 import { PageJumpProps } from ".";
 
@@ -52,21 +53,19 @@ const SettingModal = forwardRef<refProps, Props>((props, ref) => {
   return (
     <Modal
       title="请选择跳转页面"
-      visible={isModalVisible}
+      open={isModalVisible}
       onOk={handleOk}
       onCancel={close}
     >
       <Form form={form} onValuesChange={onValuesChange} initialValues={value}>
         <Form.Item noStyle name="config" initialValue={tagMap.url.key}>
-          <Tabs>
-            {Object.values(tagMap).map((tag) => (
-              <Tabs.TabPane tab={tag.name} key={tag.key}>
-                <Form.Item noStyle name={tag.key}>
-                  {tag.render}
-                </Form.Item>
-              </Tabs.TabPane>
-            ))}
-          </Tabs>
+          <Tabs
+            items={Object.values(tagMap).map((tag) => ({
+              label: tag.name,
+              key: tag.key,
+              children: tag.render,
+            }))}
+          />
         </Form.Item>
       </Form>
     </Modal>

@@ -20,6 +20,16 @@ const data: FieldNode[] = [
     },
     iconfont: "slow-biaotizujian",
   },
+  {
+    name: "标签",
+    type: "LowTabs",
+    props: {
+      centered: true,
+      canDrop: true,
+      items: [{ label: "标题1", key: "1", children: [] }],
+    },
+    iconfont: "slow-bootstrap_tabs",
+  },
 ];
 
 export default data;

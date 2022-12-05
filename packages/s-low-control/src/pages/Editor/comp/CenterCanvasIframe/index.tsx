@@ -11,7 +11,7 @@ import PageLayer from "./PageLayer";
 
 function CenterCanvasIframe(props: any) {
   const { edit } = props;
-  const { setIframeRef } = edit;
+  const { setIframeRef, postMessageIframeMove } = edit;
 
   const iframeRef = useRef(null);
 
@@ -28,13 +28,7 @@ function CenterCanvasIframe(props: any) {
       const didDrop = monitor.didDrop(); // returns false for direct drop target
       if (didDrop) return;
 
-      (iframeRef.current as any).contentWindow.postMessage(
-        {
-          even: "move",
-          params: item,
-        },
-        "*"
-      );
+      postMessageIframeMove(item);
 
       return {};
     },

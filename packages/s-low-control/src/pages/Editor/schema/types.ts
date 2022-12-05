@@ -1,4 +1,3 @@
-import editData from "./edit";
 import { Fields } from "../comp/Right/fields";
 import { ReactElement } from "react";
 
@@ -31,7 +30,7 @@ export interface EditFieldValue {
 export type EditFieldType = Record<editKey, EditFieldValue>;
 
 // 组件名
-export type editKey = "LowImage" | "LowTitle";
+export type editKey = "LowImage" | "LowTitle" | "lowTabs";
 
 // 菜单属性
 export interface MenuType {

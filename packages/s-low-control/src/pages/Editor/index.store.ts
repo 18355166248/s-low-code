@@ -40,6 +40,8 @@ export const EditStore = types
   .actions((self: any) => ({
     setCodeTree(code: any) {
       self.codeTree = code;
+      // 存在更新组件参数 数据不更新的情况 手动更新下
+      self.updateSelectedComp();
     },
     setIsDragging(bool: boolean) {
       self.isDragging = bool;
@@ -93,11 +95,22 @@ export const EditStore = types
 
       self.postMessageIframe();
     },
+    // 数据更新通讯
     postMessageIframe() {
       (self.iframeRef.current as any)?.contentWindow.postMessage(
         {
           even: "updateCodeTree",
           params: self.codeTree,
+        },
+        "*"
+      );
+    },
+    // 拖拽移动通信
+    postMessageIframeMove(item: any) {
+      (self.iframeRef.current as any).contentWindow.postMessage(
+        {
+          even: "move",
+          params: item,
         },
         "*"
       );

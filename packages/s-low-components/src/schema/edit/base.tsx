@@ -3,6 +3,7 @@ import TitleAlignConfig from "../../EditFormComponents/TitleAlignConfig";
 import { Slider } from "antd";
 import { lazy } from "react";
 import { EditFieldType } from "../types";
+import TabsItems from "src/EditFormComponents/TabsItems";
 
 const editField: EditFieldType = {
   LowImage: {
@@ -148,6 +149,24 @@ const editField: EditFieldType = {
             name: "背景色",
             type: "custom",
             component: (props: any) => <ColorPicker {...props} />,
+          },
+        ],
+      },
+    ],
+  },
+  LowTabs: {
+    subLabelWidth: 70,
+    list: [
+      {
+        key: "titleContent",
+        name: "Tab配置",
+        type: "title",
+        children: [
+          {
+            key: "items",
+            name: "选项卡",
+            type: "custom",
+            component: TabsItems,
           },
         ],
       },

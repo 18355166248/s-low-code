@@ -3,8 +3,15 @@
   "name": "s-low-code",
   "font_family": "iconfont",
   "css_prefix_text": "slow-",
-  "description": "SMegalo低代码",
+  "description": "SMegaloDida",
   "glyphs": [
+    {
+      "icon_id": "8017649",
+      "name": "bootstrap_tabs",
+      "font_class": "bootstrap_tabs",
+      "unicode": "e6d4",
+      "unicode_decimal": 59092
+    },
     {
       "icon_id": "5900852",
       "name": "删除色块",

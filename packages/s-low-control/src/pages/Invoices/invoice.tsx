@@ -3,7 +3,6 @@ import { getInvoice } from "./data";
 
 export default function Invoice() {
   let params: any = useParams();
-  console.log(params);
   let invoice: any = getInvoice(parseInt(params.invoiceId, 10));
   return (
     <main style={{ padding: "1rem" }}>
