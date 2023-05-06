@@ -2,7 +2,7 @@
   "name": "s-low-components",
   "version": "0.1.0",
   "private": true,
-  "types": "src/react-app-env.d.ts",
+  "types": "src/index.d.ts",
   "dependencies": {
     "@slow/core": "workspace:^1.0.0"
   },

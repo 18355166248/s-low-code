@@ -1,5 +1,7 @@
+import { editKey } from "s-low-components";
+
 export interface FieldNode {
-  type: any;
+  type: editKey;
   props: Record<string, any>;
   module?: string;
 }

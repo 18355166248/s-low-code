@@ -1,9 +1,10 @@
 import React, { FC } from "react";
 import previewData from "../Canvas/schema/preview";
+import { FieldNodeSchema } from "../Canvas/types";
 import { canNesting } from "../Canvas/utils";
 
 interface Props {
-  data: any;
+  data: FieldNodeSchema;
 }
 
 const PageComp: FC<Props> = ({ data }) => {

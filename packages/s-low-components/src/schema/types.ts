@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import previewField from "./preview/base";
 
 // 组件属性
 export interface FieldNode {
@@ -15,7 +16,7 @@ export interface editType {
 }
 
 // 右侧 组件的可编辑属性
-export interface Field extends editType, Record<string, any> {
+interface Field extends editType, Record<string, any> {
   key: string;
   name: string;
 }
@@ -25,13 +26,20 @@ export interface EditFieldValue {
   list: Field[];
 }
 
-export type EditFieldType = Record<editKey, EditFieldValue>;
-
-// 组件名
-export type editKey = "LowImage" | "LowTitle";
-
 // 菜单属性
 export interface MenuType {
   key: string;
   panel: ReactElement;
 }
+
+// 左侧的组件名类型定义
+export type editKey = keyof typeof previewField;
+
+// 中间画布预览组件的类型定义
+export type PreviewFieldInterface = Record<
+  editKey,
+  (props: any) => JSX.Element
+>;
+
+// 右侧编辑表单的类型定义
+export type EditFieldType = Record<editKey, EditFieldValue>;

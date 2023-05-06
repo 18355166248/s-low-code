@@ -1,4 +1,3 @@
-import editData from "./edit";
 import { Fields } from "../comp/Right/fields";
 import { ReactElement } from "react";
 
