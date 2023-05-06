@@ -42,3 +42,13 @@ pnpm install rollup -wD
 ```js
 pnpm -r --filter=!@slow/cli --filter=!@slow/core run start
 ```
+
+使用本地依赖库
+
+```json
+{
+  "dependencies": {
+    "@slow/core": "workspace:^1.0.0"
+  }
+}
+```

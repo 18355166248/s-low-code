@@ -8,9 +8,8 @@ exports.getModuleFederationRemotes = void 0;
  */
 const getModuleFederationRemotes = (microAppConfig) => {
     const remotes = {};
-    console.log('microAppConfig.remote', microAppConfig.remotes);
     for (const remote of microAppConfig.remotes) {
-        remotes[remote.name] = `${remote.name}@${remote.url.endsWith('/') ? remote.url : `${remote.url}/`}remoteEntry.js`;
+        remotes[remote.name] = `${remote.name}@${remote.url.endsWith("/") ? remote.url : `${remote.url}/`}remoteEntry.js`;
     }
     return remotes;
 };

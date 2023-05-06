@@ -1,1 +1,0 @@
-{"version":3,"file":"interop-require-default.js","sourceRoot":"","sources":["../../src/utils/interop-require-default.ts"],"names":[],"mappings":";AAAA;;GAEG;;;AAEH,2IAA2I;AACpI,MAAM,qBAAqB,GAAG,CAAC,GAAQ,EAAE,EAAE;IAChD,OAAO,GAAG,IAAI,GAAG,CAAC,UAAU,CAAC,CAAC,CAAC,GAAG,CAAC,CAAC,CAAC,EAAE,OAAO,EAAE,GAAG,EAAE,CAAC;AACxD,CAAC,CAAC;AAFW,QAAA,qBAAqB,yBAEhC"}
