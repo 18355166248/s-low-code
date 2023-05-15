@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "tsc -w --module commonjs --outDir lib",
-    "build:cjs": "rimraf ./lib && tsc --module commonjs --outDir lib"
+    "build:cjs": "rimraf ./lib && tsc --module commonjs --outDir lib",
+    "build": "pnpm run build"
   },
   "keywords": [],
   "author": "",
