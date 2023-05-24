@@ -23,7 +23,7 @@ function PreviewHtml(props: Props) {
       </Button>
       <Modal
         width={423}
-        visible={visible}
+        open={visible}
         destroyOnClose
         onCancel={() => setVisible(false)}
         footer={null}

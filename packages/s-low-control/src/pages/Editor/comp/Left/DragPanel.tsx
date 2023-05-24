@@ -1,5 +1,4 @@
 import { Col, Row } from "antd";
-import React from "react";
 import { FieldNode } from "../../schema/types";
 import DragItem from "./DragItem";
 

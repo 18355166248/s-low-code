@@ -16,4 +16,7 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  corePlugins: {
+    preflight: false, // 禁止tailwindcss的默认属性
+  },
 };

@@ -30,9 +30,9 @@ const BundleAnalyzerPlugin =
 
 const createEnvironmentHash = require("./webpack/persistentCache/createEnvironmentHash");
 
-const mfConfig = require('../mf-config.js');
-const { ModuleFederationPlugin } = require('webpack').container;
-const { getModuleFederationRemotes } = require('@slow/core');
+const mfConfig = require("../mf-config.js");
+const { ModuleFederationPlugin } = require("webpack").container;
+const { getModuleFederationRemotes } = require("@slow/core");
 
 // 本地是否展示webpack-bundle-analyzer
 const showReactAppAnalyzer =
@@ -436,15 +436,15 @@ module.exports = function (webpackEnv) {
                   isEnvDevelopment &&
                     shouldUseReactRefresh &&
                     require.resolve("react-refresh/babel"),
-                  [
-                    "import",
-                    {
-                      libraryName: "antd",
-                      libraryDirectory: "lib",
-                      style: "css",
-                    },
-                    "antd",
-                  ],
+                  // [
+                  //   "import",
+                  //   {
+                  //     libraryName: "antd",
+                  //     libraryDirectory: "lib",
+                  //     style: "css",
+                  //   },
+                  //   "antd",
+                  // ],
                 ].filter(Boolean),
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -588,7 +588,7 @@ module.exports = function (webpackEnv) {
 
       new ModuleFederationPlugin({
         ...mfConfig,
-        remotes: getModuleFederationRemotes(mfConfig)
+        remotes: getModuleFederationRemotes(mfConfig),
       }),
 
       // Generates an `index.html` file with the <script> injected.

@@ -25,7 +25,7 @@ function DragItem(props: Props) {
         };
       },
       end() {
-        console.log("end");
+        // console.log("end");
       },
     };
   });

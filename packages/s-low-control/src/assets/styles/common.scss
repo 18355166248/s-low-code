@@ -9,3 +9,9 @@
 .bg_color {
   background-color: var(--color);
 }
+
+iframe {
+  display: block;
+  vertical-align: middle;
+  border: none;
+}

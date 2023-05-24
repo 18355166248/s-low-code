@@ -14,7 +14,7 @@ function ShowCode() {
       <Modal
         title="代码预览"
         width={800}
-        visible={visible}
+        open={visible}
         destroyOnClose
         onCancel={() => setVisible(false)}
         footer={null}

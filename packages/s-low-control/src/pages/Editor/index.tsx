@@ -16,7 +16,7 @@ function Editor() {
     <DndProvider backend={HTML5Backend}>
       <Provider edit={editStore}>
         <div className="h-screen flex flex-col text-gray-600">
-          <header className="h-14 pr-2 shadow-sm sticky border-b border-gray-200 flex-shrink-0  flex justify-between items-center">
+          <header className="h-10 pr-2 shadow-sm sticky border-b border-gray-200 flex-shrink-0  flex justify-between items-center">
             <div className="inline-flex justify-between items-center h-full">
               <img src={logo} alt="" className="h-full" />
             </div>

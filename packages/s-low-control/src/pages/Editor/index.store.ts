@@ -103,9 +103,9 @@ export const EditStore = types
       );
     },
     afterCreate() {
-      console.log("EditStore afterCreate");
+      // console.log("EditStore afterCreate");
     },
     beforeDestroy() {
-      console.log("EditStore beforeDestroy");
+      // console.log("EditStore beforeDestroy");
     },
   }));

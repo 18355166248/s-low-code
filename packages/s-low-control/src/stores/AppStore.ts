@@ -17,9 +17,9 @@ export const AppStore = types
       self.openKeys = data;
     },
     afterCreate() {
-      console.log("appStore afterCreate");
+      // console.log("appStore afterCreate");
     },
     beforeDestroy() {
-      console.log("appStore beforeDestroy");
+      // console.log("appStore beforeDestroy");
     },
   }));

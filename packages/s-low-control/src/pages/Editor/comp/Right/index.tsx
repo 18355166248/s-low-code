@@ -1,10 +1,10 @@
 import { inject, observer } from "mobx-react";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { editKey, Field } from "../../schema/types";
 import { Fields } from "./fields";
 import editField from "../../schema/edit";
 import EditTitle from "@/components/EditTitle";
-import "antd/dist/antd.css"; // TODO 因为组件仓库没有打包antd的css 所以这里全量引入
+// import "antd/dist/antd.css"; // TODO 因为组件仓库没有打包antd的css 所以这里全量引入
 
 function Right({ edit }: any) {
   const { selectedComp, updateSelected, setCodeTree, setSelectId } = edit;
@@ -102,10 +102,10 @@ function Right({ edit }: any) {
 
   return (
     <div className="w-80 overflow-y-scroll">
-      <div className="h-10 text-center font-medium border-b py-2">属性设置</div>
-      <div className="py-4 text-xs">
-        {selectedComp.type && renderSetting(list)}
+      <div className="h-6 leading-6 text-center font-medium border-b py-4">
+        属性设置
       </div>
+      <div className="text-xs">{selectedComp.type && renderSetting(list)}</div>
     </div>
   );
 }

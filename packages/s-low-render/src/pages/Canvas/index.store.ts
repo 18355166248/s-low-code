@@ -207,9 +207,9 @@ export const EditStore = types
       self.refresh();
     },
     afterCreate() {
-      console.log("EditStore afterCreate");
+      // console.log("EditStore afterCreate");
     },
     beforeDestroy() {
-      console.log("EditStore beforeDestroy");
+      // console.log("EditStore beforeDestroy");
     },
   }));

@@ -85,15 +85,7 @@
     "presets": [
       "react-app"
     ],
-    "plugins": [
-      [
-        "import",
-        {
-          "libraryName": "antd",
-          "style": "css"
-        }
-      ]
-    ]
+    "plugins": []
   },
   "main": "index.js",
   "license": "MIT",
