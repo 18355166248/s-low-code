@@ -1,24 +1,19 @@
-import React from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import NotFound from "./pages/NotFound";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "mobx-react";
 import { AppStore } from "@/stores/AppStore";
-import Editor from "./pages/Editor";
 import { ConfigProvider } from "antd";
+import { routes } from "./router";
 
 const app = AppStore.create({ userInfo: { name: "" } });
+
+const router = createBrowserRouter(routes);
 
 function App() {
   return (
     <Provider app={app}>
       <ConfigProvider componentSize="small">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Editor />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
+        <RouterProvider router={router} />
       </ConfigProvider>
     </Provider>
   );
