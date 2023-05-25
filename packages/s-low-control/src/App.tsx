@@ -12,7 +12,7 @@ const router = createBrowserRouter(routes);
 function App() {
   return (
     <Provider app={app}>
-      <ConfigProvider componentSize="small">
+      <ConfigProvider componentSize="middle">
         <RouterProvider router={router} />
       </ConfigProvider>
     </Provider>

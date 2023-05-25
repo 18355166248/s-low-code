@@ -1,0 +1,88 @@
+import React from 'react';
+import { Button, Table } from 'antd';
+
+import { useIndexContext } from './{{name}}.context';
+
+const TableLayout = () => {
+  const { dataSource, pagination, setState } = useIndexContext();
+
+  const columns = [
+    {
+      title: '表头1',
+      dataIndex: 'cell1',
+      key: 'cell1',
+    },
+    {
+      title: '表头2',
+      dataIndex: 'cell2',
+      key: 'cell2',
+    },
+    {
+      title: '操作',
+      width: 100,
+      render: (record: any) => (
+        <>
+          <ActionList
+            columns={[
+              {
+                text: '编辑',
+                type: 'text',
+                onClick: () => {
+                  setState({
+                    modalType: 'edit',
+                    modalData: record,
+                    modalVisible: true,
+                  });
+                },
+              },
+              {
+                text: '详情',
+                type: 'text',
+                onClick: () => {
+                  setState({
+                    modalType: 'detail',
+                    modalData: record,
+                    modalVisible: true,
+                  });
+                },
+              },
+            ]}
+          />
+        </>
+      ),
+    },
+  ];
+
+  function onTableChange(params: any) {
+    setState({
+      pagination: params,
+    });
+  }
+
+  function onCreate() {
+    setState({
+      modalType: 'add',
+      modalVisible: true,
+    });
+  }
+
+  return (
+    <div className="mx-6">
+      <div className="mb-2">
+        <Button type="primary" onClick={onCreate}>
+          新增
+        </Button>
+      </div>
+      <Table
+        rowKey="id"
+        dataSource={dataSource.data}
+        loading={!dataSource.done}
+        columns={columns}
+        pagination={pagination}
+        onChange={onTableChange}
+      />
+    </div>
+  );
+};
+
+export default TableLayout;

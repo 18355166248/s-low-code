@@ -1,0 +1,27 @@
+.login {
+  max-width: 100% !important;
+  width: inherit;
+  height: inherit;
+  background-image: url("../../assets/images/login/login_bg.png");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Microsoft YaHei;
+  position: relative;
+  .leftImg {
+    position: absolute;
+    left: 40px;
+  }
+  .login-form {
+    width: 400px;
+    position: absolute;
+    right: 60px;
+    .submit {
+      width: 100px;
+    }
+    h2 {
+      color: var(--color);
+    }
+  }
+}

@@ -1,0 +1,22 @@
+import TableLayout from './Table{{firstUpperName}}';
+import FilterForm from './FilterForm{{firstUpperName}}';
+import OrderReducer from './{{name}}.reducer';
+import DetailModal from './DetailModal{{firstUpperName}}';
+
+// {{ZHName}}
+const OrderManager = () => {
+  return (
+    <OrderReducer>
+      <>
+        {/* 过滤器 */}
+        <FilterForm />
+        {/* 表格 */}
+        <TableLayout />
+        {/* 弹窗 */}
+        <DetailModal />
+      </>
+    </OrderReducer>
+  );
+};
+
+export default OrderManager;

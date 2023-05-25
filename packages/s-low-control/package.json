@@ -3,13 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "start": "env-cmd -e development node scripts/start.js",
+    "build": "env-cmd -e production node scripts/build.js",
     "test": "node scripts/test.js",
-    "prettier ": "prettier --write ."
+    "prettier ": "prettier --write .",
+    "plop": "plop --plopfile ./plop-template/plopfile.js"
   },
   "dependencies": {
     "@slow/core": "workspace:^1.0.0",
+    "@xmly/mi-design": "^0.3.3",
+    "axios": "^0.27.2",
+    "mobx-react-lite": "^3.4.3",
     "s-low-components": "workspace:^0.1.0"
   },
   "eslintConfig": {
