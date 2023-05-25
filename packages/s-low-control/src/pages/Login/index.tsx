@@ -1,21 +1,32 @@
 import { Button, Form, Input } from "antd";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import "./index.scoped.scss";
 import LoginLeftImg from "../../assets/images/login/login_left.png";
-import { useAuth } from "../Auth/AuthContext";
+import { isLogin, useAuth } from "../Auth/AuthContext";
 import { LOGIN_DTO } from "@/services/types/login";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface LoginProps {}
 
 const Login: FC<LoginProps> = () => {
   const { signin } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  function goHome() {
+    navigate("/", { replace: true });
+  }
+
   function onFinish(values: LOGIN_DTO["params"]) {
     signin(values).then((res) => {
-      navigate("/");
+      goHome();
     });
   }
+  useEffect(() => {
+    if (location.pathname === "/login") {
+      if (isLogin()) goHome();
+    }
+  }, []);
 
   return (
     <div className="login">

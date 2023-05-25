@@ -6,12 +6,38 @@ import { RouteObject } from "react-router-dom";
 const Login = lazy(() => import("@/pages/Login"));
 
 const Main = lazy(() => import("@/pages/Main"));
+
 const Application = lazy(() => import("@/pages/Application"));
 const User = lazy(() => import("@/pages/User/indexUser"));
 const Role = lazy(() => import("@/pages/Role/indexRole"));
 const Menu = lazy(() => import("@/pages/Menu/indexMenu"));
 
 const Editor = lazy(() => import("@/pages/Editor"));
+
+// 应用页面路由/菜单
+type appInterface = RouteObject & {
+  name?: string;
+};
+export const applicationChildren: appInterface[] = [
+  {
+    path: "user",
+    id: "app1",
+    name: "用户管理",
+    element: <User />,
+  },
+  {
+    path: "role",
+    id: "app2",
+    name: "角色管理",
+    element: <Role />,
+  },
+  {
+    path: "menu",
+    id: "app3",
+    name: "菜单管理",
+    element: <Menu />,
+  },
+];
 
 export const routes: RouteObject[] = [
   {
@@ -33,20 +59,7 @@ export const routes: RouteObject[] = [
           {
             path: "application",
             element: <Application />,
-            children: [
-              {
-                path: "user",
-                element: <User />,
-              },
-              {
-                path: "role",
-                element: <Role />,
-              },
-              {
-                path: "menu",
-                element: <Menu />,
-              },
-            ],
+            children: applicationChildren as RouteObject[],
           },
         ],
       },

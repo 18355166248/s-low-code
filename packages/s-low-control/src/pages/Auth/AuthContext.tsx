@@ -19,18 +19,20 @@ const AuthContext = createContext<AuthContextType>(null!);
 function useAuth() {
   return useContext(AuthContext);
 }
+// 是否已登录
+const isLogin = () => getUserStorage();
 
 function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<LOGIN_DTO["Response"]["user"]>(null!);
   const loadingRef = useRef(false);
   const navigate = useNavigate();
 
-  const notLogin = window.location.pathname !== "/login";
+  const notLoginPage = window.location.pathname !== "/login";
 
   useEffect(() => {
     const storageUser = getUserStorage();
     storageUser && setUser(storageUser);
-    if (!storageUser && !loadingRef.current && notLogin) {
+    if (!storageUser && !loadingRef.current && notLoginPage) {
       signout();
     }
   }, []);
@@ -49,7 +51,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
       .then(() => {
         setUser(null!);
         removeAuthStorage();
-        if (notLogin) {
+        if (notLoginPage) {
           navigate("/login");
         }
       })
@@ -64,4 +66,4 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
     </AuthContext.Provider>
   );
 }
-export { AuthContext, AuthProvider, useAuth };
+export { AuthContext, AuthProvider, useAuth, isLogin };
