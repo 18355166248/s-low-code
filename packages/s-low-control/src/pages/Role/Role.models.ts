@@ -1,4 +1,4 @@
-import { query } from "@/services/test";
+import { getRoleList } from "@/services/role";
 import { makeAutoObservable } from "mobx";
 
 interface Pagination {
@@ -66,11 +66,7 @@ class RoleModels implements RoleInterface {
   // 获取列表
   getList = () => {
     this.list.pending = true;
-    query({
-      ...this.filterParams,
-      pageSize: this.pagination.pageSize,
-      pageNum: this.pagination.current,
-    })
+    getRoleList()
       .then((res: any) => {
         this.list = {
           data: res.data,
@@ -85,7 +81,7 @@ class RoleModels implements RoleInterface {
         this.list.pending = false;
       });
   };
-
+  ``
   resetPagination = () => {
     this.pagination.current = 1;
   };

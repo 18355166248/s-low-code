@@ -1,4 +1,4 @@
-import { query } from "@/services/test";
+import { getUserList } from "@/services/user";
 import { makeAutoObservable } from "mobx";
 
 interface Pagination {
@@ -66,11 +66,7 @@ class UserModels implements UserInterface {
   // 获取列表
   getList = () => {
     this.list.pending = true;
-    query({
-      ...this.filterParams,
-      pageSize: this.pagination.pageSize,
-      pageNum: this.pagination.current,
-    })
+    getUserList()
       .then((res: any) => {
         this.list = {
           data: res.data,

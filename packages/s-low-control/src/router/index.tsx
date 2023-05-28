@@ -21,19 +21,19 @@ type appInterface = RouteObject & {
 export const applicationChildren: appInterface[] = [
   {
     path: "user",
-    id: "app1",
+    id: "/application/user",
     name: "用户管理",
     element: <User />,
   },
   {
     path: "role",
-    id: "app2",
+    id: "/application/role",
     name: "角色管理",
     element: <Role />,
   },
   {
     path: "menu",
-    id: "app3",
+    id: "/application/menu",
     name: "菜单管理",
     element: <Menu />,
   },

@@ -1,5 +1,5 @@
-import { Layout } from "antd";
-import { FC } from "react";
+import { Layout, Spin } from "antd";
+import { FC, Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import AppMenu from "./AppMenu";
 
@@ -14,7 +14,9 @@ const Application: FC<Props> = () => {
         <AppMenu />
       </Sider>
       <Content>
-        <Outlet />
+        <Suspense fallback={<Spin className="w-full h-full" />}>
+          <Outlet />
+        </Suspense>
       </Content>
     </Layout>
   );

@@ -14,7 +14,7 @@ function App() {
   return (
     <Provider app={app}>
       <ConfigProvider componentSize="middle">
-        <Suspense fallback={<Spin />}>
+        <Suspense fallback={<Spin className="w-full h-2/4" />}>
           <RouterProvider router={router} />
         </Suspense>
       </ConfigProvider>
