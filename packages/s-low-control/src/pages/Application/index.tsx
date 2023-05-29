@@ -1,5 +1,7 @@
+import FullScreenLoading from "@/components/Loading/FullScreenLoading";
 import { Layout, Spin } from "antd";
 import { FC, Suspense } from "react";
+import { createPortal } from "react-dom";
 import { Outlet } from "react-router-dom";
 import AppMenu from "./AppMenu";
 
@@ -14,7 +16,7 @@ const Application: FC<Props> = () => {
         <AppMenu />
       </Sider>
       <Content>
-        <Suspense fallback={<Spin className="w-full h-full" />}>
+        <Suspense fallback={<FullScreenLoading />}>
           <Outlet />
         </Suspense>
       </Content>

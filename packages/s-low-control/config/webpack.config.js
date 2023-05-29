@@ -81,6 +81,19 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
+// 在这里增加less的全局变量
+const lessRegex = /\.less$/;
+const lessModuleRegex = /\.module\.less$/;
+
+// antd自定义主题配置
+const antdThemeOptions = {
+  lessOptions: {
+    modifyVars: {
+      "@primary-color": "#1890ff",
+    },
+    javascriptEnabled: true,
+  },
+};
 
 const hasJsxRuntime = (() => {
   if (process.env.DISABLE_NEW_JSX_TRANSFORM === "true") {
@@ -115,7 +128,7 @@ module.exports = function (webpackEnv) {
   const shouldUseReactRefresh = env.raw.FAST_REFRESH;
 
   // common function to get style loaders
-  const getStyleLoaders = (cssOptions, preProcessor) => {
+  const getStyleLoaders = (cssOptions, preProcessor, antdThemeOptions) => {
     const loaders = [
       isEnvDevelopment && require.resolve("style-loader"),
       isEnvProduction && {
@@ -177,6 +190,11 @@ module.exports = function (webpackEnv) {
       },
     ].filter(Boolean);
     if (preProcessor) {
+      console.log(
+        "🚀 ~ file: webpack.config.js:191 ~ getStyleLoaders ~ preProcessor:",
+        preProcessor
+      );
+
       loaders.push(
         {
           loader: require.resolve("resolve-url-loader"),
@@ -188,6 +206,7 @@ module.exports = function (webpackEnv) {
         {
           loader: require.resolve(preProcessor),
           options: {
+            ...antdThemeOptions,
             sourceMap: true,
           },
         }
@@ -445,6 +464,19 @@ module.exports = function (webpackEnv) {
                   //   },
                   //   "antd",
                   // ],
+                  [
+                    require.resolve("babel-plugin-import"), // 导入 import 插件
+                    {
+                      libraryName: "@xmly/mi-design",
+                      libraryDirectory: "es",
+                      camel2DashComponentName: false, // 避免 customName 和拼接参数格式化成驼峰
+                      customName: (name) => {
+                        console.log(566666, name);
+                        return `@xmly/mi-design/dist/components/common/${name}`;
+                      },
+                      style: (path) => `${path}/style/index.less`,
+                    },
+                  ],
                 ].filter(Boolean),
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -563,6 +595,23 @@ module.exports = function (webpackEnv) {
                 },
                 "sass-loader"
               ),
+            },
+            {
+              test: lessRegex,
+              exclude: lessModuleRegex,
+              use: getStyleLoaders(
+                {
+                  importLoaders: 2,
+                  sourceMap: isEnvProduction && shouldUseSourceMap,
+                },
+                "less-loader",
+                antdThemeOptions
+              ),
+              // Don't consider CSS imports dead code even if the
+              // containing package claims to have no side effects.
+              // Remove this when webpack adds a warning or an error for this.
+              // See https://github.com/webpack/webpack/issues/6571
+              sideEffects: true,
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.

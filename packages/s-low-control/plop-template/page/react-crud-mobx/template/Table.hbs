@@ -1,8 +1,9 @@
-import TableLayout from '@/components/TableLayout';
 import React, { FC, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { use{{firstUpperName}}Context } from './{{name}}.context';
 import {ActionList} from '@xmly/mi-design';
+import { Table } from 'antd';
+import { ColumnsType } from 'antd/es/table';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
@@ -17,7 +18,7 @@ const Table{{firstUpperName}}: FC<Props> = () => {
     openModalHandle,
   } = use{{firstUpperName}}Context();
 
-  const columns = [
+  const columns: ColumnsType<object> = [
     {
       title: 'Demo',
       dataIndex: 'demo',
@@ -72,9 +73,10 @@ const Table{{firstUpperName}}: FC<Props> = () => {
   }, []);
 
   return (
-    <TableLayout
+    <Table
       scroll=\{{ x: 'max-content' }}
-      data={list.data}
+      style=\{{ marginTop: 16 }}
+      dataSource={list.data}
       columns={columns}
       rowKey="id"
       loading={list.pending}

@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { notification } from "antd";
 import { trimRequestInterceptors } from "./$axios.config";
-import { getToken } from "@/utils/auth";
+import { getToken, removeAuthStorage } from "@/utils/auth";
 
 const token = getToken();
 
@@ -42,10 +42,8 @@ $axios.interceptors.response.use(
   },
   (error) => {
     if (error?.response?.status === 401) {
-      // const url = `http://ops${domain}.ximalaya.com/invoice-admin-web/login?redirect_uri=${encodeURIComponent(
-      //   window.location.href
-      // )}`;
-      // window.location.href = url;
+      removeAuthStorage();
+      window.location.replace("/login");
 
       return Promise.reject(error);
     }

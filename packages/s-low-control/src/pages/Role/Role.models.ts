@@ -69,19 +69,18 @@ class RoleModels implements RoleInterface {
     getRoleList()
       .then((res: any) => {
         this.list = {
-          data: res.data,
+          data: res,
           pending: false,
           success: true,
           error: false,
         };
-        this.pagination = { ...this.pagination, total: res.totalSize };
       })
       .catch(() => {
         this.list.error = true;
         this.list.pending = false;
       });
   };
-  ``
+
   resetPagination = () => {
     this.pagination.current = 1;
   };

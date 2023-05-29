@@ -1,5 +1,8 @@
-import { query } from '@/services/test';
 import { makeAutoObservable } from 'mobx';
+
+function query(params: any) {
+  return Promise.resolve();
+}
 
 interface Pagination {
   current: number;

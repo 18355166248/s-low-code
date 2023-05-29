@@ -20,16 +20,17 @@ const TableRole: FC<Props> = () => {
 
   const columns: ColumnsType<object> = [
     {
-      title: "Demo",
-      dataIndex: "demo",
-      key: "demo",
-      width: 100,
-    },
-    {
-      title: "名称",
+      title: "角色名",
       dataIndex: "name",
       key: "name",
-      width: 100,
+    },
+    {
+      title: "用户",
+      dataIndex: "users",
+      key: "users",
+      render: (value: any[]) => {
+        return value.map((v) => v.userName).join(", ");
+      },
     },
     {
       title: "操作",
