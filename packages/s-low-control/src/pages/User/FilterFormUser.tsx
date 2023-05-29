@@ -23,12 +23,7 @@ const FilterForm: FC<Props> = () => {
 
   function onCreact() {
     setModalOption({
-      initialValues: {
-        itemSourceType: "",
-        role: "",
-        name: "",
-        channelId: "",
-      },
+      initialValues: {},
       title: "新增",
       type: "add",
     });
@@ -50,7 +45,7 @@ const FilterForm: FC<Props> = () => {
       onReset={onReset}
       onValuesChange={onValuesChange}
     >
-      <Form.Item label="demo" name="Demo">
+      <Form.Item label="用户名" name="userName">
         <Input allowClear={true} />
       </Form.Item>
     </FilterFormLayout>

@@ -1,3 +1,11 @@
+
+export interface GET_USER_DTO {
+  PARAMS: {
+    userName: string;
+  };
+  RESPONSE: {};
+}
+
 export interface USER_DTO {
   PARAMS: {
     id?: string;

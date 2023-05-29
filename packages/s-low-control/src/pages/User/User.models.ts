@@ -63,10 +63,18 @@ class UserModels implements UserInterface {
     this.filterParams = allValues;
   };
 
+  getParams = () => {
+    return {
+      ...this.filterParams,
+      ...this.pagination,
+      pageNo: this.pagination.current,
+    };
+  };
+
   // 获取列表
   getList = () => {
     this.list.pending = true;
-    getUserList()
+    getUserList(this.getParams())
       .then((res: any) => {
         this.list = {
           data: res.data,

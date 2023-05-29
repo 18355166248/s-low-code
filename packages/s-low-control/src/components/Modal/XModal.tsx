@@ -15,10 +15,19 @@ interface Props {
   ctrlRef: { current: CtrlRef };
   onOk?: () => void;
   onCancel?: () => void;
+  footer?: React.ReactNode;
 }
 
 const XModal: FC<Props> = (props: Props) => {
-  const { width = 500, title, ctrlRef, onOk, onCancel, children } = props;
+  const {
+    width = 500,
+    title,
+    ctrlRef,
+    onOk,
+    onCancel,
+    children,
+    footer,
+  } = props;
 
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
@@ -57,6 +66,7 @@ const XModal: FC<Props> = (props: Props) => {
       onOk={_onOk}
       onCancel={_close}
       destroyOnClose
+      footer={footer}
     >
       {children}
     </Modal>

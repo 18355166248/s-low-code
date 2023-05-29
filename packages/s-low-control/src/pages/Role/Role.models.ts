@@ -53,6 +53,7 @@ class RoleModels implements RoleInterface {
   // 新增/编辑/删除
   openModalHandle = () => {
     this.modalShow = true;
+    console.log("modalDialogRef", this.modalDialogRef);
     (this.modalDialogRef.current as any).open();
   };
   closeModalHandle = () => {

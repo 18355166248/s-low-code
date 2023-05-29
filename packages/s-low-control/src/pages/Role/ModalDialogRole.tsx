@@ -1,5 +1,5 @@
 import XModal from "@/components/Modal/XModal";
-import { Button, Input, Form, notification } from "antd";
+import { Button, Input, Form, notification, Divider } from "antd";
 import React, { FC, useState } from "react";
 import { useRoleContext } from "./Role.context";
 import { observer } from "mobx-react-lite";
@@ -43,7 +43,7 @@ const ModalDialog: FC<Props> = () => {
   }
 
   return (
-    <XModal title={modalOption.title} ctrlRef={modalDialogRef}>
+    <XModal title={modalOption.title} ctrlRef={modalDialogRef} footer={null}>
       <Form form={form} onFinish={submitHandle}>
         <Form.Item
           label="itemSourceType"
@@ -64,14 +64,17 @@ const ModalDialog: FC<Props> = () => {
           <Input disabled={formDisabled} />
         </Form.Item>
         {modalOption.type !== "detail" && (
-          <div className="flex justify-center mt-10">
-            <Button onClick={onCancel} className="mr-3">
-              取消
-            </Button>
-            <Button type="primary" htmlType="submit" loading={loading}>
-              确定
-            </Button>
-          </div>
+          <>
+            <Divider className="mt-10" />
+            <div className="flex justify-end">
+              <Button onClick={onCancel} className="mr-3">
+                取消
+              </Button>
+              <Button type="primary" htmlType="submit" loading={loading}>
+                确定
+              </Button>
+            </div>
+          </>
         )}
       </Form>
     </XModal>

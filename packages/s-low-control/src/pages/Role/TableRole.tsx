@@ -32,40 +32,40 @@ const TableRole: FC<Props> = () => {
         return value.map((v) => v.userName).join(", ");
       },
     },
-    {
-      title: "操作",
-      fixed: "right",
-      width: 100,
-      render: (record: any) => {
-        const actionList: any[] = [
-          {
-            type: "text",
-            text: "编辑",
-            onClick: () => {
-              setModalOption({
-                initialValues: record,
-                title: "编辑",
-                type: "edit",
-              });
-              openModalHandle();
-            },
-          },
-          {
-            type: "text",
-            text: "查看",
-            onClick: () => {
-              setModalOption({
-                initialValues: record,
-                title: "查看",
-                type: "detail",
-              });
-              openModalHandle();
-            },
-          },
-        ];
-        return <ActionList columns={actionList} />;
-      },
-    },
+    // {
+    //   title: "操作",
+    //   fixed: "right",
+    //   width: 100,
+    //   render: (record: any) => {
+    //     const actionList: any[] = [
+    //       {
+    //         type: "text",
+    //         text: "编辑",
+    //         onClick: () => {
+    //           setModalOption({
+    //             initialValues: record,
+    //             title: "编辑",
+    //             type: "edit",
+    //           });
+    //           openModalHandle();
+    //         },
+    //       },
+    //       {
+    //         type: "text",
+    //         text: "查看",
+    //         onClick: () => {
+    //           setModalOption({
+    //             initialValues: record,
+    //             title: "查看",
+    //             type: "detail",
+    //           });
+    //           openModalHandle();
+    //         },
+    //       },
+    //     ];
+    //     return <ActionList columns={actionList} />;
+    //   },
+    // },
   ];
 
   useEffect(() => {
@@ -80,7 +80,7 @@ const TableRole: FC<Props> = () => {
       columns={columns}
       rowKey="id"
       loading={list.pending}
-      pagination={{ ...pagination, hideOnSinglePage: false }}
+      pagination={false}
       onChange={onTableChange}
     />
   );
