@@ -1,7 +1,6 @@
-
 export interface GET_USER_DTO {
   PARAMS: {
-    userName: string;
+    userName?: string;
   };
   RESPONSE: {};
 }

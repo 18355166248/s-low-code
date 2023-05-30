@@ -6,11 +6,15 @@ export function getUserList(params: GET_USER_DTO["PARAMS"] & PAGINATION_DTO) {
   return $axios.get("/user", { params });
 }
 
-export function createUser(data: USER_DTO["PARAMS"]): USER_DTO["RESPONSE"] {
+export function createUser(
+  data: USER_DTO["PARAMS"]
+): Promise<USER_DTO["RESPONSE"]> {
   return $axios.post("/user", data);
 }
 
-export function updateUser(data: USER_DTO["PARAMS"]): USER_DTO["RESPONSE"] {
+export function updateUser(
+  data: USER_DTO["PARAMS"]
+): Promise<USER_DTO["RESPONSE"]> {
   return $axios.patch(`/user/${data.id}`, data);
 }
 

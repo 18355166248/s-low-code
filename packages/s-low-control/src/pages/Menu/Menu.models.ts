@@ -1,4 +1,4 @@
-import { query } from "@/services/test";
+import { getMenuList } from "@/services/menu";
 import { makeAutoObservable } from "mobx";
 
 interface Pagination {
@@ -66,19 +66,15 @@ class MenuModels implements MenuInterface {
   // 获取列表
   getList = () => {
     this.list.pending = true;
-    query({
-      ...this.filterParams,
-      pageSize: this.pagination.pageSize,
-      pageNum: this.pagination.current,
-    })
+    getMenuList(this.filterParams)
       .then((res: any) => {
         this.list = {
-          data: res.data,
+          data: res,
           pending: false,
           success: true,
           error: false,
         };
-        this.pagination = { ...this.pagination, total: res.totalSize };
+        // this.pagination = { ...this.pagination, total: res.totalSize };
       })
       .catch(() => {
         this.list.error = true;

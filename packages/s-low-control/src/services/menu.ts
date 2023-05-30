@@ -1,8 +1,8 @@
 import $axios from "./$axios";
-import { DELETE_MENU_DTO, MENU_DTO } from "./types/menu";
+import { DELETE_MENU_DTO, GET_MENU_DTO, MENU_DTO } from "./types/menu";
 
-export function getMenuList() {
-  return $axios.get("/menus");
+export function getMenuList(params: GET_MENU_DTO["PARAMS"]) {
+  return $axios.get("/menus", { params });
 }
 
 export function createMenu(data: MENU_DTO["PARAMS"]): MENU_DTO["RESPONSE"] {

@@ -20,51 +20,49 @@ const TableMenu: FC<Props> = () => {
 
   const columns: ColumnsType<object> = [
     {
-      title: "Demo",
-      dataIndex: "demo",
-      key: "demo",
-      width: 100,
-    },
-    {
-      title: "名称",
+      title: "菜单名称",
       dataIndex: "name",
       key: "name",
-      width: 100,
     },
     {
-      title: "操作",
-      fixed: "right",
-      width: 100,
-      render: (record: any) => {
-        const actionList: any[] = [
-          {
-            type: "text",
-            text: "编辑",
-            onClick: () => {
-              setModalOption({
-                initialValues: record,
-                title: "编辑",
-                type: "edit",
-              });
-              openModalHandle();
-            },
-          },
-          {
-            type: "text",
-            text: "查看",
-            onClick: () => {
-              setModalOption({
-                initialValues: record,
-                title: "查看",
-                type: "detail",
-              });
-              openModalHandle();
-            },
-          },
-        ];
-        return <ActionList columns={actionList} />;
-      },
+      title: "权限",
+      dataIndex: "acl",
+      key: "acl",
     },
+    // {
+    //   title: "操作",
+    //   fixed: "right",
+    //   width: 100,
+    //   render: (record: any) => {
+    //     const actionList: any[] = [
+    //       {
+    //         type: "text",
+    //         text: "编辑",
+    //         onClick: () => {
+    //           setModalOption({
+    //             initialValues: record,
+    //             title: "编辑",
+    //             type: "edit",
+    //           });
+    //           openModalHandle();
+    //         },
+    //       },
+    //       {
+    //         type: "text",
+    //         text: "查看",
+    //         onClick: () => {
+    //           setModalOption({
+    //             initialValues: record,
+    //             title: "查看",
+    //             type: "detail",
+    //           });
+    //           openModalHandle();
+    //         },
+    //       },
+    //     ];
+    //     return <ActionList columns={actionList} />;
+    //   },
+    // },
   ];
 
   useEffect(() => {
@@ -75,11 +73,12 @@ const TableMenu: FC<Props> = () => {
   return (
     <Table
       scroll={{ x: "max-content" }}
+      style={{ marginTop: 16 }}
       dataSource={list.data}
       columns={columns}
       rowKey="id"
       loading={list.pending}
-      pagination={{ ...pagination, hideOnSinglePage: false }}
+      pagination={false}
       onChange={onTableChange}
     />
   );

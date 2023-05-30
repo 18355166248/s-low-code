@@ -1,20 +1,39 @@
-import XModal from "@/components/Modal/XModal";
-import { Button, Input, Form, notification } from "antd";
-import React, { FC, useState } from "react";
-import { useMenuContext } from "./Menu.context";
-import { observer } from "mobx-react-lite";
-import { add, modify } from "@/services/test";
+import { Button, Input, Form, notification, Divider, Modal } from 'antd';
+import React, { FC, useState, useEffect } from 'react';
+import { useMenuContext } from './Menu.context';
+import { observer } from 'mobx-react-lite';
+
+function add(data: any) {
+  return Promise.resolve();
+}
+
+function modify(data: any) {
+  return Promise.resolve();
+}
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
 
 const ModalDialog: FC<Props> = () => {
-  const { modalDialogRef, modalOption, getList, modalShow } = useMenuContext();
+  const {
+    modalDialogRef,
+    modalOption,
+    getList,
+    modalShow,
+  } = useMenuContext();
+  const [visible, setVisible] = useState(false);
 
-  const formDisabled = modalOption.type === "detail";
+  const formDisabled = modalOption.type === 'detail';
 
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    modalDialogRef.current = {
+      open: () => setVisible(true),
+      close: () => setVisible(false),
+    };
+  }, []);
 
   React.useEffect(() => {
     form.setFieldsValue(modalOption.initialValues);
@@ -22,7 +41,7 @@ const ModalDialog: FC<Props> = () => {
 
   function submitHandle(formData: any) {
     setLoading(true);
-    const requestMethod = modalOption.type === "add" ? add : modify;
+    const requestMethod = modalOption.type === 'add' ? add : modify;
     if (modalOption.initialValues.id) {
       formData.id = modalOption.initialValues.id;
     }
@@ -43,38 +62,35 @@ const ModalDialog: FC<Props> = () => {
   }
 
   return (
-    <XModal title={modalOption.title} ctrlRef={modalDialogRef}>
-      <Form form={form} onFinish={submitHandle}>
+    <Modal title={modalOption.title} open={visible} footer={null}>
+      <Form form={form} onFinish={submitHandle} className="mt-5">
         <Form.Item
-          label="itemSourceType"
-          name="itemSourceType"
+          label="demo"
+          name="demo"
           rules={[
             {
               required: true,
-              type: "integer",
-              message: "该值必须为整数",
-              transform(value) {
-                if (value) {
-                  return Number(value);
-                }
-              },
+              message: "请输入",
             },
           ]}
         >
           <Input disabled={formDisabled} />
         </Form.Item>
         {modalOption.type !== "detail" && (
-          <div className="flex justify-center mt-10">
-            <Button onClick={onCancel} className="mr-3">
-              取消
-            </Button>
-            <Button type="primary" htmlType="submit" loading={loading}>
-              确定
-            </Button>
-          </div>
+          <>
+            <Divider className="mt-10" />
+            <div className="flex justify-end">
+              <Button onClick={onCancel} className="mr-3">
+                取消
+              </Button>
+              <Button type="primary" htmlType="submit" loading={loading}>
+                确定
+              </Button>
+            </div>
+          </>
         )}
       </Form>
-    </XModal>
+    </Modal>
   );
 };
 

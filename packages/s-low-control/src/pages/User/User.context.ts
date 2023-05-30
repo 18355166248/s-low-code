@@ -1,8 +1,9 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext } from "react";
 
-const initState: any = {};
+const initState: any = {
+  roleList: [],
+};
 
 export const UserContext = createContext(initState);
 
-export const useUserContext = () =>
-  useContext(UserContext);
+export const useUserContext = () => useContext(UserContext);

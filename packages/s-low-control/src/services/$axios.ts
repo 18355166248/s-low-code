@@ -3,14 +3,11 @@ import { notification } from "antd";
 import { trimRequestInterceptors } from "./$axios.config";
 import { getToken, removeAuthStorage } from "@/utils/auth";
 
-const token = getToken();
-
 const config: AxiosRequestConfig = {
   timeout: 5 * 1000, // 超时设置(单位毫秒)，无超时时间设置为 0。
   responseType: "json", // 响应的数据格式：json/blob/document/arraybuffer/text/stream
   headers: {
     "Content-Type": "application/json",
-    Authorization: "Bearer " + token, // 塞入token 用于后端 jwt校验是否登录
   },
   baseURL: "/api/v1",
 };
@@ -21,6 +18,9 @@ $axios.interceptors.request.use(...trimRequestInterceptors);
 
 $axios.interceptors.request.use(
   (config) => {
+    const token = getToken();
+
+    (config.headers as any).Authorization = "Bearer " + token;
     return config;
   },
   (error) => {
@@ -46,6 +46,14 @@ $axios.interceptors.response.use(
       window.location.replace("/login");
 
       return Promise.reject(error);
+    }
+    const resData = error?.response.data;
+    if (resData) {
+      resData.message &&
+        notification.error({
+          key: resData.message,
+          message: resData.message,
+        });
     }
 
     return Promise.reject(error);

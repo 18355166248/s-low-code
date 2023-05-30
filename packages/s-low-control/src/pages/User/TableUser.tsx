@@ -16,6 +16,7 @@ const TableUser: FC<Props> = () => {
     onTableChange,
     setModalOption,
     openModalHandle,
+    initRoleList,
   } = useUserContext();
 
   const columns: ColumnsType<object> = [
@@ -70,6 +71,7 @@ const TableUser: FC<Props> = () => {
 
   useEffect(() => {
     getList();
+    initRoleList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -80,7 +82,10 @@ const TableUser: FC<Props> = () => {
       columns={columns}
       rowKey="id"
       loading={list.pending}
-      pagination={{ ...pagination, hideOnSinglePage: false }}
+      pagination={{
+        ...pagination,
+        hideOnSinglePage: false,
+      }}
       onChange={onTableChange}
     />
   );

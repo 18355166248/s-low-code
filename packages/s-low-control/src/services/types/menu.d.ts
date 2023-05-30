@@ -1,6 +1,13 @@
+export interface GET_MENU_DTO {
+  PARAMS: {
+    name?: string;
+  };
+  RESPONSE: {};
+}
+
 export interface MENU_DTO {
   PARAMS: {
-    id?: string
+    id?: string;
     name: string;
     path: string;
     order: number;

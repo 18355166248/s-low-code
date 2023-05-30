@@ -1,5 +1,7 @@
+import { getRoleList } from "@/services/role";
 import { getUserList } from "@/services/user";
-import { makeAutoObservable } from "mobx";
+import { cloneDeep } from "lodash-es";
+import { makeAutoObservable, toJS } from "mobx";
 
 interface Pagination {
   current: number;
@@ -22,6 +24,7 @@ interface UserInterface {
   filterParams: any;
   pagination: Pagination;
   list: List;
+  roleList: { name: string; id: number }[];
 }
 
 class UserModels implements UserInterface {
@@ -35,6 +38,7 @@ class UserModels implements UserInterface {
     error: false,
     data: [],
   };
+  roleList = [];
 
   modalDialogRef = { current: null };
 
@@ -42,7 +46,7 @@ class UserModels implements UserInterface {
     makeAutoObservable(this);
     this.modalShow = false;
     this.filterParams = {};
-    this.modalOption = {};
+    this.modalOption = { initialValues: {} };
     this.pagination = {
       current: 1,
       pageSize: 10,
@@ -71,9 +75,16 @@ class UserModels implements UserInterface {
     };
   };
 
+  initRoleList = () => {
+    getRoleList().then((res: any) => {
+      this.roleList = res;
+    });
+  };
+
   // 获取列表
   getList = () => {
     this.list.pending = true;
+
     getUserList(this.getParams())
       .then((res: any) => {
         this.list = {
@@ -103,6 +114,9 @@ class UserModels implements UserInterface {
 
   // 设置传入modal的参数
   setModalOption = (option: any) => {
+    option = cloneDeep(option);
+    const roles = toJS(option.initialValues.roles);
+    option.initialValues.roles = roles.map((v: any) => String(v.id));
     this.modalOption = option;
   };
 
