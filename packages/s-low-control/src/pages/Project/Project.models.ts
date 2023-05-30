@@ -1,7 +1,8 @@
-import { getRoleList } from "@/services/role";
-import { getUserList } from "@/services/user";
-import { cloneDeep } from "lodash-es";
-import { makeAutoObservable, toJS } from "mobx";
+import { makeAutoObservable } from 'mobx';
+
+function query(params: any) {
+  return Promise.resolve();
+}
 
 interface Pagination {
   current: number;
@@ -19,15 +20,14 @@ interface List extends Status {
   data: any[];
 }
 
-interface UserInterface {
+interface ProjectInterface {
   modalShow: boolean;
   filterParams: any;
   pagination: Pagination;
   list: List;
-  roleList: { name: string; id: number }[];
 }
 
-class UserModels implements UserInterface {
+class ProjectModels implements ProjectInterface {
   filterParams: any;
   modalShow: boolean;
   pagination: Pagination;
@@ -38,7 +38,6 @@ class UserModels implements UserInterface {
     error: false,
     data: [],
   };
-  roleList: any[] = [];
 
   modalDialogRef = { current: null };
 
@@ -46,7 +45,7 @@ class UserModels implements UserInterface {
     makeAutoObservable(this);
     this.modalShow = false;
     this.filterParams = {};
-    this.modalOption = { initialValues: {} };
+    this.modalOption = {};
     this.pagination = {
       current: 1,
       pageSize: 10,
@@ -67,45 +66,22 @@ class UserModels implements UserInterface {
     this.filterParams = allValues;
   };
 
-  getParams = () => {
-    return {
-      ...this.filterParams,
-      ...this.pagination,
-      pageNo: this.pagination.current,
-    };
-  };
-
-  setRoleList = (list: any[]) => {
-    this.roleList = list;
-  };
-
-  initRoleList = () => {
-    getRoleList().then((res: any) => {
-      this.setRoleList(res);
-    });
-  };
-
-  setList = (val: any) => {
-    this.list = val;
-  };
-
-  setPagination = (pagi: Pagination) => {
-    this.pagination = pagi;
-  };
-
   // 获取列表
   getList = () => {
     this.list.pending = true;
-
-    getUserList(this.getParams())
+    query({
+      ...this.filterParams,
+      pageSize: this.pagination.pageSize,
+      pageNum: this.pagination.current,
+    })
       .then((res: any) => {
-        this.setList({
+        this.list = {
           data: res.data,
           pending: false,
           success: true,
           error: false,
-        });
-        this.setPagination({ ...this.pagination, total: res.total });
+        };
+        this.pagination = { ...this.pagination, total: res.totalSize };
       })
       .catch(() => {
         this.list.error = true;
@@ -126,12 +102,6 @@ class UserModels implements UserInterface {
 
   // 设置传入modal的参数
   setModalOption = (option: any) => {
-    option = cloneDeep(option);
-    if (option.initialValues.roles) {
-      const roles = toJS(option.initialValues.roles);
-      option.initialValues.roles = roles.map((v: any) => String(v.id));
-    }
-
     this.modalOption = option;
   };
 
@@ -142,4 +112,4 @@ class UserModels implements UserInterface {
   };
 }
 
-export const store = new UserModels();
+export const store = new ProjectModels();

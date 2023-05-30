@@ -43,10 +43,6 @@ const ModalDialog: FC<Props> = () => {
     modalDialogRef.current.close();
   }
 
-  function onChange(values: any) {
-    console.log(values);
-  }
-
   return (
     <XModal title={modalOption.title} ctrlRef={modalDialogRef} footer={null}>
       <Form
@@ -56,7 +52,6 @@ const ModalDialog: FC<Props> = () => {
         labelCol={{
           flex: "0 0 80px",
         }}
-        onValuesChange={onChange}
       >
         <Form.Item
           label="用户名"

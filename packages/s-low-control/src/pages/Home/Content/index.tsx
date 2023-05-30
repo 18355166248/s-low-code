@@ -11,7 +11,7 @@ const MainContent: FC<MainContentProps> = () => {
   const navigate = useNavigate();
 
   function goApplication() {
-    navigate("/application/user");
+    navigate("/application/project");
   }
 
   return (

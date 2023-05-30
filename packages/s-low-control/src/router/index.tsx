@@ -7,6 +7,7 @@ const Login = lazy(() => import("@/pages/Login"));
 
 const Main = lazy(() => import("@/pages/Main"));
 
+const Project = lazy(() => import("@/pages/Project/indexProject"));
 const Application = lazy(() => import("@/pages/Application"));
 const User = lazy(() => import("@/pages/User/indexUser"));
 const Role = lazy(() => import("@/pages/Role/indexRole"));
@@ -19,6 +20,12 @@ type appInterface = RouteObject & {
   name?: string;
 };
 export const applicationChildren: appInterface[] = [
+  {
+    path: "project",
+    id: "/application/project",
+    name: "项目管理",
+    element: <Project />,
+  },
   {
     path: "user",
     id: "/application/user",

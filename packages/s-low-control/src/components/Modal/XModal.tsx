@@ -12,7 +12,7 @@ interface Props {
   width?: string | number;
   title: string;
   children: JSX.Element;
-  ctrlRef: { current: CtrlRef };
+  ctrlRef: { current?: CtrlRef };
   onOk?: () => void;
   onCancel?: () => void;
   footer?: React.ReactNode;
@@ -45,6 +45,9 @@ const XModal: FC<Props> = (props: Props) => {
         loading,
       };
     }
+    return () => {
+      ctrlRef.current = undefined;
+    };
   }, [_close, ctrlRef]);
 
   function open() {

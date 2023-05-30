@@ -85,6 +85,7 @@ const TableUser: FC<Props> = () => {
       pagination={{
         ...pagination,
         hideOnSinglePage: false,
+        showTotal: (total: number) => `总 ${total} 条`,
       }}
       onChange={onTableChange}
     />
