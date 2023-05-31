@@ -1,7 +1,8 @@
-import { Button, Input, Form, notification, Divider, Modal } from 'antd';
-import React, { FC, useState, useEffect } from 'react';
-import { useProjectContext } from './Project.context';
-import { observer } from 'mobx-react-lite';
+import { Button, Input, Form, notification, Divider, Modal } from "antd";
+import React, { FC, useState, useEffect } from "react";
+import { useProjectContext } from "./Project.context";
+import { observer } from "mobx-react-lite";
+import { createProject, updateProject } from "@/services/project";
 
 function add(data: any) {
   return Promise.resolve();
@@ -15,15 +16,10 @@ function modify(data: any) {
 interface Props {}
 
 const ModalDialog: FC<Props> = () => {
-  const {
-    modalDialogRef,
-    modalOption,
-    getList,
-    modalShow,
-  } = useProjectContext();
+  const { modalDialogRef, modalOption, getList } = useProjectContext();
   const [visible, setVisible] = useState(false);
 
-  const formDisabled = modalOption.type === 'detail';
+  const formDisabled = modalOption.type === "detail";
 
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
@@ -36,12 +32,13 @@ const ModalDialog: FC<Props> = () => {
   }, []);
 
   React.useEffect(() => {
-    form.setFieldsValue(modalOption.initialValues);
-  }, [modalShow]);
+    visible && form.setFieldsValue(modalOption.initialValues);
+  }, [visible, modalOption.initialValues]);
 
   function submitHandle(formData: any) {
     setLoading(true);
-    const requestMethod = modalOption.type === 'add' ? add : modify;
+    const requestMethod =
+      modalOption.type === "add" ? createProject : updateProject;
     if (modalOption.initialValues.id) {
       formData.id = modalOption.initialValues.id;
     }
@@ -62,11 +59,21 @@ const ModalDialog: FC<Props> = () => {
   }
 
   return (
-    <Modal title={modalOption.title} open={visible} footer={null}>
-      <Form form={form} onFinish={submitHandle} className="mt-5">
+    <Modal
+      title={modalOption.title}
+      open={visible}
+      footer={null}
+      onCancel={onCancel}
+    >
+      <Form
+        form={form}
+        onFinish={submitHandle}
+        className="mt-5"
+        labelCol={{ flex: "0 0 100px" }}
+      >
         <Form.Item
-          label="demo"
-          name="demo"
+          label="项目名称"
+          name="name"
           rules={[
             {
               required: true,
@@ -76,6 +83,10 @@ const ModalDialog: FC<Props> = () => {
         >
           <Input disabled={formDisabled} />
         </Form.Item>
+        <Form.Item label="描述" name="description">
+          <Input.TextArea disabled={formDisabled} autoSize />
+        </Form.Item>
+
         {modalOption.type !== "detail" && (
           <>
             <Divider className="mt-10" />

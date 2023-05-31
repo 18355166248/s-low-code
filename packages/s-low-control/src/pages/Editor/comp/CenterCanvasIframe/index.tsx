@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import PhoneContainer from "@/components/PhoneContainer";
+import { previewIframeId } from "@/constants";
 import { inject, observer } from "mobx-react";
 import React, { useEffect, useRef } from "react";
 import { useDrop } from "react-dnd";
@@ -55,6 +56,7 @@ function CenterCanvasIframe(props: any) {
             ref={iframeRef}
             src="http://localhost:3900/"
             className={styles.iframe}
+            id={previewIframeId}
           />
           {/* 拖拽和iframe交互蒙层 */}
           <PageLayer drop={drop} />

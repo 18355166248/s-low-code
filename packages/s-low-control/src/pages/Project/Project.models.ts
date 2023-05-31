@@ -1,8 +1,5 @@
-import { makeAutoObservable } from 'mobx';
-
-function query(params: any) {
-  return Promise.resolve();
-}
+import { getProjectList } from "@/services/project";
+import { makeAutoObservable } from "mobx";
 
 interface Pagination {
   current: number;
@@ -69,10 +66,10 @@ class ProjectModels implements ProjectInterface {
   // 获取列表
   getList = () => {
     this.list.pending = true;
-    query({
+    getProjectList({
       ...this.filterParams,
       pageSize: this.pagination.pageSize,
-      pageNum: this.pagination.current,
+      pageNo: this.pagination.current,
     })
       .then((res: any) => {
         this.list = {

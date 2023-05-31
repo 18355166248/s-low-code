@@ -1,3 +1,4 @@
+import { previewIframeId } from "@/constants";
 import { LOGIN_DTO } from "@/services/types/login";
 
 const SLOW_AUTH_TOKEN = "SLOW_AUTH_TOKEN";
@@ -35,4 +36,16 @@ export function setAuthStorage(res: LOGIN_DTO["Response"]) {
 export function removeAuthStorage() {
   removeToken();
   removeUserStorage();
+}
+
+// 同步token给子应用
+export function syncStorageWithChild() {
+  const iframeDom = document.getElementById(previewIframeId);
+  (iframeDom as any)?.contentWindow.postMessage(
+    {
+      even: "updateToken",
+      params: getToken(),
+    },
+    "*"
+  );
 }

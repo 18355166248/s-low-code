@@ -471,7 +471,6 @@ module.exports = function (webpackEnv) {
                       libraryDirectory: "es",
                       camel2DashComponentName: false, // 避免 customName 和拼接参数格式化成驼峰
                       customName: (name) => {
-                        console.log(566666, name);
                         return `@xmly/mi-design/dist/components/common/${name}`;
                       },
                       style: (path) => `${path}/style/index.less`,

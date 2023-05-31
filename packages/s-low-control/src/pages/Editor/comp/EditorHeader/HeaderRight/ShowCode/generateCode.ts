@@ -1,5 +1,5 @@
 import { isArray, isString, map } from "lodash-es";
-import { State } from "../../index.store";
+import { State } from "../../../../index.store";
 
 const getChildrenCode = (sub: State) => {
   if (isString(sub.props.children)) {

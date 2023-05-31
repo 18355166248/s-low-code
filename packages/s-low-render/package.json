@@ -105,5 +105,9 @@
   },
   "bugs": {
     "url": "https://github.com/18355166248/s-low-code/issues"
+  },
+  "peerDependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   }
 }

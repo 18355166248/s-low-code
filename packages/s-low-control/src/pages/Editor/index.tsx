@@ -4,27 +4,42 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 import Left from "./comp/Left";
 import Right from "./comp/Right";
-import ShowCode from "./comp/ShowCode";
-import PreviewHtml from "./comp/Preview";
 import CenterCanvasIframe from "./comp/CenterCanvasIframe";
-import logo from "../../assets/images/logo.jpg";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getProject } from "@/services/project";
+import EditorHeader from "./comp/EditorHeader";
 
 const editStore = EditStore.create();
 
 function Editor() {
+  const { id } = useParams();
+
+  useEffect(() => {
+    window.addEventListener("message", editStore.getChildMessage);
+
+    return () => {
+      window.removeEventListener("message", editStore.getChildMessage);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (id) {
+      getProject(id).then((res: any) => {
+        const { codeTree, setProject, setCodeTree, initIframe } = editStore;
+        setProject(res);
+        (codeTree as any).children = JSON.parse(res.code || "[]");
+        setCodeTree({ ...codeTree });
+        initIframe();
+      });
+    }
+  }, [id]);
+
   return (
     <DndProvider backend={HTML5Backend}>
       <Provider edit={editStore}>
-        <div className="h-screen flex flex-col text-gray-600">
-          <header className="h-10 pr-2 shadow-sm sticky border-b border-gray-200 flex-shrink-0  flex justify-between items-center">
-            <div className="inline-flex justify-between items-center h-full">
-              <img src={logo} alt="" className="h-full" />
-            </div>
-            <div className="inline-flex justify-between items-center">
-              <PreviewHtml className="mr-3" />
-              <ShowCode />
-            </div>
-          </header>
+        <div className="flex flex-1 overflow-hidden flex-col text-gray-600 bg-white">
+          <EditorHeader />
 
           <main className="flex-1 overflow-hidden flex">
             <Left />

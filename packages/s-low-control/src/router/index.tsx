@@ -68,17 +68,17 @@ export const routes: RouteObject[] = [
             element: <Application />,
             children: applicationChildren as RouteObject[],
           },
+          {
+            path: "/editor/:id",
+            element: <Editor />,
+            loader: () => {
+              const data = { some: "thing" };
+              return new Response(JSON.stringify(data), {
+                status: 200,
+              });
+            },
+          },
         ],
-      },
-      {
-        path: "/editor/:type/:id",
-        element: <Editor />,
-        loader: () => {
-          const data = { some: "thing" };
-          return new Response(JSON.stringify(data), {
-            status: 200,
-          });
-        },
       },
     ],
   },

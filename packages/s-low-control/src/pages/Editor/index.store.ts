@@ -1,6 +1,7 @@
 import { types } from "mobx-state-tree";
 import { FieldNode } from "./schema/types";
 import { dfs } from "@/utils";
+import { syncStorageWithChild } from "@/utils/auth";
 
 export interface FieldNodeSchema extends FieldNode {
   id: string;
@@ -31,6 +32,8 @@ export const EditStore = types
     isDragging: false,
     iframeRef: { current: null },
     selectedComp: {},
+    project: {}, // 项目信息
+    isChildInit: false, // 预览项目是否初始化成功
   }))
   .views((self: any) => ({
     get rootCode() {
@@ -38,6 +41,9 @@ export const EditStore = types
     },
   }))
   .actions((self: any) => ({
+    setProject(info: any) {
+      self.project = info;
+    },
     setCodeTree(code: any) {
       self.codeTree = code;
     },
@@ -101,6 +107,26 @@ export const EditStore = types
         },
         "*"
       );
+    },
+
+    initIframe() {
+      if (self.codeTree.children.length && self.isChildInit) {
+        this.postMessageIframe();
+      }
+    },
+
+    getChildMessage(e: any) {
+      const { data = {} } = e;
+      const { type } = data;
+      switch (type) {
+        case "preview-init-success":
+          self.isChildInit = true;
+          syncStorageWithChild(); // 同步token给子应用
+          self.initIframe();
+          break;
+        default:
+          break;
+      }
     },
     afterCreate() {
       // console.log("EditStore afterCreate");

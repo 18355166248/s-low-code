@@ -23,5 +23,7 @@
     "typeRoots": ["node_modules/@types"]
   },
   "include": ["src"],
-  "exclude": ["src/pages/Editor/comp/ShowCode/worker.js"]
+  "exclude": [
+    "src/pages/Editor/comp/EditorHeader/HeaderRight/ShowCode/worker.js"
+  ]
 }

@@ -1,41 +1,44 @@
 import React, { useEffect, useLayoutEffect } from "react";
 import { inject, observer } from "mobx-react";
 import Child from "./Child";
-import useLocalStorage from "@/hooks/useLocalStorage";
-import { codeTreeStorageKey } from "../const";
 
 function CenterCanvas({ edit }: any) {
   // !!!不能删除 用于刷新组件
   const { refreshId, append, selectId, setCodeTree } = edit;
 
-  const [, setCodeTreeStorage] = useLocalStorage(codeTreeStorageKey);
-
   useEffect(() => {
     // 统一接收平台信息，调用对应方法处理
     window.addEventListener("message", getMessage);
+
+    // 主动告知父元素已经开始监听 可以执行同步了
+    window.parent.postMessage(
+      {
+        type: "preview-init-success",
+      },
+      "*"
+    );
     return () => {
       window.removeEventListener("message", getMessage);
     };
   }, []);
 
-  useEffect(() => {
-    setCodeTreeStorage(edit.codeTree);
-  }, [edit.codeTree]);
-
   useLayoutEffect(() => {
     if (edit.codeTree) {
-      edit.codeTree.children.map((child: any) => {
-        const height = document.getElementById(child.id)?.offsetHeight;
-        child.height = height;
-      });
+      // eslint-disable-next-line array-callback-return
+      if (edit.codeTree.children.length) {
+        edit.codeTree.children.map((child: any) => {
+          const height = document.getElementById(child.id)?.offsetHeight;
+          child.height = height;
+        });
 
-      window.parent.postMessage(
-        {
-          type: "updateCodeTree",
-          params: edit.codeTree,
-        },
-        "*"
-      );
+        window.parent.postMessage(
+          {
+            type: "updateCodeTree",
+            params: edit.codeTree,
+          },
+          "*"
+        );
+      }
     }
   }, [edit.codeTree, edit.codeTree.refreshId]);
 

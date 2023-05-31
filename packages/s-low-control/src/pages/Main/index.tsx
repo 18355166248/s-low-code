@@ -1,5 +1,5 @@
 import { Layout } from "antd";
-import { FC, useEffect } from "react";
+import { FC, Suspense, useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import MainHeader from "./Header";
 import "./index.scoped.scss";
@@ -18,7 +18,9 @@ const Main: FC<Props> = () => {
   return (
     <Layout className="h-full flex flex-col">
       <MainHeader />
-      <Outlet />
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </Layout>
   );
 };
