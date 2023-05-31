@@ -5,6 +5,7 @@ import LoginLeftImg from "../../assets/images/login/login_left.png";
 import { isLogin, useAuth } from "../Auth/AuthContext";
 import { LOGIN_DTO } from "@/services/types/login";
 import { useLocation, useNavigate } from "react-router-dom";
+import logo from "../../assets/images/svg/slow.svg";
 
 interface LoginProps {}
 
@@ -32,7 +33,10 @@ const Login: FC<LoginProps> = () => {
     <div className="login">
       <img src={LoginLeftImg} alt="" className="leftImg" />
       <div className="login-form bg-white p-10 rounded-md">
-        <h2 className="mb-10">Slow Code</h2>
+        <div className="flex items-center mb-10">
+          <img src={logo} alt="" className="logo mr-4" />
+          <h2>Slow Code</h2>
+        </div>
         <Form
           layout="vertical"
           size="middle"
