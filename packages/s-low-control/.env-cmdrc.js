@@ -12,11 +12,11 @@
 
 module.exports = {
   development: {
-    REACT_APP_BUILD_ENV: "development", // 编译环境
-    BASE_URL: "",
+    REACT_APP_BUILD_ENV: "development11", // 编译环境
+    REACT_APP_BASE_URL: "",
   },
   production: {
     REACT_APP_BUILD_ENV: "production",
-    BASE_URL: "http://110.42.188.221:13000",
+    REACT_APP_BASE_URL: "http://110.42.188.221:13000",
   },
 };

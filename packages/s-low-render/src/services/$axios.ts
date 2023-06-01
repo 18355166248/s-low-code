@@ -9,7 +9,7 @@ const config: AxiosRequestConfig = {
   headers: {
     "Content-Type": "application/json",
   },
-  baseURL: `${process.env.BASE_URL}/api/v1`,
+  baseURL: `${process.env.REACT_APP_BASE_URL}/api/v1`,
 };
 
 const $axios = axios.create(config);
