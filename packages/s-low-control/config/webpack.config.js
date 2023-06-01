@@ -190,11 +190,6 @@ module.exports = function (webpackEnv) {
       },
     ].filter(Boolean);
     if (preProcessor) {
-      console.log(
-        "🚀 ~ file: webpack.config.js:191 ~ getStyleLoaders ~ preProcessor:",
-        preProcessor
-      );
-
       loaders.push(
         {
           loader: require.resolve("resolve-url-loader"),

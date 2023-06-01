@@ -1,22 +1,23 @@
-const { dependencies } = require('./package.json');
+const { dependencies } = require("./package.json");
+const isDev = process.env.NODE_ENV === "development";
 
 module.exports = {
-  name: 'host',
+  name: "host",
   remotes: [
     {
-      name: 'remote',
-      url: 'http://localhost:4000/',
+      name: "remote",
+      url: isDev ? "http://localhost:4000/" : "/",
     },
   ],
   shared: {
     ...dependencies,
     react: {
       singleton: true,
-      requiredVersion: dependencies['react'],
+      requiredVersion: dependencies["react"],
     },
-    'react-dom': {
+    "react-dom": {
       singleton: true,
-      requiredVersion: dependencies['react-dom'],
+      requiredVersion: dependencies["react-dom"],
     },
   },
 };
