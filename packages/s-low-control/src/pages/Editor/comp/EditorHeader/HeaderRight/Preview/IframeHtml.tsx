@@ -11,7 +11,7 @@ function IframeHtml({ edit }: any) {
   return (
     <iframe
       ref={iframeRef}
-      src={`http://localhost:3900/preview/${id}`}
+      src={`${process.env.REACT_APP_PREVIEW_CHILD_URL}/preview/${id}`}
       className={styles.iframe}
     />
   );

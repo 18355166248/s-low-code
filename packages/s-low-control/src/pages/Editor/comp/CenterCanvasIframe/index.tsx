@@ -54,7 +54,7 @@ function CenterCanvasIframe(props: any) {
         <div className={styles.phoneBody}>
           <iframe
             ref={iframeRef}
-            src="http://localhost:3900/"
+            src={process.env.REACT_APP_PREVIEW_CHILD_URL}
             className={styles.iframe}
             id={previewIframeId}
           />
