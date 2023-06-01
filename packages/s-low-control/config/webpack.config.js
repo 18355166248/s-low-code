@@ -467,11 +467,11 @@ module.exports = function (webpackEnv) {
                   [
                     require.resolve("babel-plugin-import"), // 导入 import 插件
                     {
-                      libraryName: "@xmly/mi-design",
+                      libraryName: "jiang-btp-design",
                       libraryDirectory: "es",
                       camel2DashComponentName: false, // 避免 customName 和拼接参数格式化成驼峰
                       customName: (name) => {
-                        return `@xmly/mi-design/dist/components/common/${name}`;
+                        return `jiang-btp-design/dist/components/common/${name}`;
                       },
                       style: (path) => `${path}/style/index.less`,
                     },

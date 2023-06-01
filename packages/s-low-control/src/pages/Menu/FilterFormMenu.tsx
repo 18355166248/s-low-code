@@ -1,7 +1,7 @@
-import { FilterFormLayout } from '@xmly/mi-design';
-import { Form, Input } from 'antd';
-import React, { FC } from 'react';
-import { useMenuContext } from './Menu.context';
+import { FilterFormLayout } from "jiang-btp-design";
+import { Form, Input } from "antd";
+import React, { FC } from "react";
+import { useMenuContext } from "./Menu.context";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
@@ -24,13 +24,13 @@ const FilterForm: FC<Props> = () => {
   function onCreact() {
     setModalOption({
       initialValues: {
-        itemSourceType: '',
-        role: '',
-        name: '',
-        channelId: '',
+        itemSourceType: "",
+        role: "",
+        name: "",
+        channelId: "",
       },
-      title: '新增',
-      type: 'add',
+      title: "新增",
+      type: "add",
     });
     openModalHandle();
   }
@@ -50,10 +50,7 @@ const FilterForm: FC<Props> = () => {
       onReset={onReset}
       onValuesChange={onValuesChange}
     >
-      <Form.Item
-        label="demo"
-        name="Demo"
-      >
+      <Form.Item label="demo" name="Demo">
         <Input allowClear={true} />
       </Form.Item>
     </FilterFormLayout>

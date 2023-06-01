@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@slow/core": "workspace:^1.0.0",
-    "@xmly/mi-design": "^0.3.3",
     "axios": "^0.27.2",
+    "jiang-btp-design": "^0.3.3",
     "mobx-react-lite": "^3.4.3",
     "s-low-components": "workspace:^0.1.0"
   },

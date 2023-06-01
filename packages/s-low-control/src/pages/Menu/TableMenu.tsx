@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { useMenuContext } from "./Menu.context";
-import { ActionList } from "@xmly/mi-design";
+import { ActionList } from "jiang-btp-design";
 import { Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 
