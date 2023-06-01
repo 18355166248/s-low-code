@@ -6,7 +6,7 @@ module.exports = {
   remotes: [
     {
       name: "remote",
-      url: isDev ? "http://localhost:4000/" : "http://110.42.188.221:10001/",
+      url: isDev ? "http://localhost:4000/" : "http://110.42.188.221:11001/",
     },
   ],
   shared: {
