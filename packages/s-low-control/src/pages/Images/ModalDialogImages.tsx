@@ -1,6 +1,6 @@
 import { Button, Input, Form, notification, Divider, Modal } from 'antd';
 import React, { FC, useState, useEffect } from 'react';
-import { use{{firstUpperName}}Context } from './{{name}}.context';
+import { useImagesContext } from './Images.context';
 import { observer } from 'mobx-react-lite';
 
 function add(data: any) {
@@ -20,7 +20,7 @@ const ModalDialog: FC<Props> = () => {
     modalOption,
     getList,
     modalShow,
-  } = use{{firstUpperName}}Context();
+  } = useImagesContext();
   const [visible, setVisible] = useState(false);
 
   const formDisabled = modalOption.type === 'detail';
@@ -67,7 +67,7 @@ const ModalDialog: FC<Props> = () => {
         form={form}
         onFinish={submitHandle}
         className="mt-5"
-        labelCol=\{{ flex: "0 0 100px" }}
+        labelCol={{ flex: "0 0 100px" }}
       >
         <Form.Item
           label="demo"

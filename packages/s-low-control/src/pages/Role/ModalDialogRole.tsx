@@ -3,7 +3,6 @@ import { Button, Input, Form, notification, Divider } from "antd";
 import React, { FC, useState } from "react";
 import { useRoleContext } from "./Role.context";
 import { observer } from "mobx-react-lite";
-import { add, modify } from "@/services/test";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
@@ -20,23 +19,6 @@ const ModalDialog: FC<Props> = () => {
     form.setFieldsValue(modalOption.initialValues);
   }, [modalShow]);
 
-  function submitHandle(formData: any) {
-    setLoading(true);
-    const requestMethod = modalOption.type === "add" ? add : modify;
-    if (modalOption.initialValues.id) {
-      formData.id = modalOption.initialValues.id;
-    }
-    requestMethod(formData)
-      .then(() => {
-        notification.success({ message: `${modalOption.title}成功！` });
-        modalDialogRef.current.close();
-        getList();
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }
-
   function onCancel() {
     form.resetFields();
     modalDialogRef.current.close();
@@ -44,7 +26,7 @@ const ModalDialog: FC<Props> = () => {
 
   return (
     <XModal title={modalOption.title} ctrlRef={modalDialogRef} footer={null}>
-      <Form form={form} onFinish={submitHandle}>
+      <Form form={form}>
         <Form.Item
           label="itemSourceType"
           name="itemSourceType"

@@ -12,6 +12,7 @@ const Application = lazy(() => import("@/pages/Application"));
 const User = lazy(() => import("@/pages/User/indexUser"));
 const Role = lazy(() => import("@/pages/Role/indexRole"));
 const Menu = lazy(() => import("@/pages/Menu/indexMenu"));
+const Images = lazy(() => import("@/pages/Images/indexImages"));
 
 const Editor = lazy(() => import("@/pages/Editor"));
 
@@ -43,6 +44,12 @@ export const applicationChildren: appInterface[] = [
     id: "/application/menu",
     name: "菜单管理",
     element: <Menu />,
+  },
+  {
+    path: "images",
+    id: "/application/images",
+    name: "图片管理",
+    element: <Images />,
   },
 ];
 
