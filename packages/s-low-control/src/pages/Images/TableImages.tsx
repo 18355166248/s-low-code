@@ -25,47 +25,53 @@ const TableImages: FC<Props> = () => {
       key: "file",
     },
     {
+      title: "地址",
+      dataIndex: "path",
+      key: "path",
+      ellipsis: true,
+    },
+    {
       title: "图片",
-      dataIndex: "name",
-      key: "name",
+      dataIndex: "path",
+      key: "path",
       render: (value: string) => (
         <img src={value} alt="" style={{ width: 100 }} />
       ),
     },
-    {
-      title: "操作",
-      fixed: "right",
-      width: 100,
-      render: (record: any) => {
-        const actionList: any[] = [
-          {
-            type: "text",
-            text: "编辑",
-            onClick: () => {
-              setModalOption({
-                initialValues: record,
-                title: "编辑",
-                type: "edit",
-              });
-              openModalHandle();
-            },
-          },
-          {
-            type: "text",
-            text: "查看",
-            onClick: () => {
-              setModalOption({
-                initialValues: record,
-                title: "查看",
-                type: "detail",
-              });
-              openModalHandle();
-            },
-          },
-        ];
-        return <ActionList columns={actionList} />;
-      },
-    },
+    // {
+    //   title: "操作",
+    //   fixed: "right",
+    //   width: 100,
+    //   render: (record: any) => {
+    //     const actionList: any[] = [
+    //       {
+    //         type: "text",
+    //         text: "编辑",
+    //         onClick: () => {
+    //           setModalOption({
+    //             initialValues: record,
+    //             title: "编辑",
+    //             type: "edit",
+    //           });
+    //           openModalHandle();
+    //         },
+    //       },
+    //       {
+    //         type: "text",
+    //         text: "查看",
+    //         onClick: () => {
+    //           setModalOption({
+    //             initialValues: record,
+    //             title: "查看",
+    //             type: "detail",
+    //           });
+    //           openModalHandle();
+    //         },
+    //       },
+    //     ];
+    //     return <ActionList columns={actionList} />;
+    //   },
+    // },
   ];
 
   useEffect(() => {
