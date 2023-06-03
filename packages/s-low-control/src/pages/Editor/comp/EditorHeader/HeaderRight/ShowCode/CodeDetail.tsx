@@ -7,7 +7,7 @@ import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/ext-language_tools";
 import { generateCode } from "./generateCode";
 
-const myWorker = new Worker("./worker.js");
+const myWorker = new Worker("/worker.js");
 
 function CodeDetail(props: any) {
   const { edit } = props;
