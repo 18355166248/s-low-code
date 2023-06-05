@@ -14,31 +14,31 @@ const isProd = BUILD_ENV === "production";
 const domain = isDev || isTest ? ".test" : isUat ? ".uat" : "";
 
 module.exports = function (app) {
-  // app.use(
-  //   createProxyMiddleware(["/api"], {
-  //     target: `http://localhost:5555`,
-  //     secure: true,
-  //     changeOrigin: true,
-  //     cookieDomainRewrite: `localhost:5555`,
-  //     pathRewrite: {
-  //       // 以自由添加的前缀作为本地接口代理的标记，请求发送时会被替换掉
-  //       "^/dev_proxy_ops": "",
-  //     },
-  //   })
-  // );
-
   app.use(
     createProxyMiddleware(["/api"], {
-      target: `http://110.42.188.221:13000`,
+      target: `http://localhost:5555`,
       secure: true,
       changeOrigin: true,
-      cookieDomainRewrite: `110.42.188.221:13000`,
+      cookieDomainRewrite: `localhost:5555`,
       pathRewrite: {
         // 以自由添加的前缀作为本地接口代理的标记，请求发送时会被替换掉
         "^/dev_proxy_ops": "",
       },
     })
   );
+
+  // app.use(
+  //   createProxyMiddleware(["/api"], {
+  //     target: `http://110.42.188.221:13000`,
+  //     secure: true,
+  //     changeOrigin: true,
+  //     cookieDomainRewrite: `110.42.188.221:13000`,
+  //     pathRewrite: {
+  //       // 以自由添加的前缀作为本地接口代理的标记，请求发送时会被替换掉
+  //       "^/dev_proxy_ops": "",
+  //     },
+  //   })
+  // );
 
   // app.use(
   //   createProxyMiddleware("/web", {

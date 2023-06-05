@@ -24,6 +24,7 @@
   },
   "include": ["src"],
   "exclude": [
-    "src/pages/Editor/comp/EditorHeader/HeaderRight/ShowCode/worker.js"
+    "src/pages/Editor/comp/EditorHeader/HeaderRight/ShowCode/worker.js",
+    "src/service-worker.js"
   ]
 }
