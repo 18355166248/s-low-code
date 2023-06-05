@@ -1,5 +1,5 @@
 import { inject, observer } from "mobx-react";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { editKey, Field } from "../../schema/types";
 import { Fields } from "./fields";
 import editField from "../../schema/edit";
@@ -105,7 +105,11 @@ function Right({ edit }: any) {
       <div className="h-6 leading-6 text-center font-medium border-b py-4">
         属性设置
       </div>
-      <div className="text-xs">{selectedComp.type && renderSetting(list)}</div>
+      <Suspense>
+        <div className="text-xs">
+          {selectedComp.type && renderSetting(list)}
+        </div>
+      </Suspense>
     </div>
   );
 }

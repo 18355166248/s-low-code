@@ -61,6 +61,6 @@ const registerServiceWorker = async () => {
   }
 };
 
-registerServiceWorker();
+// registerServiceWorker();
 
 export {};
