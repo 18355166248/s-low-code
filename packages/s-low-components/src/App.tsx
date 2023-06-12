@@ -1,4 +1,3 @@
-import "./App.css";
 import PageJump from "./EditFormComponents/PageJump";
 
 function App() {
