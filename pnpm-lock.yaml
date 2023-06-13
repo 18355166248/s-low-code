@@ -10,6 +10,9 @@ importers:
       '@babel/core':
         specifier: ^7.16.0
         version: 7.22.1
+      '@module-federation/utilities':
+        specifier: ^1.8.0
+        version: registry.npmmirror.com/@module-federation/utilities@1.8.0(react-dom@18.2.0)(react@18.2.0)(webpack@5.85.0)
       '@pmmmwh/react-refresh-webpack-plugin':
         specifier: ^0.5.3
         version: 0.5.10(react-refresh@0.11.0)(webpack-dev-server@4.15.0)(webpack@5.85.0)
@@ -269,6 +272,9 @@ importers:
       npm-run-all:
         specifier: ^4.1.5
         version: 4.1.5
+      path-browserify:
+        specifier: ^1.0.1
+        version: registry.npmmirror.com/path-browserify@1.0.1
       prettier:
         specifier: 2.6.2
         version: 2.6.2
@@ -2910,7 +2916,7 @@ packages:
       fast-glob: 3.2.12
       minimatch: 5.1.6
       mkdirp: 1.0.4
-      path-browserify: 1.0.1
+      path-browserify: registry.npmmirror.com/path-browserify@1.0.1
     dev: true
 
   /@tsconfig/node10@1.0.9:
@@ -8053,10 +8059,6 @@ packages:
       no-case: 3.0.4
       tslib: 2.5.2
 
-  /path-browserify@1.0.1:
-    resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==}
-    dev: true
-
   /path-exists@3.0.0:
     resolution: {integrity: sha512-bpC7GYwiDYQ4wYLe+FA8lhRjhQCMcQGuSgGGqDkg/QerRWw9CmGRT0iSOVRSZJ29NMLZgIzqaljJ63oaL4NIJQ==}
     engines: {node: '>=4'}
@@ -11830,6 +11832,29 @@ packages:
       '@babel/runtime': 7.22.3
     dev: false
 
+  registry.npmmirror.com/@module-federation/utilities@1.8.0(react-dom@18.2.0)(react@18.2.0)(webpack@5.85.0):
+    resolution: {integrity: sha512-qKbZF+SU7jfAt+q1kRUNxU1jzHErRyIP77DA+yCYCJaagWaFuz0Hmud8Yr6n/mQ1WJgQeh+gmNA0ad75koKopQ==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/@module-federation/utilities/-/utilities-1.8.0.tgz}
+    id: registry.npmmirror.com/@module-federation/utilities/1.8.0
+    name: '@module-federation/utilities'
+    version: 1.8.0
+    peerDependencies:
+      next: ^12 || ^13
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+      webpack: ^5.40.0
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      webpack: 5.85.0
+    dev: false
+
   registry.npmmirror.com/ajv@6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/ajv/-/ajv-6.12.6.tgz}
     name: ajv
@@ -11942,6 +11967,12 @@ packages:
       - supports-color
     dev: true
     optional: true
+
+  registry.npmmirror.com/path-browserify@1.0.1:
+    resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/path-browserify/-/path-browserify-1.0.1.tgz}
+    name: path-browserify
+    version: 1.0.1
+    dev: true
 
   registry.npmmirror.com/punycode@2.3.0:
     resolution: {integrity: sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==, registry: http://xnpm.ximalaya.com/, tarball: https://registry.npmmirror.com/punycode/-/punycode-2.3.0.tgz}
