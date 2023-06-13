@@ -3,9 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "types": "src/index.d.ts",
-  "dependencies": {
-    "@slow/core": "workspace:^1.0.0"
-  },
+  "dependencies": {},
   "scripts": {
     "start": "env-cmd -e development node scripts/start.js",
     "build": "env-cmd -e production node scripts/build.js",
