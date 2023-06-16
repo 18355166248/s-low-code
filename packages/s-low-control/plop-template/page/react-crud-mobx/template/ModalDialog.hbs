@@ -62,7 +62,12 @@ const ModalDialog: FC<Props> = () => {
   }
 
   return (
-    <Modal title={modalOption.title} open={visible} footer={null}>
+    <Modal
+      title={modalOption.title}
+      open={visible}
+      footer={null}
+      onCancel={onCancel}
+    >
       <Form
         form={form}
         onFinish={submitHandle}

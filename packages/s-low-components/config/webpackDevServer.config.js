@@ -82,7 +82,7 @@ module.exports = function (proxy, allowedHost) {
         port: sockPort,
       },
       overlay: {
-        errors: true,
+        errors: false,
         warnings: false,
       },
     },

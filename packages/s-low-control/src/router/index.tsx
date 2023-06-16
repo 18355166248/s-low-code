@@ -13,6 +13,7 @@ const User = lazy(() => import("@/pages/User/indexUser"));
 const Role = lazy(() => import("@/pages/Role/indexRole"));
 const Menu = lazy(() => import("@/pages/Menu/indexMenu"));
 const Images = lazy(() => import("@/pages/Images/indexImages"));
+const RemoteComp = lazy(() => import("@/pages/RemoteComp/indexRemoteComp"));
 
 const Editor = lazy(() => import("@/pages/Editor"));
 
@@ -50,6 +51,12 @@ export const applicationChildren: appInterface[] = [
     id: "/application/images",
     name: "图片管理",
     element: <Images />,
+  },
+  {
+    path: "remoteComp",
+    id: "/application/remoteComp",
+    name: "远程组件",
+    element: <RemoteComp />,
   },
 ];
 
