@@ -48,6 +48,11 @@ const TableRemoteComp: FC<Props> = () => {
       ),
     },
     {
+      title: "当前版本",
+      dataIndex: "currentVersion",
+      key: "currentVersion",
+    },
+    {
       title: "操作",
       fixed: "right",
       width: 100,

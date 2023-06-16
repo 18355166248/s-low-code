@@ -6,14 +6,14 @@ function Left() {
   const [remoteList, setRemoteList] = useState([]);
 
   useEffect(() => {
-    const app2Utils = importRemote({
-      url: "http://localhost:4001",
-      scope: "lowTitle",
-      module: "./fields",
-    });
-    app2Utils.then((res) => {
-      console.log("res", res);
-    });
+    // const app2Utils = importRemote({
+    //   url: "http://localhost:4001",
+    //   scope: "lowTitle",
+    //   module: "./fields",
+    // });
+    // app2Utils.then((res) => {
+    //   console.log("res", res);
+    // });
   }, []);
 
   return (
