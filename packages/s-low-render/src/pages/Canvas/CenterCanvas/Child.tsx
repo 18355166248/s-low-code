@@ -12,16 +12,18 @@ interface Props {
   data: FieldNodeSchema;
   index: number;
   selectId: string;
+  remotePreviewData: Record<string, any>;
   edit?: any;
 }
 
 function Child(props: Props) {
-  const { id, parentId, data, index, selectId, edit } = props;
+  const { id, parentId, data, index, selectId, edit, remotePreviewData } =
+    props;
   const [positionDown, setPositionDown] = useState(false);
 
   const ref = useRef<HTMLDivElement | null>(null);
 
-  const CurrentNode = previewData[data.type];
+  const CurrentNode = previewData[data.type] || remotePreviewData[data.type];
 
   const [{ isOver, canDrop, isOverCurrent }, drop] = useDrop(
     () => ({
@@ -110,20 +112,23 @@ function Child(props: Props) {
           "absolute w-full h-full hover:border hover:border-primary hover:border-dashed"
         }
       ></div>
-      <CurrentNode {...data.props}>
-        {!canNesting(data.type)
-          ? data.props.children
-          : data.children.map((curField, _i) => (
-              <Child
-                key={curField.id}
-                data={curField}
-                parentId={data.id}
-                index={_i}
-                edit={edit}
-                selectId={selectId}
-              />
-            ))}
-      </CurrentNode>
+      {CurrentNode && (
+        <CurrentNode {...data.props}>
+          {!canNesting(data.type)
+            ? data.props.children
+            : data.children.map((curField, _i) => (
+                <Child
+                  key={curField.id}
+                  data={curField}
+                  parentId={data.id}
+                  index={_i}
+                  edit={edit}
+                  selectId={selectId}
+                  remotePreviewData={remotePreviewData}
+                />
+              ))}
+        </CurrentNode>
+      )}
     </div>
   );
 }

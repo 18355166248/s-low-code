@@ -9,7 +9,7 @@ interface Props {
 function DragPanel(props: Props) {
   const { data } = props;
   return (
-    <div className="py-6 px-4">
+    <div className="py-4 px-4">
       <Row gutter={15}>
         {data.map((item) => (
           <Col span={12} key={item.type}>

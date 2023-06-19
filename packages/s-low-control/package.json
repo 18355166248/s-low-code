@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "env-cmd -e development node scripts/start.js",
+    "start:prod": "env-cmd -e production node scripts/start.js",
     "build": "env-cmd -e production node scripts/build.js",
     "test": "node scripts/test.js",
     "prettier ": "prettier --write .",

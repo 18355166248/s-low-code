@@ -6,6 +6,10 @@ export function getRemoteCompList(params: PAGINATION_DTO) {
   return $axios.get("/remote-comp", { params });
 }
 
+export function getAllRemoteCompList() {
+  return $axios.get("/remote-comp/all");
+}
+
 export function createRemoteComp(
   data: REMOTE_COMP_DTO["PARAMS"]
 ): Promise<REMOTE_COMP_DTO["RESPONSE"]> {

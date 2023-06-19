@@ -347,6 +347,9 @@ module.exports = function (webpackEnv) {
           babelRuntimeRegenerator,
         ]),
       ],
+      fallback: {
+        path: require.resolve("path-browserify"),
+      },
     },
     module: {
       strictExportPresence: true,

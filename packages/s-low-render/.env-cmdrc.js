@@ -14,9 +14,11 @@ module.exports = {
   development: {
     REACT_APP_BUILD_ENV: "development", // 编译环境
     REACT_APP_BASE_URL: "",
+    REACT_APP_REMOTE_COMP: "http://localhost:4001",
   },
   production: {
     REACT_APP_BUILD_ENV: "production",
     REACT_APP_BASE_URL: "http://110.42.188.221:13000",
+    REACT_APP_REMOTE_COMP: "http://110.42.188.221:11000",
   },
 };

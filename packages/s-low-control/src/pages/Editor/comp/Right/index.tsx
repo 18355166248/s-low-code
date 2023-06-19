@@ -1,16 +1,35 @@
 import { inject, observer } from "mobx-react";
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { editKey, Field } from "../../schema/types";
 import { Fields } from "./fields";
 import editField from "../../schema/edit";
 import EditTitle from "@/components/EditTitle";
+import { initRemoteEdit } from "@/components/RemoteComp";
+import { isObject } from "lodash-es";
+import { useUpdate } from "ahooks";
 // import "antd/dist/antd.css"; // TODO 因为组件仓库没有打包antd的css 所以这里全量引入
 
 function Right({ edit }: any) {
   const { selectedComp, updateSelected, setCodeTree, setSelectId } = edit;
+  const remoteEditData = useRef<Record<string, any>>({});
+  const update = useUpdate();
 
   const { list = [], subLabelWidth = 70 } =
-    editField[selectedComp.type as editKey] || {};
+    editField[selectedComp.type as editKey] ||
+    remoteEditData.current[selectedComp.type] ||
+    {};
+
+  useEffect(() => {
+    const selectedCompRemote: any = selectedComp.remote;
+    if (isObject(selectedCompRemote as any)) {
+      initRemoteEdit(selectedCompRemote).then((remoteComp: any) => {
+        if (!remoteEditData.current[selectedComp.type]) {
+          remoteEditData.current[selectedComp.type] = remoteComp;
+          update();
+        }
+      });
+    }
+  }, [selectedComp]);
 
   useEffect(() => {
     window.addEventListener("message", setSelected);
@@ -102,7 +121,7 @@ function Right({ edit }: any) {
 
   return (
     <div className="w-80 overflow-y-scroll">
-      <div className="h-6 leading-6 text-center font-medium border-b py-4">
+      <div className="leading-6 text-center font-medium border-b py-4">
         属性设置
       </div>
       <Suspense>
