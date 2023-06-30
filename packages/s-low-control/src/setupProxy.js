@@ -29,10 +29,10 @@ module.exports = function (app) {
 
   // app.use(
   //   createProxyMiddleware(["/api"], {
-  //     target: `http://110.42.188.221:13000`,
+  //     target: `http://101.43.11.224:13000`,
   //     secure: true,
   //     changeOrigin: true,
-  //     cookieDomainRewrite: `110.42.188.221:13000`,
+  //     cookieDomainRewrite: `101.43.11.224:13000`,
   //     pathRewrite: {
   //       // 以自由添加的前缀作为本地接口代理的标记，请求发送时会被替换掉
   //       "^/dev_proxy_ops": "",

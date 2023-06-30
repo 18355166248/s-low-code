@@ -19,8 +19,8 @@ module.exports = {
   },
   production: {
     REACT_APP_BUILD_ENV: "production",
-    REACT_APP_BASE_URL: "http://110.42.188.221:13000",
-    REACT_APP_PREVIEW_CHILD_URL: "http://110.42.188.221:11002",
-    REACT_APP_REMOTE_COMP: "http://110.42.188.221:11000",
+    REACT_APP_BASE_URL: "http://101.43.11.224:13000",
+    REACT_APP_PREVIEW_CHILD_URL: "http://101.43.11.224:11002",
+    REACT_APP_REMOTE_COMP: "http://101.43.11.224:11000",
   },
 };
