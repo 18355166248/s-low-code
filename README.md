@@ -33,14 +33,14 @@ pnpm install rollup -wD
 ```json
 "scripts": {
   "start": "pnpm -C ./packages/s-low-components start & pnpm -C ./packages/s-low-control start & pnpm -C ./packages/s-low-render start",
-  "start1": "pnpm -r --filter=!@slow/cli --filter=!@slow/core run start",
+  "start1": "pnpm -r --filter=!@slow/cli --filter=!s-low-core run start",
 }
 ```
 
 ###
 
 ```js
-pnpm -r --filter=!@slow/cli --filter=!@slow/core run start
+pnpm -r --filter=!@slow/cli --filter=!s-low-core run start
 ```
 
 使用本地依赖库
@@ -48,9 +48,9 @@ pnpm -r --filter=!@slow/cli --filter=!@slow/core run start
 ```json
 {
   "dependencies": {
-    "@slow/core": "workspace:^1.0.0"
+    "s-low-core": "workspace:^1.0.0"
   }
 }
 ```
 
-## 测试webhook11111
+## 测试 webhook11111

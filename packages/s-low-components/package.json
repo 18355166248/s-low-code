@@ -5,8 +5,8 @@
   "types": "src/index.d.ts",
   "dependencies": {},
   "scripts": {
-    "start": "env-cmd -e development node scripts/start.js",
-    "build": "env-cmd -e production node scripts/build.js",
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {

@@ -11,7 +11,7 @@ const Project = lazy(() => import("@/pages/Project/indexProject"));
 const Application = lazy(() => import("@/pages/Application"));
 const User = lazy(() => import("@/pages/User/indexUser"));
 const Role = lazy(() => import("@/pages/Role/indexRole"));
-const Menu = lazy(() => import("@/pages/Menu/indexMenu"));
+const Menu = lazy(() => import("@/pages/RemoteComp/Menu/indexMenu"));
 const Images = lazy(() => import("@/pages/Images/indexImages"));
 const RemoteComp = lazy(() => import("@/pages/RemoteComp/indexRemoteComp"));
 

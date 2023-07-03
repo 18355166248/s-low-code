@@ -32,7 +32,7 @@ const createEnvironmentHash = require("./webpack/persistentCache/createEnvironme
 
 const mfConfig = require("../mf-config.js");
 const { ModuleFederationPlugin } = require("webpack").container;
-const { getModuleFederationRemotes } = require("@slow/core");
+const { getModuleFederationRemotes } = require("s-low-core");
 
 // 本地是否展示webpack-bundle-analyzer
 const showReactAppAnalyzer =

@@ -10,8 +10,8 @@
     "prettier ": "prettier --write ."
   },
   "dependencies": {
-    "@slow/core": "workspace:^1.0.0",
-    "s-low-components": "workspace: ^0.1.0"
+    "s-low-core": "1.1.0",
+    "s-low-components": "workspace:*"
   },
   "eslintConfig": {
     "extends": [

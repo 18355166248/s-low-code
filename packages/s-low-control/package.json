@@ -11,11 +11,11 @@
     "plop": "plop --plopfile ./plop-template/plopfile.js"
   },
   "dependencies": {
-    "@slow/core": "workspace:^1.0.0",
     "axios": "^0.27.2",
     "jiang-btp-design": "^0.3.3",
     "mobx-react-lite": "^3.4.3",
-    "s-low-components": "workspace:^0.1.0"
+    "s-low-components": "workspace:*",
+    "s-low-core": "1.1.0"
   },
   "eslintConfig": {
     "extends": [

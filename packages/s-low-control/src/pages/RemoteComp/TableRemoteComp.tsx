@@ -4,7 +4,7 @@ import { useRemoteCompContext } from "./RemoteComp.context";
 import { ActionList } from "jiang-btp-design";
 import { Table, Tag } from "antd";
 import { ColumnsType } from "antd/es/table";
-import { colors } from "@/constants/colors";
+import { generateRandomHexColor } from "s-low-core";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
@@ -37,10 +37,7 @@ const TableRemoteComp: FC<Props> = () => {
       render: (list: any[]) => (
         <>
           {list.map((v) => (
-            <Tag
-              key={v.version}
-              color={colors[Math.floor(Math.random() * colors.length)]}
-            >
+            <Tag key={v.version} color={generateRandomHexColor()}>
               {v.version}
             </Tag>
           ))}

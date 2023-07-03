@@ -300,22 +300,10 @@ importers:
         specifier: ^5.8.0
         version: 5.9.0
 
-  packages/core: {}
-
-  packages/s-low-components:
-    dependencies:
-      react:
-        specifier: ^18.1.0
-        version: 18.2.0
-      react-dom:
-        specifier: ^18.1.0
-        version: 18.2.0(react@18.2.0)
+  packages/s-low-components: {}
 
   packages/s-low-control:
     dependencies:
-      '@slow/core':
-        specifier: workspace:^1.0.0
-        version: link:../core
       axios:
         specifier: ^0.27.2
         version: 0.27.2
@@ -332,8 +320,11 @@ importers:
         specifier: ^18.1.0
         version: 18.2.0(react@18.2.0)
       s-low-components:
-        specifier: workspace:^0.1.0
+        specifier: workspace:*
         version: link:../s-low-components
+      s-low-core:
+        specifier: 1.1.0
+        version: link:../s-low-core
     devDependencies:
       less:
         specifier: ^4.1.3
@@ -342,20 +333,16 @@ importers:
         specifier: ^11.1.1
         version: 11.1.2(less@4.1.3)(webpack@5.85.0)
 
+  packages/s-low-core: {}
+
   packages/s-low-render:
     dependencies:
-      '@slow/core':
-        specifier: workspace:^1.0.0
-        version: link:../core
-      react:
-        specifier: ^18.1.0
-        version: 18.2.0
-      react-dom:
-        specifier: ^18.1.0
-        version: 18.2.0(react@18.2.0)
       s-low-components:
-        specifier: 'workspace: ^0.1.0'
+        specifier: workspace:*
         version: link:../s-low-components
+      s-low-core:
+        specifier: workspace:*
+        version: link:../s-low-core
 
 packages:
 
