@@ -7,7 +7,6 @@ import type {
 } from "antd/es/upload/interface";
 import React, { useEffect, useState } from "react";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
-import { isFunction } from "lodash-es";
 import { message, Upload } from "antd";
 import { getToken } from "src/utils/auth";
 
@@ -74,7 +73,7 @@ const UploadSingleImg: React.FC<Props> = (props) => {
   const uploadButton = (
     <div>
       {loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div style={{ marginTop: 8 }}>Upload</div>
+      <div style={{ marginTop: 8 }}>上传图片</div>
     </div>
   );
 
